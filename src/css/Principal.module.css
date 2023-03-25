@@ -1,0 +1,166 @@
+/*formatacao pagina principal*/
+
+.titulos{
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+main{
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.parte_cima{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ver_todos{
+    color: black;
+    font-weight: 500;
+}
+
+.ver_todos:hover{
+    color: #999;
+    text-decoration: underline;
+}
+
+.produto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.novidade_produto{
+    width: 250px;
+    background-color: white;
+    padding-bottom: 20px;
+    margin: 31px;
+}
+
+.novidade_produto_imagem{
+    width: 250px;
+    height: 200px;
+}
+
+.novidade_produto_descricao{
+    max-width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    padding: 10px;
+    color: black;
+}
+
+.preco{
+    margin-top: 10px;
+    font-size: 25px;
+    padding-left: 10px;
+    color: #296275;
+    font-weight: 700;
+}
+
+.modo_pagamento{
+    padding-left: 10px;
+    color: black;
+    opacity: 50%;
+}
+
+.novidade_produto_botao{
+    margin: 10px;
+    background-color: #296275;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+
+.novidade_produto_botao:hover{
+    background-color: #2d394b;
+}
+
+.categorias{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.categorias_individual_imagem{
+    margin-top: 10px;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}
+
+
+
+/*formatacao das compras*/
+
+.compra{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-bottom: 50px;
+}
+
+.propaganda{
+    margin: 25px;
+}
+
+.compra_descricao{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+
+.compra_preco_avista{
+    font-size: 50px;
+    color: #296275;
+    font-weight: 650;
+}
+
+.compra_modo_pagamento{
+    opacity: 50%;
+    margin-bottom: 20px;
+}
+
+.compra_preco_real{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.compra_opcao{
+    font-size: 15px;
+}
+
+.compra_botao{
+    margin-top: 20px;
+    background-color: #296275;
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+.compra_botao:hover{
+    background-color: #2d394b;
+}
+
+.descrever{
+    margin-bottom: 50px;
+}
+
+.descricao{
+    line-height: 30px;
+    font-weight: 500;
+    word-spacing: 5px;
+    font-size: 18px;
+}
