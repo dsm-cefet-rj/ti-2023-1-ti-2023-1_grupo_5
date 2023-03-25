@@ -2,9 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Header from './components/Header'
-import Footer from './components/Footer'
 import Principal from './components/Principal'
+import FormCadastroProduto from './components/FormCadastroProduto'
 
 
 const router = createBrowserRouter([
@@ -16,10 +15,10 @@ const router = createBrowserRouter([
         path: "",
         element: <Principal/>,
       },
-      // {
-      //   path: "cadastroProduto",
-      //   element: <CadastroProduto/>,
-      // },
+      {
+        path: "cadprod",
+        element: <FormCadastroProduto/>,
+      },
     ]
   },
 ]);

@@ -69,7 +69,6 @@ export default function Principal() {
                         <Produto produto={p[3]}/>
                     </div>
                 </section>
-
                 <section>
                     <h2 className={styles.titulos}>Categorias</h2>
                     <div className={styles.categorias}>
