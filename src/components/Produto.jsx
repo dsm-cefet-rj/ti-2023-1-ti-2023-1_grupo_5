@@ -1,5 +1,5 @@
-import styless from "../css/Produto.module.css"
-import styles from "../css/Principal.module.css"
+import styles from "../css/Produto.module.css"
+
 export default function Produto(params) {
     return (
         <div className={styles.novidades_produto}>

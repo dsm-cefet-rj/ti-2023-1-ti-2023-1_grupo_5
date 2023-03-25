@@ -6,6 +6,7 @@
 }
 
 main{
+    margin-top: 40px;
     padding-right: 50px;
     padding-left: 50px;
 }
@@ -34,56 +35,6 @@ main{
     margin-bottom: 30px;
 }
 
-.novidade_produto{
-    width: 250px;
-    background-color: white;
-    padding-bottom: 20px;
-    margin: 31px;
-}
-
-.novidade_produto_imagem{
-    width: 250px;
-    height: 200px;
-}
-
-.novidade_produto_descricao{
-    max-width: 250px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: bold;
-    padding: 10px;
-    color: black;
-}
-
-.preco{
-    margin-top: 10px;
-    font-size: 25px;
-    padding-left: 10px;
-    color: #296275;
-    font-weight: 700;
-}
-
-.modo_pagamento{
-    padding-left: 10px;
-    color: black;
-    opacity: 50%;
-}
-
-.novidade_produto_botao{
-    margin: 10px;
-    background-color: #296275;
-    color: white;
-    border: none;
-    height: 50px;
-    width: 150px;
-    font-size: 20px;
-}
-
-.novidade_produto_botao:hover{
-    background-color: #2d394b;
-}
-
 .categorias{
     display: flex;
     flex-direction: row;
@@ -91,16 +42,6 @@ main{
     flex-wrap: wrap;
     margin-bottom: 40px;
 }
-
-.categorias_individual_imagem{
-    margin-top: 10px;
-    background-color: white;
-    width: 200px;
-    height: 200px;
-}
-
-
-
 /*formatacao das compras*/
 
 .compra{

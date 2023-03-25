@@ -1,4 +1,5 @@
 import styles from "../css/Principal.module.css"
+import Categoria from "./Categoria"
 import Produto from "./Produto"
 const p = [
     {
@@ -26,6 +27,32 @@ const p = [
         preco: 899.99,
     }
 ]
+const c = [
+    {
+        nome: "Hardware",
+        href: "#",
+        img: "../src/imagens/categorias/hardware.webp",
+        alt: "Hardware",
+    },
+    {
+        nome: "Preiféricos",
+        href: "#",
+        img: "../src/imagens/categorias/mouse.jpg",
+        alt: "Periféricos",
+    },
+    {
+        nome: "",
+        href: "#",
+        img: "../src/imagens/categorias/games.jpg",
+        alt: "Games",
+    },
+    {
+        nome: "Computadores",
+        href: "#",
+        img: "../src/imagens/categorias/computador.jpg",
+        alt: "Computador",
+    },
+]
 export default function Principal() {
     return (
         <body>
@@ -45,27 +72,11 @@ export default function Principal() {
 
                 <section>
                     <h2 className={styles.titulos}>Categorias</h2>
-                    <div id="categorias">
-                        <div className={styles.categorias_individual}>
-                            <p>Hardware</p>
-                            <a href="#"><img src=" ../src/imagens/categorias/hardware.webp" alt="hardware" className={styles.categorias_individual_imagem}/></a>
-
-                        </div>
-                        <div className={styles.categorias_individual}>
-                            <p>Periféricos</p>
-                            <a href="#"><img src=" ../src/imagens/categorias/mouse.jpg" alt="perifericos" className={styles.categorias_individual_imagem}/></a>
-
-                        </div>
-                        <div className={styles.categorias_individual}>
-                            <p>Jogos</p>
-                            <a href="#"><img src=" ../src/imagens/categorias/games.jpg" alt="games" className={styles.categorias_individual_imagem}/></a>
-
-                        </div>
-                        <div className={styles.categorias_individual}>
-                            <p>Computador</p>
-                            <a href="#"><img src=" ../src/imagens/categorias/computador.jpg" alt="computador" className={styles.categorias_individual_imagem}/></a>
-
-                        </div>
+                    <div className={styles.categorias}>
+                        <Categoria categoria={c[0]}/>
+                        <Categoria categoria={c[1]}/>
+                        <Categoria categoria={c[2]}/>
+                        <Categoria categoria={c[3]}/>
                     </div>
                 </section>
             </main>
