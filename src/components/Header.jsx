@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "../css/Header.module.css";
 
+
+import { Link } from "react-router-dom"
+
+
 export default function Header() {
     return (
         <section className={styles.cabecalho}>
@@ -12,20 +16,16 @@ export default function Header() {
                     <form action="">
                         <input type="search" placeholder="Digite sua pesquisa aqui" className={styles.pesquisar}/>
                     </form>
-                    <div className={styles.header_li}>
+                    <nav className={styles.header_li}>
                         <li>
-                            <a href="/login" >Login</a>
+                           <a> <Link to="/login">Login</Link></a>
                         </li>
                         <li>
-                            <a href="/categorias" >Categorias</a>
+                           <a> <Link to="/carrinho">Carrinho</Link></a>
                         </li>
-                        <li>
-                            <a href="/carrinho" >Carrinho</a>
-                        </li>
-                        <li>
-                            <a href="/contato" >Contato</a>
-                        </li>
-                    </div>
+                        <li><a>dskdksikdi</a></li>
+       
+                    </nav>
 
                 </ul>
             </div>

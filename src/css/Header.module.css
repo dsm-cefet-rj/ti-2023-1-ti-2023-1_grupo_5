@@ -41,13 +41,13 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
+    color: #4af706;
     transition: 0.3s ease;
 }
 
 .navbar li a:hover,
 .navbar li a.active{
-    color: black;
+    color: rgb(255, 3, 3);
 }
 
 .navbar li a.active::after,
@@ -55,7 +55,7 @@
     content: "";
     width: 30%;
     height: 2px;
-    background: #000000;
+    background: #ff9900;
     position: relative;
     bottom: -4px;
     left: 20px;

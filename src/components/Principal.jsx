@@ -2,7 +2,7 @@ import styles from "../css/Principal.module.css"
 import Categoria from "./Categoria"
 import Produto from "./Produto"
 const p = [
-    {
+    {        
         img: "../src/imagens/produtos/produto-gabinete.webp",
         tipo: "Gabinete",
         descricao: "Gabinete Gamer Redragon Brawn, Mid Tower, Vidro Temperado, Black, Sem fonte, Sem Fan, GC-500",
@@ -14,19 +14,19 @@ const p = [
         descricao: "Placa Mãe Biostar B560MX-E PRO, Chipset B560, Intel LGA 1200, mATX, DDR4",
         preco: 559.99,
     },
-    {
+    {       
         img: "../src/imagens/produtos/produto-processador.jpg",
         tipo: "Processador",
         descricao: "Processador AMD Ryzen 5 4600G 3.7GHz (4.2GHz Turbo), 6-Cores 12-Threads, Cooler Wraith Stealth, AM4, 100-100000147BOX",
         preco: 489.99,
     },
-    {
+    {    
         img: "../src/imagens/produtos/produto-monitor.jpg",
         tipo: "Monitor",
         descricao: "Monitor Gamer Samsung T350, 22 pol, Full HD, IPS, HDMI/VGA, LF22T350FHLMZD",
         preco: 899.99,
     }
-]
+];
 const c = [
     {
         nome: "Hardware",
@@ -61,6 +61,7 @@ export default function Principal() {
                     <div className={styles.parte_cima}>
                         <h2 className={styles.titulos}>Novidades</h2>
                         <a className={styles.ver_todos} href="../VariosProdutos/Produtos.html">VER TODOS :</a>
+                    
                     </div>
                     <div className={styles.produto}>
                         <Produto produto={p[0]}/>

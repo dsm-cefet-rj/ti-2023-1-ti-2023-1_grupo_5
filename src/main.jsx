@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Principal from './components/Principal'
 import FormCadastroProduto from './components/FormCadastroProduto'
 
+import Carrinho from './components/Carrinho';
+import Login from './components/Login'
 
 const router = createBrowserRouter([
   {
@@ -12,14 +14,22 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Principal/>,
       },
+     
       {
-        path: "cadprod",
-        element: <FormCadastroProduto/>,
+        path:"login",
+        element:<Login/>,
       },
-    ]
+      
+      {
+        path:"carrinho",
+        element:<Carrinho/>,
+      },
+     
+      
+    ],
   },
 ]);
 
