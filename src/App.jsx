@@ -3,7 +3,7 @@ import style from "./css/Header.module.css"
 import Header from "./components/Header"
 import { BrowserRouter, Outlet, Route } from "react-router-dom"
 import Footer from "./components/Footer"
-import { CarrinhoProvider } from "./components/CarrinhoContext"
+import { CarrinhoProvider } from "./context/CarrinhoContext"
 function App() {
   return (
     <div className="App">

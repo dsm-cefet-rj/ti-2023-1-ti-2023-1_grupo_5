@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../css/Header.module.css";
 
-import {  useCarrinho } from "./CarrinhoContext";
+import {  useCarrinho } from "../context/CarrinhoContext";
 
 
 import { Link } from "react-router-dom"

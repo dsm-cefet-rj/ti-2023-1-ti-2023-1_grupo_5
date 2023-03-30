@@ -6,7 +6,7 @@ import Produto from "./Produto"
 import p from "./Dados"
 
 import { Link } from "react-router-dom"
-import { useCarrinho } from "./CarrinhoContext"
+import { useCarrinho } from "../context/CarrinhoContext"
 const c = [
     {
         nome: "Hardware",

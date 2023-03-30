@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 import p from "./Dados"
 
-import {  useCarrinho } from "./CarrinhoContext"
+import {  useCarrinho } from "../context/CarrinhoContext"
 
 
 

@@ -1,6 +1,6 @@
 import { createContext,useContext, useEffect, useState } from "react"
-import Produto from "./Produto"
-import p from "./Dados"
+import Produto from "../components/Produto"
+import p from "../components/Dados"
 
 
 
