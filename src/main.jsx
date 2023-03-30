@@ -4,7 +4,7 @@ import App from './App'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Principal from './components/Principal'
 import FormCadastroProduto from './components/FormCadastroProduto'
-
+import ErrorPage from './components/ErrorPage'
 import Carrinho from './components/Carrinho';
 import Login from './components/Login'
 import ProdutoSimples from './components/ProdutoSimples'
@@ -13,6 +13,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+    errorElement:<ErrorPage/>,
     children: [
       {
         path: "",
