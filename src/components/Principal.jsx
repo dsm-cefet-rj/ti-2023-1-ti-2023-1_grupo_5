@@ -1,32 +1,12 @@
 import styles from "../css/Principal.module.css"
+import  "../css/Produto.module.css"
+
 import Categoria from "./Categoria"
 import Produto from "./Produto"
-const p = [
-    {        
-        img: "../src/imagens/produtos/produto-gabinete.webp",
-        tipo: "Gabinete",
-        descricao: "Gabinete Gamer Redragon Brawn, Mid Tower, Vidro Temperado, Black, Sem fonte, Sem Fan, GC-500",
-        preco: 349.99,
-    },
-    {
-        img: "../src/imagens/produtos/produto-placa mae.webp",
-        tipo: "Placa Mãe",
-        descricao: "Placa Mãe Biostar B560MX-E PRO, Chipset B560, Intel LGA 1200, mATX, DDR4",
-        preco: 559.99,
-    },
-    {       
-        img: "../src/imagens/produtos/produto-processador.jpg",
-        tipo: "Processador",
-        descricao: "Processador AMD Ryzen 5 4600G 3.7GHz (4.2GHz Turbo), 6-Cores 12-Threads, Cooler Wraith Stealth, AM4, 100-100000147BOX",
-        preco: 489.99,
-    },
-    {    
-        img: "../src/imagens/produtos/produto-monitor.jpg",
-        tipo: "Monitor",
-        descricao: "Monitor Gamer Samsung T350, 22 pol, Full HD, IPS, HDMI/VGA, LF22T350FHLMZD",
-        preco: 899.99,
-    }
-];
+import p from "./Dados"
+
+import { Link } from "react-router-dom"
+import { useCarrinho } from "./CarrinhoContext"
 const c = [
     {
         nome: "Hardware",
@@ -54,6 +34,7 @@ const c = [
     },
 ]
 export default function Principal() {
+    const carrinho = useCarrinho()
     return (
         <body>
             <main>
@@ -63,11 +44,13 @@ export default function Principal() {
                         <a className={styles.ver_todos} href="../VariosProdutos/Produtos.html">VER TODOS :</a>
                     
                     </div>
+                    
                     <div className={styles.produto}>
-                        <Produto produto={p[0]}/>
-                        <Produto produto={p[1]}/>
-                        <Produto produto={p[2]}/>
-                        <Produto produto={p[3]}/>
+                    
+
+                              {p.map((prod)=><Produto produto={prod}/>)}
+                               
+
                     </div>
                 </section>
                 <section>
@@ -80,6 +63,7 @@ export default function Principal() {
                     </div>
                 </section>
             </main>
+            <prev>{JSON.stringify(carrinho.carrinho,null,2)}</prev>
             <script src="https://kit.fontawesome.com/ebb52b10e0.js" crossorigin="anonymous"></script>
             <script src="script.js"></script>
         </body>

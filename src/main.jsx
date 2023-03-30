@@ -7,6 +7,7 @@ import FormCadastroProduto from './components/FormCadastroProduto'
 
 import Carrinho from './components/Carrinho';
 import Login from './components/Login'
+import ProdutoSimples from './components/ProdutoSimples'
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Principal/>,
       },
      
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path:"carrinho",
         element:<Carrinho/>,
+      },
+      {
+        path:"produtosimples",
+        element:<ProdutoSimples/>,
       },
      
       

@@ -1,0 +1,94 @@
+.carrinho{
+    overflow-x: auto;
+}
+
+.carrinho_table{
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    white-space: nowrap;
+}
+
+.carrinho_table_img{
+    width: 70px;
+}
+
+.carrinho_table1{
+    
+    text-align: center;
+    
+
+}
+
+
+
+.input{
+    width: 70px;
+    padding: 10px 5px 10px 15px;
+    align-items: center;
+}
+
+.carrinhothead{
+    border: 1px solid #e2e9e1;
+    border-left: none;
+    border-right: none;
+}
+
+.carrinho_tds{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 19px 0;
+    
+}
+
+.carrinho_tbody_td{
+    font-size: 13px;
+    padding-top: 15px;
+    color:blue;
+    text-align: center;
+}
+
+.carrinho table tbody td{
+    font-size: 13px;
+}
+
+.addcarrinho{
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+}
+
+.subtotal_h3{
+    padding-bottom: 15px;
+    
+}
+
+.subtotal{
+    width: 50%;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+}
+
+.subtotal_table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+
+.subtotal_table_td{
+    width: 50%;
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 13px;
+}
+
+
+.subtotal_botao_compra{
+    
+    color: #181bc9;
+    padding: 12px 20px;
+}
