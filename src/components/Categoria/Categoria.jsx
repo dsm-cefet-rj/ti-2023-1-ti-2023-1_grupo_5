@@ -1,4 +1,4 @@
-import styles from "../css/Categoria.module.css"
+import styles from "./Categoria.module.css"
 export default function Categoria(params) {
     return (
         <div className={styles.categorias_individual}>

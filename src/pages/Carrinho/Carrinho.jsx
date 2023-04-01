@@ -1,5 +1,5 @@
-import styles from "../css/Carrinho.module.css"
-import { useCarrinho } from '../context/CarrinhoContext'
+import styles from "./Carrinho.module.css"
+import { useCarrinho } from '../../context/CarrinhoContext'
 import { faXmark} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormik } from "formik";

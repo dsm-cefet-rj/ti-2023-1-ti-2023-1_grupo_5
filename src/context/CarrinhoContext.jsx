@@ -1,15 +1,13 @@
 import { createContext,useContext, useEffect, useState } from "react"
-import Produto from "../components/Produto"
-import p from "../components/Dados"
-
+import Produto from "../components/Produto/Produto"
+import {p} from "../components/Dados"
 
 
 export const CarrinhoContext = createContext()
 
-export const CarrinhoProvider = ({ children}) => {
+export const CarrinhoProvider = ({ children }) => {
     const [carrinho, setCarrinho] = useState({})
     useEffect(()=>{
-
         const carrinhoLocal = window.localStorage.getItem('carrinho')
         if(carrinhoLocal){
             setCarrinho(JSON.parse(carrinhoLocal))

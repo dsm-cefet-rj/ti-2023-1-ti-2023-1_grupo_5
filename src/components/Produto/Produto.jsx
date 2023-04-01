@@ -1,13 +1,9 @@
-import styles from "../css/Produto.module.css"
+import styles from "./Produto.module.css"
 import { Link } from "react-router-dom"
 
-import p from "./Dados"
+//import p from "../components/Dados"
 
-import {  useCarrinho } from "../context/CarrinhoContext"
-
-
-
-
+import {  useCarrinho } from "../../context/CarrinhoContext"
 
 const Produto = ({produto}) => {
     const carrinho = useCarrinho()
@@ -17,7 +13,7 @@ const Produto = ({produto}) => {
     return(
         <div className={styles.novidades_produto}>
             
-            <a> <Link to="/ProdutoSimples" >
+            <a> <Link to="/Produto0" >
             <img src={produto.img} alt='' className={styles.novidade_produto_imagem} />
             <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
             <div className={styles.preco}>R$ {produto.preco}</div>

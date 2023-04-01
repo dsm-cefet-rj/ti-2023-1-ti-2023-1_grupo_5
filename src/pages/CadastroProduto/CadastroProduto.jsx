@@ -1,5 +1,5 @@
-import styles from "../css/FormCadastroProduto.module.css"
-export default function FormCadastroProduto(){
+import styles from "./CadastroProduto.module.css"
+export default function CadastroProduto(){
     return(
         <main>
         <section className={styles.cadastro_produto}>

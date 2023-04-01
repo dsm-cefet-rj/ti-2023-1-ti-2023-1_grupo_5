@@ -1,13 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Principal from './components/Principal'
-import FormCadastroProduto from './components/FormCadastroProduto'
-import ErrorPage from './components/ErrorPage'
-import Carrinho from './components/Carrinho';
-import Login from './components/Login'
-import ProdutoSimples from './components/ProdutoSimples'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from './pages/Home/Home';
+import CadastroProduto from './pages/CadastroProduto/CadastroProduto';
+import CadastroLoja from './pages/CadastroLoja/CadastroLoja';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+import Carrinho from './pages/Carrinho/Carrinho';
+import Login from './pages/Login/Login';
+import Loja from './pages/Loja/Loja';
+import Produto from './pages/Produto/Produto';
+import Pesquisa from './pages/Pesquisa/Pesquisa';
+import Usuario from './pages/Usuario/Usuario';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Principal/>,
+        element: <Home/>,
       },
      
       {
@@ -29,9 +33,33 @@ const router = createBrowserRouter([
         path:"carrinho",
         element:<Carrinho/>,
       },
+
       {
-        path:"produtosimples",
-        element:<ProdutoSimples/>,
+        path:"loja",
+        element:<Loja/>,
+      },  
+
+      {
+        path:"cadastroLoja",
+        element:<CadastroLoja/>,
+      },
+      {
+        path:"cadastroProduto",
+        element:<CadastroProduto/>,
+      },
+      
+      {
+        path:"produto",
+        element:<Produto/>,
+      },
+      
+      {
+        path:"pesquisa",
+        element:<Pesquisa/>,
+      },
+      {
+        path:"usuario",
+        element:<Usuario/>,
       },
      
       
