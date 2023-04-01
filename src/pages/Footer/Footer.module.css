@@ -1,8 +1,9 @@
 footer{
     background-color: #000000;
-    padding-block: 20px;
+    height: 10vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .footer_img{
     height: 50px;

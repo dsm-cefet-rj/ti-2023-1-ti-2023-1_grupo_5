@@ -12,33 +12,31 @@ import { useCarrinho } from "../../context/CarrinhoContext"
 export default function Home() {
     const carrinho = useCarrinho()
     return (
-        <body>
-            <main>
-                <section className={styles.novidades}>
-                    <div className={styles.parte_cima}>
-                        <h2 className={styles.titulos}>Novidades</h2>
-                        <Link to="produtos"className={styles.ver_todos}>VER TODOS :</Link>
-                    
-                    </div>
-                    
-                    <div className={styles.produto}>
-                    
+        <main>
+            <section className={styles.novidades}>
+                <div className={styles.parte_cima}>
+                    <h2 className={styles.titulos}>Novidades</h2>
+                    <Link to="produtos"className={styles.ver_todos}>VER TODOS :</Link>
+                
+                </div>
+                
+                <div className={styles.produto}>
+                
 
-                        {p.map((prod)=><Produto produto={prod} key={prod.id}/>)}
-                               
+                    {p.map((prod)=><Produto produto={prod} key={prod.id}/>)}
+                            
 
-                    </div>
-                </section>
-                <section>
-                    <h2 className={styles.titulos}>Categorias</h2>
-                    <div className={styles.categorias}>
-                        <Categoria categoria={c[0]}/>
-                        <Categoria categoria={c[1]}/>
-                        <Categoria categoria={c[2]}/>
-                        <Categoria categoria={c[3]}/>
-                    </div>
-                </section>
-            </main>
-        </body>
+                </div>
+            </section>
+            <section>
+                <h2 className={styles.titulos}>Categorias</h2>
+                <div className={styles.categorias}>
+                    <Categoria categoria={c[0]}/>
+                    <Categoria categoria={c[1]}/>
+                    <Categoria categoria={c[2]}/>
+                    <Categoria categoria={c[3]}/>
+                </div>
+            </section>
+        </main>
     )
 }

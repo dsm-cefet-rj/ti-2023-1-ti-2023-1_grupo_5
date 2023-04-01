@@ -13,16 +13,17 @@ const Produto = ({produto}) => {
     return(
         <div className={styles.novidades_produto}>
             
-            <a> <Link to="/Produto0" >
-            <img src={produto.img} alt='' className={styles.novidade_produto_imagem} />
-            <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
+            <Link to="/produto" >
+                <img src={produto.img} alt='' className={styles.novidade_produto_imagem} />
+            </Link>
+            <Link to="/produto">
+                <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
+            </Link>
             <div className={styles.preco}>R$ {produto.preco}</div>
             <div className={styles.metodo_pagamento}>À vista no pix</div>
 
-            </Link></a>
-            <a>
-                <button className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</button>
-            </a>
+            <button className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</button>
+
         </div>
         
     )
