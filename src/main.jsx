@@ -9,9 +9,11 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Carrinho from './pages/Carrinho/Carrinho';
 import Login from './pages/Login/Login';
 import Loja from './pages/Loja/Loja';
-import Produto from './pages/Produto/Produto';
+import Produto from './pages/Produto/Produto_detalhes';
 import Pesquisa from './pages/Pesquisa/Pesquisa';
 import Usuario from './pages/Usuario/Usuario';
+import Produto_detalhes from './pages/Produto/Produto_detalhes';
+import Produtos from './pages/Produtos/Produtos';
 
 const router = createBrowserRouter([
   {
@@ -47,10 +49,13 @@ const router = createBrowserRouter([
         path:"cadastroProduto",
         element:<CadastroProduto/>,
       },
-      
       {
         path:"produto",
         element:<Produto/>,
+      },
+      {
+        path:"/produtos/:produtoId",
+        element:<Produto_detalhes/>,
       },
       
       {
@@ -60,6 +65,10 @@ const router = createBrowserRouter([
       {
         path:"usuario",
         element:<Usuario/>,
+      },
+      {
+        path:"produtos",
+        element:<Produtos/>,
       },
      
       

@@ -13,7 +13,7 @@ const Produto = ({produto}) => {
     return(
         <div className={styles.novidades_produto}>
             
-            <a> <Link to="/Produto0" >
+            <a> <Link to={`/produtos/${produto.id}`}>
             <img src={produto.img} alt='' className={styles.novidade_produto_imagem} />
             <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
             <div className={styles.preco}>R$ {produto.preco}</div>

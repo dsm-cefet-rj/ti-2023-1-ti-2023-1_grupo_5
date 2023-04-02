@@ -17,7 +17,7 @@ export default function Home() {
                 <section className={styles.novidades}>
                     <div className={styles.parte_cima}>
                         <h2 className={styles.titulos}>Novidades</h2>
-                        <Link to="produtos"className={styles.ver_todos}>VER TODOS :</Link>
+                        <Link to="/produtos"className={styles.ver_todos}>VER TODOS :</Link>
                     
                     </div>
                     
