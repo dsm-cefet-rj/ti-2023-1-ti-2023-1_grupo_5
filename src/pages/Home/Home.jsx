@@ -24,21 +24,21 @@ export default function Home() {
                     <div className={styles.produto}>
                     
 
-                        {p.map((prod)=><Produto produto={prod} key={prod.id}/>)}
-                               
+                    {p.map((prod)=><Produto produto={prod} key={prod.id}/>)}
+                            
 
-                    </div>
-                </section>
-                <section>
-                    <h2 className={styles.titulos}>Categorias</h2>
-                    <div className={styles.categorias}>
-                        <Categoria categoria={c[0]}/>
-                        <Categoria categoria={c[1]}/>
-                        <Categoria categoria={c[2]}/>
-                        <Categoria categoria={c[3]}/>
-                    </div>
-                </section>
-            </main>
+                </div>
+            </section>
+            <section>
+                <h2 className={styles.titulos}>Categorias</h2>
+                <div className={styles.categorias}>
+                    <Categoria categoria={c[0]}/>
+                    <Categoria categoria={c[1]}/>
+                    <Categoria categoria={c[2]}/>
+                    <Categoria categoria={c[3]}/>
+                </div>
+            </section>
+        </main>
         </body>
     )
 }

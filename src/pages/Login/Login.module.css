@@ -1,0 +1,15 @@
+.login_body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.label_input{
+    display: flex;
+    flex-direction: column;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}

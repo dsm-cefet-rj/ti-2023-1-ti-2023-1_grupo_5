@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import styles from "./Global.module.css"
 import Home from './pages/Home/Home';
 import CadastroProduto from './pages/CadastroProduto/CadastroProduto';
 import CadastroLoja from './pages/CadastroLoja/CadastroLoja';

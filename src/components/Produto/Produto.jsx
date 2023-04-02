@@ -18,11 +18,9 @@ const Produto = ({produto}) => {
             <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
             <div className={styles.preco}>R$ {produto.preco}</div>
             <div className={styles.metodo_pagamento}>À vista no pix</div>
-
             </Link></a>
-            <a>
-                <button className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</button>
-            </a>
+            <button className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</button>
+
         </div>
         
     )
