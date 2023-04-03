@@ -1,13 +1,13 @@
 .novidades_produto{
     width: 250px;
     background-color: white;
-    padding-bottom: 20px;
+    padding: 20px;
     margin: 31px;
 }
 
 .novidade_produto_imagem{
-    width: 250px;
-    height: 200px;
+    width: 200px;
+    height: 150px;
 }
 
 .novidade_produto_descricao{
@@ -16,8 +16,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
-    padding: 10px;
     color: black;
+    padding-top: 20px;
 }
 
 .preco{
@@ -34,13 +34,16 @@
 }
 
 .novidade_produto_botao{
-    margin: 40px;
+    margin-bottom: 40px;
+    margin-top: 20px;
     background-color: #296275;
     color: white;
     border: none;
     height: 50px;
     width: 150px;
     font-size: 20px;
+    text-align: center;
+    padding: 12px;
 }
 
 .novidade_produto_botao:hover{

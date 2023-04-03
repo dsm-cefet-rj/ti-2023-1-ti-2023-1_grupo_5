@@ -15,6 +15,8 @@ const Produtos = () => {
                   <div className={styles.novidade_produto_descricao}>  {produto.descricao}</div></Link></a>
                 
                 <div className={styles.preco}>R$ {produto.preco}</div>
+
+                <div className={styles.novidade_produto_botao}>Comprar{produto.botao}</div>
                 
             </div>
             

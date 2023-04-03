@@ -1,5 +1,6 @@
 .carrinho{
     overflow-x: auto;
+    margin-top: 40px;
 }
 
 .carrinho_table{
@@ -19,8 +20,6 @@
     
 
 }
-
-
 
 .input{
     width: 70px;
@@ -58,6 +57,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: baseline;
+    margin-top: 40px;
+    margin-left: 50px;
 }
 
 .subtotal_h3{
@@ -88,7 +89,66 @@
 
 
 .subtotal_botao_compra{
-    
-    color: #181bc9;
+    color: #fff;
     padding: 12px 20px;
+    background-color: #2D394B;
+}
+.subtotal_botao_compra:hover{
+    background-color: #073374;
+}
+
+.content{
+    display: flex;
+    margin: auto;
+}
+
+@media (max-width: 600px){
+
+    .content{
+        padding: 0px;
+        margin: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .carrinho_table{
+        text-align: center;
+    }
+
+    .carrinho_table .carrinhothead{
+        display: none;
+    }
+
+    .carrinho_tbody_tr{
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        margin-bottom: 0px;
+        justify-content: space-around;
+        align-items: baseline;
+        border: solid 1px #E2E9E1;
+        padding-bottom: 8px;
+        margin-bottom: 30px;
+    }
+    .carrinho_tbody_td{
+        width: 200px;
+        color: #2D394B;
+        font-weight: 600;
+    }
+    .carrinho_table_img{
+        width: 150px;
+    }
+
+    .addcarrinho{
+        margin: 30px;
+    }
+    
+    .subtotal{
+        padding: 30px;
+        width: 350px;
+    }
+
+
+    .subtotal_botao_compra{
+        margin-right: 100px;
+    }
 }

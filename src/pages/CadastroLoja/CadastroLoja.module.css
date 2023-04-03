@@ -4,13 +4,84 @@
     align-items: center;
     justify-content: center;
     height: 80vh;
+    background-color: rgba(41, 98, 117, 0.2);
 }
+
 .cadloja_input_label{
-    display: flex;
-    flex-direction: column;
+    width: 400px;
+    height: 35px;
 }
-form{
+
+.formulario{
     display: flex;
     flex-direction: column;
     gap: 50px;
+    padding: 50px;
+    background-color: #2D394B;
+    border: solid 2px #F0F8FF;
+    border-radius: 7px;
+    width: 960px;
+}
+
+.preencher{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px
+}
+
+.titulo{
+    color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+.cadastro_loja_botao{
+    border: none;
+    width: 200px;
+    height: 30px;
+    color: white;
+    background-color: #296275;
+}
+
+.cadastro_loja_botao:hover{
+    background-color: #346e81;
+}
+
+@media (max-width: 800px){
+    .cadloja_body{
+        margin:0px;
+        padding: 0px;
+    }
+
+    .cadloja_input_label{
+        width: 250px;
+        height: 35px;
+        margin-bottom: 20px;
+        
+        margin-left: 0px;
+    }
+
+    .formulario{
+        width: 350px;
+        margin: 0px;
+    }
+
+    .titulo{
+        font-size: 0px;
+    }
+    
+    .preencher{
+        gap: 0px;
+    }
+    
+    .titulo{
+        font-size: 30px;
+    }
+    
+    .cadastro_loja_botao{
+        border: none;
+        width: 200px;
+        margin-bottom: 20px;
+    }
 }

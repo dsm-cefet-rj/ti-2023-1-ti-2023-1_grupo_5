@@ -4,16 +4,18 @@ const Login = () => {
   return (
     <div className={styles.login_body}>
       <div className={styles.div_formulario}>
-        <form action="">
+        <form action="" className={styles.formulario}>
+        <label htmlFor="login" className={styles.login}>Login</label>
           <div className={styles.label_input}>
-            <label htmlFor="nome">Nome:</label>
-            <input type="text" />
+            
+            <input type="text" placeholder='Usuário'/>
           </div>
-
+          
           <div className={styles.label_input}>
-            <label htmlFor="senha">Senha:</label>
-            <input type="text" />
+            
+            <input type="text" placeholder='Senha'/>
           </div>
+            <button type='submit' className={styles.login_botao}>Entrar</button>
         </form>
       </div>
     </div>

@@ -1,6 +1,5 @@
 .produto_body{
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
@@ -9,17 +8,36 @@
     width: 80vw;
     display: flex;
     flex-direction: row;
+    background-color: white;
+    padding: 50px;
+    border: solid rgba(41, 98, 117, 0.5) 2px;
+    border-radius: 15px;
     gap: 100px;
 }
 .campo_img{
-    width: 70%;
+    width: 85%;
 }
 .campo_img img{
     height: inherit;
     width: inherit;
 }
+
 .campo_desc{
     width: 100%;
+    border-left: solid 1px rgb(41, 98, 117);
+    padding-left: 40px;
+}
+
+.preco{
+    font-size: 25px;
+    color: #2D394B;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.detalhes1{
+    font-size: 17px;
+    margin-bottom: 20px;
 }
 
 .botao_comprar{
@@ -27,22 +45,44 @@
     border: none;
     height: 50px;
     background-color: #296275;
+    color: white;
 }
 
-@media(max-width:950px) {
+.botao_comprar:hover{
+    background-color: #2D394B;
+}
+
+@media(max-width:600px) {
+
     .produto_body{
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
+
+    .campo_img{
+        padding-left: 30px;
+    }
+
+    
     .produto_container{
         flex-direction: column;
         justify-content: center;
+        padding: 0px;
     }
     .campo_img{
-        width: 100%;
         display: flex;
         justify-content: center;
-        padding-top: 30px;
+        margin-top: 30px;
+        margin-left: 0px;
+
     }
     .campo_img img{
-        width: 60%;
+        width: 100%;
+    }
+
+    .campo_desc{
+        width: 100%;
+        border-left: none;
+        padding: 15px;
     }
   }

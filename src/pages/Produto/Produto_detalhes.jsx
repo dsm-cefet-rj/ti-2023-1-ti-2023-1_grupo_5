@@ -17,13 +17,13 @@ function Produto_detalhes({}){
     return (
         <div className={styles.produto_body}>
             <div className={styles.produto_container}>
-            <div className={styles.campo_img}><img src={thisProduto.img}/></div>
-            <div className={styles.campo_desc}>
-                <h1 className={styles.descricao}>{thisProduto.descricao}</h1>
-                <div className={styles.preco}>Preço: ${thisProduto.preco}</div>
-                <div className={styles.detalhes1}><strong>Informações Técnicas:</strong>{thisProduto.caracteristicas}</div>
-                <button className={styles.botao_comprar} onClick={add(thisProduto)}>Comprar</button>
-            </div>
+                <div className={styles.campo_img}><img src={thisProduto.img}/></div>
+                <div className={styles.campo_desc}>
+                    <h1 className={styles.descricao}>{thisProduto.descricao}</h1>
+                    <div className={styles.preco}>Preço: R${thisProduto.preco}</div>
+                    <div className={styles.detalhes1}><strong>Informações Técnicas:</strong>{thisProduto.caracteristicas}</div>
+                    <button className={styles.botao_comprar} onClick={add(thisProduto)}>Comprar</button>
+                </div>
            
             
             </div>

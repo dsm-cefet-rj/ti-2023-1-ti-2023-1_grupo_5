@@ -27,26 +27,27 @@ const Carrinho = ({produto}) => {
 <div>
   {/* <section className={styles.carrinho} class="section-p1"> */}
   <section className={styles.carrinho} >
-          <table className={styles.carrinho_table} width="100%">
+    <div className={styles.content}>
+          <table className={styles.carrinho_table}>
               <thead className={styles.carrinhothead}>
                   <tr className={styles.carrinho_table1}>
                     
                       <td className={styles.carrinho_tds} width="100px">Remover</td>
                       <td className={styles.carrinho_tds} width="150px">Imagem</td>
                       <td className={styles.carrinho_tds} width="250px">Produto</td>
-                      <td className={styles.carrinho_tds}width="150px">Preço</td>
+                      <td className={styles.carrinho_tds} width="150px">Preço</td>
                       <td className={styles.carrinho_tds} width="150px">Quantidade</td>
                       <td className={styles.carrinho_tds} width="150px">Subtotal</td>
                       
                   </tr>
               </thead>
-              <tbody>
+              <tbody className={styles.carrinhotbody}>
                 {Object.keys(carrinho.carrinho).map(key => {
                   const {Produto, quantidade} = carrinho.carrinho[key]
                   return(
 
                 
-                  <tr key={key}>
+                  <tr key={key} className={styles.carrinho_tbody_tr}>
                     
                       <td className={styles.carrinho_tbody_td}><button type='submit' onClick={remove(key)}><FontAwesomeIcon  icon={faXmark} size="2xl" style={{color: "#ff1414",}}/></button></td>
                       <td className={styles.carrinho_tbody_td}><img src={Produto.img} className={styles.carrinho_table_img} alt={Produto.descricao}/></td>
@@ -60,6 +61,7 @@ const Carrinho = ({produto}) => {
                   })}
               </tbody>
           </table>
+          </div>
       </section>
 
 

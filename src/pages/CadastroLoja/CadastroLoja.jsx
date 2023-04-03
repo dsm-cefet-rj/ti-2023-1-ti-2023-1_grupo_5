@@ -3,25 +3,26 @@ export default function CadastroLoja(){
     return(
         <div className={styles.cadloja_body}>
             <div>
-                <form action="">
-                    <div className={styles.cadloja_input_label}>
-                        <label htmlFor="cnpj">Cnpj:</label>
-                        <input type="text" />
-                    </div>
+                <form action="" className={styles.formulario}>
+                    
+                    <label htmlFor="cadastro_loja" className={styles.titulo}>Cadastrar loja</label>
+                    <div className={styles.preencher}>
+                        <div>
+                            <input type="text" placeholder="Cnpj" className={styles.cadloja_input_label}/>
+                        </div>
 
-                    <div className={styles.cadloja_input_label}>
-                        <label htmlFor="nome">Nome:</label>
-                        <input type="text" />
-                    </div>
+                        <div>
+                            <input type="text" placeholder="Nome" className={styles.cadloja_input_label}/>
+                        </div>
 
-                    <div className={styles.cadloja_input_label}>
-                        <label htmlFor="endereco">Endereço:</label>
-                        <input type="text" />
-                    </div>
+                        <div>
+                            <input type="text" placeholder="Endereço" className={styles.cadloja_input_label}/>
+                        </div>
 
-                    <div className={styles.cadloja_input_label}>
-                        <label htmlFor="email">E-mail:</label>
-                        <input type="email" />
+                        <div>
+                            <input type="email" placeholder="E-mail" className={styles.cadloja_input_label}/>
+                        </div>
+                        <button type="submit" className={styles.cadastro_loja_botao}>Cadastrar</button>
                     </div>
                 </form>
             </div>

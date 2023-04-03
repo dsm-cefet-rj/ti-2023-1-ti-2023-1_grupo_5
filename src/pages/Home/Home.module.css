@@ -1,5 +1,10 @@
 /*formatacao pagina principal*/
 
+
+body{
+    background-color: #eee;
+}
+
 .titulos{
     font-size: 30px;
     margin-bottom: 40px;
