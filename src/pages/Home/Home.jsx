@@ -12,7 +12,7 @@ import { useCarrinho } from "../../context/CarrinhoContext"
 export default function Home() {
     const carrinho = useCarrinho()
     return (
-        <body>
+       
             <main>
                 <section className={styles.novidades}>
                     <div className={styles.parte_cima}>
@@ -39,6 +39,6 @@ export default function Home() {
                 </div>
             </section>
         </main>
-        </body>
+        
     )
 }

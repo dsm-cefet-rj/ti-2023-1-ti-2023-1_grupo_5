@@ -3,8 +3,11 @@ import styles from "./Header.module.css";
 import { useState } from "react"
 import {  useCarrinho } from "../../context/CarrinhoContext";
 import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
+import { faPersonThroughWindow} from "@fortawesome/free-solid-svg-icons";
 import { faOutdent} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from "react-router-dom";
+import useAuth from "../Usuario/useAuth";
 
 
 import { Link } from "react-router-dom"
@@ -27,6 +30,8 @@ export default function Header() {
     const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
     return prev + carrinho.carrinho[curr].quantidade
     },0)
+    const { sair } = useAuth();
+  const navigate = useNavigate();
  
  
     return (
@@ -55,8 +60,9 @@ export default function Header() {
                         </li >
                         <li className={styles.navigation_menu_li}>
                             <Link to="usuario" onClick={handleLinkClick}></Link></li>
+                            <li><Link to="" onClick={() => [sair(), navigate("/")]}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
                         </ul>
-                       
+                        
                        </div> 
        
                     </nav>
@@ -64,7 +70,7 @@ export default function Header() {
                 </ul>
                 </div>
             </div>
-            
+           
         </section>
     )
 }

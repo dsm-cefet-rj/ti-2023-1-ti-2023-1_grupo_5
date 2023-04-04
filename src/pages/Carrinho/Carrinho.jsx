@@ -3,6 +3,8 @@ import { useCarrinho } from '../../context/CarrinhoContext'
 import { faXmark} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormik } from "formik";
+import { Link } from "react-router-dom";
+
 
 
 const Carrinho = ({produto}) => {
@@ -78,7 +80,7 @@ const Carrinho = ({produto}) => {
                   <td className={styles.subtotal_table_td}><strong>R$ {total}</strong></td>
               </tr>
           </table>
-          <button className={styles.subtotal_botao_compra}>Comprar</button>
+          <Link to="/teste"><button className={styles.subtotal_botao_compra}>Comprar</button></Link>
       </div>
   </section>
 </div>

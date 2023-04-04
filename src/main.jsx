@@ -15,6 +15,17 @@ import Pesquisa from './pages/Pesquisa/Pesquisa';
 import Usuario from './pages/Usuario/Usuario';
 import Produto_detalhes from './pages/Produto/Produto_detalhes';
 import Produtos from './pages/Produtos/Produtos';
+import Teste from './pages/Carrinho/teste';
+import { Fragment } from 'react';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import Registro from './pages/RegistroUsuario/Registro';
+import useAuth from './pages/Usuario/useAuth';
+
+const Private = ({Item}) => {
+  const signed = useAuth();
+  return signed >0 ? <Item/> :<Login/>;
+}
+
 
 const router = createBrowserRouter([
   {
@@ -30,6 +41,10 @@ const router = createBrowserRouter([
       {
         path:"login",
         element:<Login/>,
+      },
+      {
+        path:"registro",
+        element:<Registro/>,
       },
       
       {
@@ -70,6 +85,10 @@ const router = createBrowserRouter([
       {
         path:"produtos",
         element:<Produtos/>,
+      },
+      {
+        path:"teste",
+        element: <Private Item={Teste}/>,
       },
      
       
