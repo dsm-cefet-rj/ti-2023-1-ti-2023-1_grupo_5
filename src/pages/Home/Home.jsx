@@ -1,15 +1,11 @@
 import styles from "./Home.module.css"
 import  "../../Components/Produto/Produto.module.css"
-
 import Categoria from "../../components/Categoria/Categoria"
 import Produto from "../../components/Produto/Produto"
-import {p,c} from "../../components/Dados"
-
-
 import { Link } from "react-router-dom"
 import { useCarrinho } from "../../context/CarrinhoContext"
 
-export default function Home() {
+export default function Home({produtos, categorias}) {
     const carrinho = useCarrinho()
     return (
        
@@ -24,7 +20,7 @@ export default function Home() {
                     <div className={styles.produto}>
                     
 
-                    {p.map((prod)=><Produto produto={prod} key={prod.id}/>)}
+                    {produtos.map((prod)=><Produto produto={prod} key={prod.id}/>)}
                             
 
                 </div>
@@ -32,10 +28,10 @@ export default function Home() {
             <section>
                 <h2 className={styles.titulos}>Categorias</h2>
                 <div className={styles.categorias}>
-                    <Categoria categoria={c[0]}/>
-                    <Categoria categoria={c[1]}/>
-                    <Categoria categoria={c[2]}/>
-                    <Categoria categoria={c[3]}/>
+                    <Categoria categoria={categorias[0]}/>
+                    <Categoria categoria={categorias[1]}/>
+                    <Categoria categoria={categorias[2]}/>
+                    <Categoria categoria={categorias[3]}/>
                 </div>
             </section>
         </main>
