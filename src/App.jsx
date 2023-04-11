@@ -1,8 +1,6 @@
 import Header from "./pages/Header/Header"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Footer from "./pages/Footer/Footer"
-import { CarrinhoProvider } from "./context/CarrinhoContext"
-import { AuthProvider } from "./context/auth"
 import Home from "./pages/Home/Home"
 import Login from "./pages/Login/Login"
 import Registro from "./pages/RegistroUsuario/Registro"
@@ -33,7 +31,6 @@ const App=()=> {
           <Route path="/pesquisa" element={<Pesquisa/>} />
           <Route path="/usuario" element={<Usuario/>} />
           <Route path="/produtos" element={<Produtos/>} />
-          {/* <Route path="/teste" element={<Private Item={Teste}/>} /> */}
         </Routes>
         <Footer />
       </Router>

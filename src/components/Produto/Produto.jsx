@@ -3,13 +3,8 @@ import { Link } from "react-router-dom"
 
 //import p from "../components/Dados"
 
-import {  useCarrinho } from "../../context/CarrinhoContext"
 
-const Produto = ({produto}) => {
-    const carrinho = useCarrinho()
-    const add = Produto => () => {
-        carrinho.addCarrinho(Produto)
-    }
+const Produto = ({produto, addCarrinho}) => {
     return(
         <div className={styles.novidades_produto}>
             
@@ -22,7 +17,7 @@ const Produto = ({produto}) => {
             <div className={styles.preco}>R$ {produto.preco}</div>
             <div className={styles.metodo_pagamento}>À vista no pix</div>
             
-            <button className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</button>
+            <button className={styles.novidade_produto_botao} >Comprar</button>
 
         </div>
         
