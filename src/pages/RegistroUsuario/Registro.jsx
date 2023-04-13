@@ -5,14 +5,47 @@ import * as C from "./Registro.module";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
 
+
+
 const Registro = () => {
+  
   const [email, setEmail] = useState("");
   const [emailConf, setEmailConf] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
+  const { registro } = useAuth();
   const navigate = useNavigate();
 
-  const { registro } = useAuth();
+  function registrar(){
+    const novoUsuario = {
+      email: email,
+      senha: senha,
+      id_carrinho: "3"
+    };
+    
+    fetch('http://localhost:3000/contas', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(novoUsuario)
+    })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Erro ao adicionar usuário');
+      }
+    })
+    .then(data => {
+      console.log('Usuário adicionado com sucesso:', data);
+    })
+    .catch(error => {
+      console.error('Erro ao adicionar usuário:', error);
+    });
+    
+  }
+
 
   const handleRegistro = () => {
     if (!email | !emailConf | !senha) {
@@ -57,7 +90,7 @@ const Registro = () => {
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
         <C.labelError>{error}</C.labelError>
-        <Button Text="Criar Conta" onClick={handleRegistro} />
+        <Button Text="Criar Conta" onClick={registrar} />
         <C.LabelLogin>
           Já tem uma conta?
           <C.Strong>

@@ -15,6 +15,13 @@ import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import {p as produtos, c as categorias} from "./components/Dados"
 
 const App=()=> {
+  let pro;
+  // fetch('http://localhost:3000/produtos', {
+  //   method: "POST"
+  // })
+  // .then((res)=>res.json())
+  // .then((res)=>console.log(res))
+  // .catch(console.log("catch"))
   return (
     <div className="App">
       <Router>
