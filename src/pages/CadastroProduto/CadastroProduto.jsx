@@ -1,4 +1,6 @@
 import styles from "./CadastroProduto.module.css"
+import cadastrarProduto from "./cadastrarProduto.js"
+
 export default function CadastroProduto(){
     return(
         <main>
@@ -9,9 +11,9 @@ export default function CadastroProduto(){
                         <h1>Cadastro de Produto</h1>
                         <div className={styles.campo_form}>
                             <div>
-                                <select className={styles.input_text} required>
+                                <select id="categoria" className={styles.input_text} required>
                                     <option value="">Selecione a categoria do produto</option>
-                                    <option value="placa grafica">Placas Gráfica</option>
+                                    <option value="placas graficas">Placas Gráficas</option>
                                     <option value="armazenamento">Armazenamento</option>
                                     <option value="memoria">Memória</option>
                                     <option value="gabinete">Gabinete</option>
@@ -23,29 +25,30 @@ export default function CadastroProduto(){
                                 </select>
                             </div>
                             <div>
-                                <input type="text" placeholder="Nome" className={styles.input_text} required/>
+                                <input id="descricao" type="text" placeholder="Descricao" className={styles.input_text} required/>
                             </div>
                             <div>
-                                <input type="text" placeholder="Marca" className={styles.input_text} required/>
+                                <input id="marca" type="text" placeholder="Marca" className={styles.input_text} required/>
                             </div>
                             <div>
-                                <input type="text" placeholder="Preço" className={styles.input_text} />
+                                <input id="preco" type="text" placeholder="Preço" className={styles.input_text} />
                             </div>
                         </div>
                         <div className={styles.flexivel}>
                             <div className={styles.campo_desc}>
-                                <label for="descricao">Descrição</label>
-                                <textarea name="descricao" cols="40" rows="15"></textarea>
+                                <label htmlFor="detalhes">Detalhes</label>
+                                <textarea id="detalhes" name="detalhes" cols="40" rows="15"></textarea>
                             </div>
 
                             <div className={styles.campo_img}>
-                                <label for="images" className={styles.drop_container}>
+                                <label htmlFor="images" className={styles.drop_container}>
                                     <span className={styles.drop_title}>Solte aqui o arquivo</span>
                                     ou
-                                    <input type="file" className={styles.images} accept="image/*" required/>
+                                    <input id="img" type="file" className={styles.images} accept="image/*" required/>
                                 </label>
                             </div>
                         </div>
+                        <button onClick={cadastrarProduto}>Cadastrar</button>
                     </form>
             </div>
         </section>

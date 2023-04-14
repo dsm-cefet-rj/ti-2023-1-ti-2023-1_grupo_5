@@ -28,6 +28,10 @@
     padding-left: 40px;
 }
 
+.campo_desc h1{
+    color: black;
+}
+
 .preco{
     font-size: 25px;
     color: #2D394B;
