@@ -24,13 +24,13 @@ export default function Header() {
         setIsMenuOpen(false);
     }
 
-//     const carrinho = useCarrinho()
-//     //  const itemsCount = Object.keys(carrinho.carrinho).length
-//     const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
-//     return prev + carrinho.carrinho[curr].quantidade
-//     },0)
-//     const { sair } = useAuth();
-//   const navigate = useNavigate();
+    const carrinho = useCarrinho()
+    //  const itemsCount = Object.keys(carrinho.carrinho).length
+    const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
+     return prev + carrinho.carrinho[curr].quantidade
+     },0)
+     const { sair } = useAuth();
+   const navigate = useNavigate();
  
  
     return (
@@ -53,7 +53,7 @@ export default function Header() {
                         </li>
                         <li className={styles.navigation_menu_li}>
                            <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
-                                 {/* {' '}{itemsCount > 0 && <span>({itemsCount})</span>} */}
+                                  {' '}{itemsCount > 0 && <span>({itemsCount})</span>} 
                            </Link>
                         </li >
                         <li className={styles.navigation_menu_li}>

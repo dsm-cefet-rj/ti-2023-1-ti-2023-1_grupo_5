@@ -14,12 +14,14 @@ import Produtos from "./pages/Produtos/Produtos"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import {p as produtos, c as categorias} from "./components/Dados"
 import { useState } from "react"
+import { CarrinhoProvider } from "./context/CarrinhoContext"
 
 const App=()=> {
   const [conta, setConta] = useState()
   return (
     <div className="App">
       <Router>
+      <CarrinhoProvider>
         <Header />
         <Routes>
           <Route path="/" element={<Home produtos={produtos} categorias={categorias}/>} />
@@ -35,6 +37,7 @@ const App=()=> {
           <Route path="/produtos" element={<Produtos/>} />
         </Routes>
         <Footer />
+        </CarrinhoProvider>
       </Router>
     </div>
   )
