@@ -29,7 +29,7 @@ export default function Header({tipoLogin}) {
  * "cliente" - login como cliente
  * "lojista" - login como lojista
  */
-    tipoLogin = null
+    tipoLogin = "lojista"
 
 //     const carrinho = useCarrinho()
 //     //  const itemsCount = Object.keys(carrinho.carrinho).length
@@ -56,15 +56,24 @@ export default function Header({tipoLogin}) {
                         <input type="search" placeholder="Digite sua pesquisa aqui" className={styles.pesquisar}/>
                         </form>
                         {
-                            tipoLogin == null ? (
+                            tipoLogin == null ?
+                            (
                                 <li className={styles.navigation_menu_li}>
                                     <Link to="/login" onClick={handleLinkClick}>Login</Link>
                                 </li>
-                            ):(
+                            ):
+                            tipoLogin === "cliente" ? 
+                            (
                                 <li className={styles.navigation_menu_li}>
                                     <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
                                         {/* {' '}{itemsCount > 0 && <span>({itemsCount})</span>} */}
                                     </Link>
+                                </li >
+                            ):
+                            tipoLogin === "lojista" &&
+                            (
+                                <li className={styles.navigation_menu_li}>
+                                    <Link to="/loja" onClick={handleLinkClick}>Loja</Link>
                                 </li >
                             )
                         }
