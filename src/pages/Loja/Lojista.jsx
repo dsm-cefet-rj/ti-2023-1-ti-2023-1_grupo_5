@@ -1,5 +1,5 @@
 import styles from "./Lojista.module.css"
-import Produto from "../../components/Produto/Produto"
+import ProdutoLojista from "../../components/ProdutoLojista/ProdutoLojista"
 import { Navigate } from "react-router-dom"
 export default function Lojista() {
     const loja = {
@@ -56,7 +56,7 @@ export default function Lojista() {
                 </div>
                 <h1>Produtos</h1>
                 <div className={styles.campo_produtos}>
-                    {loja.produtos.map((prod) => <Produto produto={prod} key={prod.id} />)}
+                    {loja.produtos.map((prod) => <ProdutoLojista produto={prod} key={prod.id} />)}
                 </div>
             </div>
         )

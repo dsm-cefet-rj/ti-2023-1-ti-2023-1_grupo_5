@@ -1,0 +1,7 @@
+.produtoLojista_Editar_body *{
+    color: black;
+}
+.produtoLojista_Editar_body label{
+    display: flex;
+    flex-direction: column;
+}

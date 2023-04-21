@@ -1,0 +1,15 @@
+.produtoLojista{
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    width: 100%;
+}
+.produtoLojista_campo_img{
+    width: 30%;
+}
+.produtoLojista_campo_img img{
+   width: 100%;
+}
+.produtoLojista_campo_info{
+    width: 70%;
+}

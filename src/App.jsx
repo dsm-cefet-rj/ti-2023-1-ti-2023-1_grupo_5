@@ -9,6 +9,7 @@ import CadastroProduto from "./pages/CadastroProduto/CadastroProduto"
 import CadastroLoja from "./pages/CadastroLoja/CadastroLoja"
 import Lojista from "./pages/Loja/Lojista"
 import Produto_detalhes from "./pages/Produto/Produto_detalhes"
+import ProdutoLojista_Editar from "./pages/ProdutoLojista_Editar/ProdutoLojista_Editar" 
 import Usuario from "./pages/Usuario/Usuario"
 import Produtos from "./pages/Produtos/Produtos"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
@@ -42,6 +43,7 @@ const App=()=> {
           <Route path="/cadastroLoja" element={<CadastroLoja conta={conta}/>} />
           <Route path="/cadastroProduto" element={<CadastroProduto/>} />
           <Route path="/produtos/:produtoId" element={<Produto_detalhes/>} />
+          <Route path="/editarProduto/:produtoId" element={<ProdutoLojista_Editar/>} />
           <Route path="/pesquisa" element={<Pesquisa/>} />
           <Route path="/usuario" element={<Usuario/>} />
           <Route path="/produtos" element={<Produtos/>} />
