@@ -13,8 +13,15 @@ import useAuth from "../Usuario/useAuth";
 import { Link } from "react-router-dom"
 
 
-export default function Header({tipoLogin}) {
-   
+export default function Header({tipoLogin, setLoginNull}) {
+   /**
+    * tipoLogin
+    * null - nao realizou login
+    * "cliente" - login como cliente
+    * "lojista" - login como lojista
+    */
+
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     function handleMenuClick() {
         setIsMenuOpen(!isMenuOpen);
@@ -23,14 +30,6 @@ export default function Header({tipoLogin}) {
     function handleLinkClick() {
         setIsMenuOpen(false);
     }
-/**
- * tipoLogin
- * null - nao realizou login
- * "cliente" - login como cliente
- * "lojista" - login como lojista
- */
-    tipoLogin = "lojista"
-
 //     const carrinho = useCarrinho()
 //     //  const itemsCount = Object.keys(carrinho.carrinho).length
 //     const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
@@ -73,13 +72,13 @@ export default function Header({tipoLogin}) {
                             tipoLogin === "lojista" &&
                             (
                                 <li className={styles.navigation_menu_li}>
-                                    <Link to="/loja" onClick={handleLinkClick}>Loja</Link>
+                                    <Link to="/lojista" onClick={handleLinkClick}>Loja</Link>
                                 </li >
                             )
                         }
                         <li className={styles.navigation_menu_li}>
                             <Link to="usuario" onClick={handleLinkClick}></Link></li>
-                            <li><Link to="" onClick={() => [sair(), navigate("/")]}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                            <li><Link to="/" onClick={() => [setLoginNull()]}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
                         </ul>
                         
                        </div> 
