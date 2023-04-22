@@ -16,6 +16,7 @@ import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import ErrorPage from "./pages/ErrorPage/ErrorPage"
 import {p as produtos, c as categorias} from "./components/Dados"
 import { useState } from "react"
+import { CarrinhoProvider } from "./context/CarrinhoContext"
 
 const App=()=> {
   const [conta, setConta] = useState()
@@ -33,7 +34,12 @@ const App=()=> {
   return (
     <div className="App">
       <Router>
+
+      <CarrinhoProvider>
+        
+
         <Header setLoginNull={setLoginNull} tipoLogin={tipoLogin}/>
+
         <Routes>
           <Route path="/" element={<Home produtos={produtos} categorias={categorias}/>} />
           <Route path="/login" element={<Login setConta={setConta}/>} />
@@ -50,6 +56,7 @@ const App=()=> {
           <Route path="/error" element={<ErrorPage/>} />
         </Routes>
         <Footer />
+        </CarrinhoProvider>
       </Router>
     </div>
   )

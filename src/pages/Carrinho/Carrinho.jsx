@@ -80,7 +80,7 @@ const Carrinho = ({produto}) => {
                   <td className={styles.subtotal_table_td}><strong>R$ {total}</strong></td>
               </tr>
           </table>
-          <Link to="/teste"><button className={styles.subtotal_botao_compra}>Comprar</button></Link>
+          <button className={styles.subtotal_botao_compra}>Comprar</button>
       </div>
   </section>
 </div>

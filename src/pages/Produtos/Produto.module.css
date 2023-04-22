@@ -3,12 +3,16 @@
     background-color: white;
     padding: 20px;
     margin: 31px;
+
 }
+
+
 
 .novidade_produto_imagem{
     width: 200px;
     height: 150px;
 }
+
 
 .novidade_produto_descricao{
     max-width: 250px;
@@ -48,4 +52,13 @@
 
 .novidade_produto_botao:hover{
     background-color: #2d394b;
+}
+
+
+.produto{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
