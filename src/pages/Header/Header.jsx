@@ -13,8 +13,15 @@ import useAuth from "../Usuario/useAuth";
 import { Link } from "react-router-dom"
 
 
-export default function Header() {
-   
+export default function Header({tipoLogin, setLoginNull}) {
+   /**
+    * tipoLogin
+    * null - nao realizou login
+    * "cliente" - login como cliente
+    * "lojista" - login como lojista
+    */
+
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     function handleMenuClick() {
         setIsMenuOpen(!isMenuOpen);
@@ -24,6 +31,7 @@ export default function Header() {
         setIsMenuOpen(false);
     }
 
+
     const carrinho = useCarrinho()
     //  const itemsCount = Object.keys(carrinho.carrinho).length
     const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
@@ -31,6 +39,7 @@ export default function Header() {
      },0)
      const { sair } = useAuth();
    const navigate = useNavigate();
+
  
  
     return (
@@ -48,17 +57,38 @@ export default function Header() {
                         <form action="">
                         <input type="search" placeholder="Digite sua pesquisa aqui" className={styles.pesquisar}/>
                         </form>
-                        <li className={styles.navigation_menu_li}>
-                           <Link to="/login" onClick={handleLinkClick}>Login</Link>
-                        </li>
-                        <li className={styles.navigation_menu_li}>
-                           <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
-                                  {' '}{itemsCount > 0 && <span>({itemsCount})</span>} 
-                           </Link>
-                        </li >
+                   
+                          
+                        
+                        
+                         
+
+                        {
+                            tipoLogin == null ?
+                            (
+                                <li className={styles.navigation_menu_li}>
+                                    <Link to="/login" onClick={handleLinkClick}>Login</Link>
+                                </li>
+                            ):
+                            tipoLogin === "cliente" ? 
+                            (
+                                <li className={styles.navigation_menu_li}>
+                                    <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
+                                        {' '}{itemsCount > 0 && <span>({itemsCount})</span>}
+                                    </Link>
+                                </li >
+                            ):
+                            tipoLogin === "lojista" &&
+                            (
+                                <li className={styles.navigation_menu_li}>
+                                    <Link to="/lojista" onClick={handleLinkClick}>Loja</Link>
+                                </li >
+                            )
+                        }
+
                         <li className={styles.navigation_menu_li}>
                             <Link to="usuario" onClick={handleLinkClick}></Link></li>
-                            <li><Link to="" onClick={() => [sair(), navigate("/")]}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                            <li><Link to="/" onClick={() => [setLoginNull()]}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
                         </ul>
                         
                        </div> 

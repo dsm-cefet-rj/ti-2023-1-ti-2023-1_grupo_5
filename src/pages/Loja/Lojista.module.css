@@ -1,0 +1,21 @@
+.loja h1{
+    color:black;
+    text-align: left;
+}
+.loja{
+    font-size: 30px;
+    padding-inline: 20px;
+}
+.campo_produtos{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.campo_info{
+    padding-block: 20px;
+}
+.btn_editar{
+    color:rgb(14, 73, 73);
+}
