@@ -26,7 +26,7 @@ const App=()=> {
     * "cliente" - login como cliente
     * "lojista" - login como lojista
     */
-  const [tipoLogin, setTipoLogin] = useState("lojista")
+  const [tipoLogin, setTipoLogin] = useState("cliente")
   function setLoginNull(){
     setTipoLogin(null)
   }
