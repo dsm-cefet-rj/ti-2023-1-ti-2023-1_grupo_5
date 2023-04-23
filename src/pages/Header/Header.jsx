@@ -37,13 +37,16 @@ function Header() {
     function handleLinkClick() {
         setIsMenuOpen(false);
     }
-//     const carrinho = useCarrinho()
-//     //  const itemsCount = Object.keys(carrinho.carrinho).length
-//     const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
-//     return prev + carrinho.carrinho[curr].quantidade
-//     },0)
-//     const { sair } = useAuth();
-//   const navigate = useNavigate();
+
+
+    const carrinho = useCarrinho()
+    //  const itemsCount = Object.keys(carrinho.carrinho).length
+    const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
+     return prev + carrinho.carrinho[curr].quantidade
+     },0)
+     const { sair } = useAuth();
+   const navigate = useNavigate();
+
  
  
     return (
@@ -61,6 +64,12 @@ function Header() {
                         <form action="">
                         <input type="search" placeholder="Digite sua pesquisa aqui" className={styles.pesquisar}/>
                         </form>
+                   
+                          
+                        
+                        
+                         
+
                         {
                             tipoLogin == null ?
                             (
@@ -72,7 +81,7 @@ function Header() {
                             (
                                 <li className={styles.navigation_menu_li}>
                                     <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
-                                        {/* {' '}{itemsCount > 0 && <span>({itemsCount})</span>} */}
+                                        {' '}{itemsCount > 0 && <span>({itemsCount})</span>}
                                     </Link>
                                 </li >
                             ):
@@ -83,6 +92,7 @@ function Header() {
                                 </li >
                             )
                         }
+
                         <li className={styles.navigation_menu_li}>
                             <Link to="usuario" onClick={handleLinkClick}></Link></li>
                             <li><Link to="/" onClick={setLoginNull}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>

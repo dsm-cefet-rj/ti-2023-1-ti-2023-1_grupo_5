@@ -2,9 +2,13 @@ import styles from "./Produto.module.css"
 import { Link } from "react-router-dom"
 
 //import p from "../components/Dados"
+import { useCarrinho } from "../../context/CarrinhoContext"
 
-
-const Produto = ({produto, addCarrinho}) => {
+const Produto = ({produto}) => {
+    const carrinho = useCarrinho()
+    const add = Produto => () => {
+        carrinho.addCarrinho(Produto)
+    }
     return(
         <div className={styles.novidades_produto}>
             
@@ -17,7 +21,7 @@ const Produto = ({produto, addCarrinho}) => {
             <div className={styles.preco}>R$ {produto.preco}</div>
             <div className={styles.metodo_pagamento}>À vista no pix</div>
             
-            <button className={styles.novidade_produto_botao} >Comprar</button>
+            <button className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</button>
 
         </div>
         

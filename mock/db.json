@@ -11,6 +11,18 @@
       "senha": "132",
       "id_carrinho": "3",
       "id": "WUDSn-9"
+    },
+    {
+      "email": "rodrigo@email.com",
+      "senha": "1234567",
+      "id_carrinho": "3",
+      "id": "Z8dqizY"
+    },
+    {
+      "email": "rodrigo@email.com",
+      "senha": "1234",
+      "id_carrinho": "3",
+      "id": "YMu190H"
     }
   ],
   "produtos": [
@@ -76,6 +88,42 @@
       "detalhes": "Placa grafica nvidia gtx 1080ti 8gb vram",
       "id_loja": "",
       "id": "v1rHn_n"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "placas graficas",
+      "descricao": "dsad",
+      "preco": "1000",
+      "detalhes": "",
+      "id_loja": "",
+      "id": "me63MYQ"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "placas graficas",
+      "descricao": "dsad",
+      "preco": "1000",
+      "detalhes": "",
+      "id_loja": "",
+      "id": "avf9ri6"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "periferico",
+      "descricao": "02222222",
+      "preco": "666",
+      "detalhes": "",
+      "id_loja": "",
+      "id": "9-Nsur7"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "armazenamento",
+      "descricao": "HD",
+      "preco": "99",
+      "detalhes": "dddfvrg",
+      "id_loja": "",
+      "id": "UFmkIYC"
     }
   ],
   "carrinho": [

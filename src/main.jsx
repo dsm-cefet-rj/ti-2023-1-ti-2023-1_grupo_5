@@ -14,7 +14,7 @@ import Pesquisa from './pages/Pesquisa/Pesquisa';
 import Usuario from './pages/Usuario/Usuario';
 import Produto_detalhes from './pages/Produto/Produto_detalhes';
 import Produtos from './pages/Produtos/Produtos';
-import Teste from './pages/Carrinho/teste';
+
 import { Fragment } from 'react';
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import Registro from './pages/RegistroUsuario/Registro';
