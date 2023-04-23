@@ -1,8 +1,6 @@
 import {createStore} from "redux"
 const initialState = {
-    conta: {
-        email: null
-    },
+    conta: null,
     tipoLogin: null,
     carrinho: null,
 }

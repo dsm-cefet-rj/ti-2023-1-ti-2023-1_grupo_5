@@ -6,18 +6,21 @@ import { useEffect, useState } from "react"
 import retornaProdutos from "./retornaProdutos"
 export default function Lojista() {
     const state = useSelector((state)=>state)
-    const loja = {
-        id: state.conta.id,
-        nome: state.conta.nome,
-        endereco: state.conta.endereco,
-        cnpj: state.conta.cnpj,
-        telefone: state.conta.telefone,
-        email: state.conta.email,
-    }
-    const [prod, setProd] = useState([])
-    useEffect( () => {retornaProdutos(loja.id, setProd)})
+    let loja = {}
+    let [prod, setProd] = useState([])
 
-    if (loja != null) {
+    if (state.conta != null) {
+
+        loja = {
+            id: state.conta.id,
+            nome: state.conta.nome,
+            endereco: state.conta.endereco,
+            cnpj: state.conta.cnpj,
+            telefone: state.conta.telefone,
+            email: state.conta.email,
+        }
+        useEffect( () => {retornaProdutos(loja.id, setProd)})
+
         return (
             <div className={styles.loja}>
                 <div className={styles.campo_info}>
@@ -29,9 +32,11 @@ export default function Lojista() {
                 </div>
                 <h1>Produtos</h1>
                 <Link to="/cadastroProduto">Cadastrar Produto</Link>
-                <div className={styles.campo_produtos}>
-                    {prod.map((prod) => <ProdutoLojista produto={prod} key={prod.id} />)}
-                </div>
+                {prod.length != 0 ? (
+                    <div className={styles.campo_produtos}>
+                        {prod.map((prod) => <ProdutoLojista produto={prod} key={prod.id} />)}
+                    </div>
+                ) : (<div>Não há produtos registrados</div>)}
             </div>
         )
     }else{

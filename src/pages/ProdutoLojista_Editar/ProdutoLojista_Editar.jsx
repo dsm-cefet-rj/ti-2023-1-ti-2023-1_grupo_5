@@ -1,7 +1,7 @@
 import { useParams } from "react-router"
 import { useNavigate } from "react-router-dom"
 import editarProduto from "./editarProdudo"
-import excluirProduto from "./excluirProdudo"
+import excluirProduto from "./excluirProduto"
 import styles from "./ProdutoLojista_Editar.module.css"
 
 export default function ProdutoLojista_Editar(){
@@ -12,8 +12,9 @@ export default function ProdutoLojista_Editar(){
         navigate("/lojista")
     }
     function excluir(){
-        alert("Confirmar exclusão")
-        //excluirProduto(id.produtoId)
+        //alert("Confirmar exclusão")
+        excluirProduto(id.produtoId)
+        navigate("/lojista")
     }
     return(
     <div className={styles.produtoLojista_Editar_body}>
@@ -35,7 +36,7 @@ export default function ProdutoLojista_Editar(){
 
             </form>
             <button onClick={editar}>Salvar</button>
-            <button onClick={excluir}></button>
+            <button onClick={excluir}>Excluir</button>
     </div>
     )
 }

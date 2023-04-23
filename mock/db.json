@@ -33,7 +33,7 @@
       "descricao": "Gabinete Gamer Redragon Brawn",
       "preco": "200.32",
       "detalhes": "Marca: Rise Mode, Modelo: Gabinete Rise Mode GLASS 06X BLACK – SEM FANS Especificações:Part Number: RM-CA-06X-FB, Cor: Preto, Dimensões (L x W x H): L 365mm x W 200mm x H 455mm, Fans: Suporte para 6 fans (fans não inclusos),* Produto não acompanha fans, imagem ilustrativa ",
-      "id_loja": ""
+      "id_lojista": ""
     },
     {
       "id": "2",
@@ -42,7 +42,7 @@
       "descricao": "Placa Mãe Biostar B560MX-E PRO",
       "preco": "559",
       "detalhes": "Características:- Marca: MSI- Modelo: B560M PRO-E CPU:- Suporta Processadores Intel Core de 10ª Geração, Processadores Intel Core de 11ª Geração, Processadores Pentium Gold e Celeron",
-      "id_loja": ""
+      "id_lojista": ""
     },
     {
       "id": "3",
@@ -51,7 +51,7 @@
       "descricao": "Processador AMD Ryzen 5 4600G 3.7GHz",
       "preco": "489",
       "detalhes": "Plataforma: Computador de mesa | Família de produto: AMD Ryzen Processors | Linha de produto: D Ryzen 5 4000 G-Series Desktop Processors with Radeon™ Graphics | Nº de núcleos de CPU: 6 | Nº de threads: 12 | Clock de Max Boost: Até 4.2GHz | Clock básico: 3.7GHz",
-      "id_loja": ""
+      "id_lojista": ""
     },
     {
       "id": "4",
@@ -60,7 +60,7 @@
       "descricao": "Monitor Gamer Samsung T350",
       "preco": "899",
       "detalhes": "Monitor Samsung Gamer 22 Fhd 75hz Hdmi Vga Freesync Preto Série T350 - Lf22t350fhlmzd",
-      "id_loja": ""
+      "id_lojista": ""
     },
     {
       "img": "../../public/images/placeholder_img.jpg",
@@ -68,7 +68,7 @@
       "descricao": "asd",
       "preco": "",
       "detalhes": "",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "ONpRE0c"
     },
     {
@@ -77,7 +77,7 @@
       "descricao": "placa gtx",
       "preco": "1500",
       "detalhes": "Placa grafica nvidia gtx 1080ti 8gb vram",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "sySSgYd"
     },
     {
@@ -86,7 +86,7 @@
       "descricao": "placa gtx",
       "preco": "1500",
       "detalhes": "Placa grafica nvidia gtx 1080ti 8gb vram",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "v1rHn_n"
     },
     {
@@ -95,7 +95,7 @@
       "descricao": "dsad",
       "preco": "1000",
       "detalhes": "",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "me63MYQ"
     },
     {
@@ -104,7 +104,7 @@
       "descricao": "dsad",
       "preco": "1000",
       "detalhes": "",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "avf9ri6"
     },
     {
@@ -113,7 +113,7 @@
       "descricao": "02222222",
       "preco": "666",
       "detalhes": "",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "9-Nsur7"
     },
     {
@@ -122,26 +122,17 @@
       "descricao": "HD",
       "preco": "99",
       "detalhes": "dddfvrg",
-      "id_loja": "",
+      "id_lojista": "",
       "id": "UFmkIYC"
     },
     {
       "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "placas graficas",
-      "descricao": "b",
-      "preco": "201",
-      "detalhes": "placa muito boa de video boa",
+      "categoria": "",
+      "descricao": "20",
+      "preco": "20",
+      "detalhes": "20ehf",
       "id_lojista": "nHj0NJ0",
-      "id": "pHU4G1C"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "placas graficas",
-      "descricao": "placa 20",
-      "preco": "150",
-      "detalhes": "placa 20",
-      "id_lojista": "nHj0NJ0",
-      "id": "-BNi2sI"
+      "id": "WEINGTB"
     }
   ],
   "carrinho": [
