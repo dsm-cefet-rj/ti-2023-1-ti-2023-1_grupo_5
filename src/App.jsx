@@ -16,31 +16,20 @@ import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import ErrorPage from "./pages/ErrorPage/ErrorPage"
 import {p as produtos, c as categorias} from "./components/Dados"
 import { useState } from "react"
+import { connect, useDispatch, useSelector } from "react-redux"
 
 const App=()=> {
-  const [conta, setConta] = useState()
-  /**
-    * tipoLogin
-    * null - nao realizou login
-    * "cliente" - login como cliente
-    * "lojista" - login como lojista
-    */
-  const [tipoLogin, setTipoLogin] = useState("lojista")
-  function setLoginNull(){
-    setTipoLogin(null)
-  }
-
   return (
     <div className="App">
       <Router>
-        <Header setLoginNull={setLoginNull} tipoLogin={tipoLogin}/>
+        <Header/>
         <Routes>
           <Route path="/" element={<Home produtos={produtos} categorias={categorias}/>} />
-          <Route path="/login" element={<Login setConta={setConta}/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/registro" element={<Registro/>} />
           <Route path="/carrinho" element={<Carrinho/>} />
           <Route path="/lojista" element={<Lojista/>} />
-          <Route path="/cadastroLoja" element={<CadastroLoja conta={conta}/>} />
+          <Route path="/cadastroLoja" element={<CadastroLoja/>} />
           <Route path="/cadastroProduto" element={<CadastroProduto/>} />
           <Route path="/produtos/:produtoId" element={<Produto_detalhes/>} />
           <Route path="/editarProduto/:produtoId" element={<ProdutoLojista_Editar/>} />
@@ -55,4 +44,4 @@ const App=()=> {
   )
 }
 
-export default App;
+export default connect()(App);

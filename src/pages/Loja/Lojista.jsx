@@ -1,6 +1,6 @@
 import styles from "./Lojista.module.css"
 import ProdutoLojista from "../../components/ProdutoLojista/ProdutoLojista"
-import { Navigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 export default function Lojista() {
     const loja = {
         nome: "loja 1",
@@ -55,6 +55,7 @@ export default function Lojista() {
                     <div>{loja.email}</div>
                 </div>
                 <h1>Produtos</h1>
+                <Link to="/cadastroProduto">Cadastrar Produto</Link>
                 <div className={styles.campo_produtos}>
                     {loja.produtos.map((prod) => <ProdutoLojista produto={prod} key={prod.id} />)}
                 </div>

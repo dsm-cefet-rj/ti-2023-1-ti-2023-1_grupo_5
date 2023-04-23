@@ -11,22 +11,29 @@ import useAuth from "../Usuario/useAuth";
 
 
 import { Link } from "react-router-dom"
+import { connect, useDispatch, useSelector } from "react-redux";
 
 
-export default function Header({tipoLogin, setLoginNull}) {
+function Header() {
+    const dispatch = useDispatch()
    /**
     * tipoLogin
     * null - nao realizou login
     * "cliente" - login como cliente
     * "lojista" - login como lojista
     */
-
+    const tipoLogin = useSelector( (state) => state.tipoLogin )
+    console.log("tipologin: " + tipoLogin)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     function handleMenuClick() {
         setIsMenuOpen(!isMenuOpen);
     }
     
+    function setLoginNull(){
+        dispatch({type: 'deslogar'})
+    }
+
     function handleLinkClick() {
         setIsMenuOpen(false);
     }
@@ -78,7 +85,7 @@ export default function Header({tipoLogin, setLoginNull}) {
                         }
                         <li className={styles.navigation_menu_li}>
                             <Link to="usuario" onClick={handleLinkClick}></Link></li>
-                            <li><Link to="/" onClick={() => [setLoginNull()]}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                            <li><Link to="/" onClick={setLoginNull}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
                         </ul>
                         
                        </div> 
@@ -92,3 +99,5 @@ export default function Header({tipoLogin, setLoginNull}) {
         </section>
     )
 }
+
+export default connect()(Header)

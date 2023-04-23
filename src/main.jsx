@@ -19,6 +19,8 @@ import { Fragment } from 'react';
 import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import Registro from './pages/RegistroUsuario/Registro';
 import useAuth from './pages/Usuario/useAuth';
+import { Provider } from 'react-redux';
+import {store} from "./reduxFeatures/login/reduxLogin"
 
 const Private = ({Item}) => {
   const signed = useAuth();
@@ -28,6 +30,8 @@ const Private = ({Item}) => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App/>
+    <Provider store = {store}>
+      <App/>
+    </Provider>
   </React.StrictMode>,
 )

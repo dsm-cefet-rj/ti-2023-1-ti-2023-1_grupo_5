@@ -4,30 +4,26 @@ import Button from "../../components/Button/Button";
 import * as C from "./Login.module";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
+import logar from "./logar";
+import { useDispatch, connect } from "react-redux";
 
 const Login = () => {
-  const { login } = useAuth();
+  //const { login } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
-
-  const handleLogin = () => {
-    if (!email | !senha) {
-      setError("Preencha todos os campos");
-      return;
+  
+  async function logar2(){
+    const conta = await logar(email, senha)
+    console.log(conta)
+    if(conta != null){
+      dispatch({type: 'logarCliente', payload: conta})
+      navigate("/")
     }
-
-    const res = login(email, senha);
-
-    if (res) {
-      setError(res);
-      return;
-    }
-
-    navigate("/");
-  };
+  }
 
   return (
     <C.Container>
@@ -46,7 +42,7 @@ const Login = () => {
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
         <C.labelError>{error}</C.labelError>
-        <Button Text="Entrar" onClick={handleLogin} />
+        <Button Text="Entrar" onClick={logar2} />
         <C.LabelLogin>
           Não tem uma conta?
           <C.Strong>
@@ -58,4 +54,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect()(Login);
