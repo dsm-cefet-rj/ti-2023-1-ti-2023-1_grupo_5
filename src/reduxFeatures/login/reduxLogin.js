@@ -1,7 +1,7 @@
 import {createStore} from "redux"
 const initialState = {
     conta: {
-        user: null
+        email: null
     },
     tipoLogin: null,
     carrinho: null,
@@ -10,7 +10,6 @@ const initialState = {
 function reducer(state = initialState, action){
     switch(action.type){
         case 'logarCliente':
-            console.log("logou")
             return{
                 conta: action.payload,
                 tipoLogin: "cliente"

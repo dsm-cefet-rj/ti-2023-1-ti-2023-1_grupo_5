@@ -8,20 +8,37 @@ import logar from "./logar";
 import { useDispatch, connect } from "react-redux";
 
 const Login = () => {
-  //const { login } = useAuth();
+
   const navigate = useNavigate();
   const dispatch = useDispatch()
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
-  
+  const [tipoLogin, setTipoLogin] = useState("contas");
+
+  function alternarTipo(){
+    let btn = document.getElementById("btnAlt") 
+    if(tipoLogin === "contas"){
+      setTipoLogin("lojas")
+      btn.innerHTML="Lojista"
+    }else{
+      setTipoLogin("contas")
+      btn.innerHTML="Cliente"
+    }
+  }
+
   async function logar2(){
-    const conta = await logar(email, senha)
+    const conta = await logar(email, senha, tipoLogin)
     console.log(conta)
     if(conta != null){
-      dispatch({type: 'logarCliente', payload: conta})
-      navigate("/")
+      if(tipoLogin == "contas"){
+        dispatch({type: 'logarCliente', payload: conta})
+        navigate("/")
+      }else{
+        dispatch({type: 'logarLojista', payload: conta})
+        navigate("/")
+      }
     }
   }
 
@@ -41,6 +58,7 @@ const Login = () => {
           value={senha}
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
+        <button id="btnAlt" type="button" onClick={alternarTipo}>Cliente</button>
         <C.labelError>{error}</C.labelError>
         <Button Text="Entrar" onClick={logar2} />
         <C.LabelLogin>

@@ -1,5 +1,5 @@
 
-export default function cadastrarProduto(){
+export default function cadastrarProduto(id){
     let img = document.getElementById("img");
     let categoria = document.getElementById("categoria");
     let descricao = document.getElementById("descricao");
@@ -13,7 +13,7 @@ export default function cadastrarProduto(){
         descricao : descricao.value,
         preco : preco.value,
         detalhes : detalhes.value,
-        id_loja : ""
+        id_lojista : id
     }
 
     fetch('http://localhost:3000/produtos', {

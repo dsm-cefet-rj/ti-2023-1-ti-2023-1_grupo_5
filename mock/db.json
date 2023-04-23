@@ -124,6 +124,24 @@
       "detalhes": "dddfvrg",
       "id_loja": "",
       "id": "UFmkIYC"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "placas graficas",
+      "descricao": "b",
+      "preco": "201",
+      "detalhes": "placa muito boa de video boa",
+      "id_lojista": "nHj0NJ0",
+      "id": "pHU4G1C"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "placas graficas",
+      "descricao": "placa 20",
+      "preco": "150",
+      "detalhes": "placa 20",
+      "id_lojista": "nHj0NJ0",
+      "id": "-BNi2sI"
     }
   ],
   "carrinho": [
@@ -144,15 +162,15 @@
       "nome": "loja 1",
       "endereco": "rua canabarro",
       "email": "loja1@gmail.com",
-      "id_proprietario": "1"
+      "senha": "123"
     },
     {
       "cnpj": "asd",
       "nome": "asda",
       "endereco": "sd",
       "email": "asd",
-      "id": "nHj0NJ0",
-      "id_proprietario": "2"
+      "senha": "123",
+      "id": "nHj0NJ0"
     }
   ]
 }
