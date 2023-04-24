@@ -4,16 +4,22 @@ import { faXmark} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
-
+import { connect, useSelector } from "react-redux"
+import excluirProduto from "./excluirProduto"
 
 
 const Carrinho = ({produto}) => {
+  const conta = useSelector((state) => state.conta)
   const carrinho = useCarrinho()
   const remove = id => () => {
     carrinho.removeFromCarrinho(id)
+    console.log(id)
+    excluirProduto(conta.id, {id: id})
   }
   const alterarQuantidade = (id) => (evt) => {
     carrinho.alterarQuantidade(id,Number(evt.target.value))
+    
+
   }
   const itemsCount = Object.keys(carrinho.carrinho).reduce((prev,curr) =>{
     return prev + carrinho.carrinho[curr].quantidade
@@ -90,4 +96,4 @@ const Carrinho = ({produto}) => {
   )
 }
 
-export default Carrinho
+export default connect()(Carrinho)

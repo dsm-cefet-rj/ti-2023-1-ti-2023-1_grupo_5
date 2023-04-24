@@ -13,6 +13,9 @@ export const CarrinhoProvider = ({ children }) => {
             setCarrinho(JSON.parse(carrinhoLocal))
         }
     },[])
+    // function atualizaCarrinho(){
+        
+    // }
     const addCarrinho = Produto => {
         setCarrinho(old => {
             let quantidade = 0

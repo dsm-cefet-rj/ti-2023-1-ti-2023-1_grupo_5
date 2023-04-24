@@ -150,15 +150,6 @@
           "quantidade": 2
         },
         {
-          "id": "2",
-          "img": "../../public/images/produtos/produto-placa mae.webp",
-          "tipo": "Placa Mãe",
-          "descricao": "Placa Mãe Biostar B560MX-E PRO",
-          "preco": 559,
-          "caracteristicas": "Características:- Marca: MSI- Modelo: B560M PRO-E CPU:- Suporta Processadores Intel Core de 10ª Geração, Processadores Intel Core de 11ª Geração, Processadores Pentium Gold e Celeron",
-          "quantidade": 1
-        },
-        {
           "id": "3",
           "img": "../../public/images/produtos/produto-processador.jpg",
           "tipo": "Processador",
