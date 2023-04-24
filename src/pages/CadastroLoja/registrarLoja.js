@@ -13,7 +13,7 @@ export default function registrarLoja(id_prop){
       };
       
       fetch('http://localhost:3000/lojas', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -21,7 +21,7 @@ export default function registrarLoja(id_prop){
       })
       .then(response => {
         if (response.ok) {
-          return response.json();
+          return response.json(); // nao sei se é necessario
         } else {
           throw new Error('Erro ao adicionar a loja');
         }

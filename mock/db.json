@@ -9,13 +9,13 @@
     {
       "email": "asd",
       "senha": "132",
-      "id_carrinho": "3",
+      "id_carrinho": "2",
       "id": "WUDSn-9"
     },
     {
       "email": "rodrigo@email.com",
       "senha": "1234567",
-      "id_carrinho": "3",
+      "id_carrinho": "4",
       "id": "Z8dqizY"
     },
     {
@@ -138,12 +138,33 @@
   "carrinho": [
     {
       "id": "1",
+      "id_conta": "1",
       "produtos": [
         {
-          "id_produto": "1",
-          "qtd": "2"
+          "id": "1",
+          "img": "../../public/images/produtos/produto-gabinete.webp",
+          "tipo": "Gabinete",
+          "descricao": "Gabinete Gamer Redragon Brawn",
+          "preco": 349,
+          "caracteristicas": "Marca: Rise Mode, Modelo: Gabinete Rise Mode GLASS 06X BLACK – SEM FANS Especificações:Part Number: RM-CA-06X-FB, Cor: Preto, Dimensões (L x W x H): L 365mm x W 200mm x H 455mm, Fans: Suporte para 6 fans (fans não inclusos),* Produto não acompanha fans, imagem ilustrativa ",
+          "quantidade": 1
         }
       ]
+    },
+    {
+      "id": "1",
+      "id_conta": "2",
+      "produtos": []
+    },
+    {
+      "id": "1",
+      "id_conta": "3",
+      "produtos": []
+    },
+    {
+      "id": "1",
+      "id_conta": "4",
+      "produtos": []
     }
   ],
   "lojas": [
