@@ -1,11 +1,35 @@
+/*fundo de tudo*/
+.campo_info{
+    padding-block: 20px;
+}
+
+/*h1 do nome da loja*/
 .loja h1{
     color:black;
     text-align: left;
 }
+
+/*fundo de tudo*/
 .loja{
     font-size: 30px;
     padding-inline: 20px;
+    font-size: 23px;
 }
+
+.botaoCadastro{
+    background-color: #2D394B;
+    width: 240px;
+    padding: 10px;
+    color: white;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.botaoCadastro:hover{
+    background-color: #296275;
+}
+
 .campo_produtos{
     flex-direction: row;
     display: flex;
@@ -13,9 +37,7 @@
     align-items: center;
     justify-content: center;
 }
-.campo_info{
-    padding-block: 20px;
-}
+
 .btn_editar{
     color:rgb(14, 73, 73);
 }

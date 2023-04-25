@@ -1,15 +1,30 @@
 .produtoLojista{
     display: flex;
     flex-direction: row;
-    background-color: red;
-    width: 100%;
+    background-color: orange;
+    width: 1300px;
+    height: 250px;
+    margin-bottom: 20px;
 }
 .produtoLojista_campo_img{
-    width: 30%;
+    width: 250px;
+    margin-right: 20px;
 }
 .produtoLojista_campo_img img{
    width: 100%;
 }
 .produtoLojista_campo_info{
     width: 70%;
+}
+
+.produto_lojista_botao_editar{
+    color: black;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+    .produtoLojista{
+        height: 168px;
+        margin-bottom: 20px;
+    }
 }

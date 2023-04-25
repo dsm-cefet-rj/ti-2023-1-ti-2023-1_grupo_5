@@ -24,14 +24,14 @@ export default function Lojista() {
         return (
             <div className={styles.loja}>
                 <div className={styles.campo_info}>
-                    <h1>{loja.nome}</h1>
-                    <div>{loja.endereco}</div>
-                    <div>{loja.cnpj}</div>
-                    <div>{loja.telefone}</div>
-                    <div>{loja.email}</div>
+                    <h1>Loja - {loja.nome}</h1>
+                    <div>Endereço: {loja.endereco}</div>
+                    <div>CNPJ: {loja.cnpj}</div>
+                    <div>Telefone: {loja.telefone}</div>
+                    <div>E-mail: {loja.email}</div>
                 </div>
                 <h1>Produtos</h1>
-                <Link to="/cadastroProduto">Cadastrar Produto</Link>
+                <Link to="/cadastroProduto"><h2 className={styles.botaoCadastro}>Cadastrar Produto</h2></Link>
                 {prod.length != 0 ? (
                     <div className={styles.campo_produtos}>
                         {prod.map((prod) => <ProdutoLojista produto={prod} key={prod.id} />)}

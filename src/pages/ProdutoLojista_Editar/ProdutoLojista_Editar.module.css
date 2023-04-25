@@ -5,3 +5,38 @@
     display: flex;
     flex-direction: column;
 }
+
+.formulario{
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.labels{
+    margin-top: 10px;
+}
+
+.caixaTexto{
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 320px;
+    height: 27px;
+    border: solid 1px #2D394B;
+    border-radius: 5px;
+}
+
+.botoes{ 
+    background-color: #2D394B;
+    width: 100px;
+    padding: 10px;
+    color: white;
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    border: none;
+}
+
+.botoes:hover{ 
+    background-color: #296275;
+    
+}
