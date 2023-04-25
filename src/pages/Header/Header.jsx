@@ -79,23 +79,29 @@ function Header() {
                             ):
                             tipoLogin === "cliente" ? 
                             (
-                                <li className={styles.navigation_menu_li}>
-                                    <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
-                                        {' '}{itemsCount > 0 && <span>({itemsCount})</span>}
-                                    </Link>
-                                </li >
+                                <lu>
+                                    <li className={styles.navigation_menu_li}>
+                                        <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
+                                            {' '}{itemsCount > 0 && <span>({itemsCount})</span>}
+                                        </Link>
+                                    </li >
+                                    <li className={styles.navigation_menu_li}><Link to="/" onClick={setLoginNull}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                                </lu>
+                                
                             ):
                             tipoLogin === "lojista" &&
                             (
-                                <li className={styles.navigation_menu_li}>
-                                    <Link to="/lojista" onClick={handleLinkClick}>Loja</Link>
-                                </li >
+                                <lu>
+                                    <li className={styles.navigation_menu_li}>
+                                        <Link to="/lojista" onClick={handleLinkClick}>Loja</Link>
+                                    </li >
+                                    <li className={styles.navigation_menu_li}><Link to="/" onClick={setLoginNull}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
+                                </lu>
                             )
                         }
 
                         <li className={styles.navigation_menu_li}>
                             <Link to="usuario" onClick={handleLinkClick}></Link></li>
-                            <li><Link to="/" onClick={setLoginNull}><FontAwesomeIcon  icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>
                         </ul>
                         
                        </div> 

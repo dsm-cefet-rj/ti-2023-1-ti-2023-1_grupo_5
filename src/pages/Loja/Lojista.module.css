@@ -1,15 +1,12 @@
-/*fundo de tudo*/
 .campo_info{
     padding-block: 20px;
 }
 
-/*h1 do nome da loja*/
 .loja h1{
     color:black;
     text-align: left;
 }
 
-/*fundo de tudo*/
 .loja{
     font-size: 30px;
     padding-inline: 20px;
