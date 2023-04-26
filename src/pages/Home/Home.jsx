@@ -1,5 +1,4 @@
 import styles from "./Home.module.css"
-import  "../../Components/Produto/Produto.module.css"
 import Categoria from "../../components/Categoria/Categoria"
 import Produto from "../../components/Produto/Produto"
 import { Link } from "react-router-dom"

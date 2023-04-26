@@ -17,12 +17,21 @@ const Registro = () => {
   const navigate = useNavigate();
 
   function registrar(){
+
+    if (!email | !emailConf | !senha) {
+      setError("Preencha todos os campos");
+      return;
+    } else if (email !== emailConf) {
+      setError("Os e-mails não são iguais");
+      return;
+    }
     const novoUsuario = {
       email: email,
       senha: senha,
       id_carrinho: "3"
     };
-    
+    alert("Usuário cadatrado com sucesso!");
+    navigate("/login");
     fetch('http://localhost:3000/contas', {
       method: 'POST',
       headers: {
