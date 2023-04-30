@@ -2,10 +2,8 @@ import styles from "./Home.module.css"
 import Categoria from "../../components/Categoria/Categoria"
 import Produto from "../../components/Produto/Produto"
 import { Link } from "react-router-dom"
-import { useCarrinho } from "../../context/CarrinhoContext"
 
 export default function Home({produtos, categorias}) {
-    const carrinho = useCarrinho()
     return (
        
             <main>

@@ -1,21 +1,38 @@
 import { useParams } from "react-router"
 import { useNavigate } from "react-router-dom"
-import editarProduto from "./editarProdudo"
-import excluirProduto from "./excluirProduto"
 import styles from "./ProdutoLojista_Editar.module.css"
+import { connect, useDispatch, useSelector } from "react-redux"
+import { alteraFirstFetched, editarProduto, excluirProduto } from "../../reduxFeatures/lojista"
+import { useState } from "react"
 
-export default function ProdutoLojista_Editar(){
-    const navigate = useNavigate()
-    let id = useParams()
+const ProdutoLojista_Editar = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const lojista = useSelector( state => state.lojista);
+    let id = useParams().produtoId;
+    let produto = lojista.produtos.filter( item => item.id === id);
+    produto = Object.assign({}, produto[0]);
+
     function editar(){
-        editarProduto(id.produtoId)
-        navigate("/lojista")
+        let categoria = document.getElementById("produto_categoria");
+        let descricao = document.getElementById("produto_descricao");
+        let detalhes = document.getElementById("produto_detalhes");
+        let preco = document.getElementById("produto_preco");
+    
+        if(categoria.value != ""){produto.categoria = categoria.value}
+        if(descricao.value != ""){produto.descricao = descricao.value}
+        if(detalhes.value != ""){produto.detalhes = detalhes.value}
+        if(preco.value != ""){produto.preco = preco.value}
+        dispatch(editarProduto({produto: produto}));
+        dispatch(alteraFirstFetched());
+        navigate("/lojista");
     }
     function excluir(){
-        //alert("Confirmar exclusão")
-        excluirProduto(id.produtoId)
-        navigate("/lojista")
+        dispatch(excluirProduto({id: produto.id}));
+        dispatch(alteraFirstFetched());
+        navigate("/lojista");
     }
+    
     return(
     <div className={styles.produtoLojista_Editar_body}>
             <form className={styles.formulario}>
@@ -40,3 +57,4 @@ export default function ProdutoLojista_Editar(){
     </div>
     )
 }
+export default connect()(ProdutoLojista_Editar)

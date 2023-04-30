@@ -20,7 +20,7 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom';
 import Registro from './pages/RegistroUsuario/Registro';
 import useAuth from './pages/Usuario/useAuth';
 import { Provider } from 'react-redux';
-import {store} from "./reduxFeatures/login/reduxLogin"
+import {store} from "./reduxFeatures/store"
 
 const Private = ({Item}) => {
   const signed = useAuth();

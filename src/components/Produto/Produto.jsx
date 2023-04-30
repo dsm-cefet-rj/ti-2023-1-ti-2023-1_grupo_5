@@ -1,23 +1,11 @@
 import styles from "./Produto.module.css"
 import { Link } from "react-router-dom"
-import adicionarAoCarrinho from "./adicionarAoCarrinho"
-
-//import p from "../components/Dados"
-import { useCarrinho } from "../../context/CarrinhoContext"
-import { useSelector, connect } from "react-redux"
+import { useSelector, connect, useDispatch } from "react-redux"
+import { adicionarProduto } from "../../reduxFeatures/conta"
 
 const Produto = ({produto}) => {
-    const carrinho = useCarrinho()
-    const conta = useSelector((state) => state.conta)
-    const tipoLogin = useSelector((state) => state.tipoLogin)
-    
-    const prod = produto
-    function add(){
-        if(conta != null && tipoLogin === "cliente"){
-            carrinho.addCarrinho(prod)
-            adicionarAoCarrinho(conta.id, prod)
-        }
-    }
+    const conta = useSelector((state) => state.conta);
+    const dispatch = useDispatch();
     return(
         <div className={styles.novidades_produto}>
             <Link to={`/produtos/${produto.id}`}>
@@ -27,10 +15,10 @@ const Produto = ({produto}) => {
                 <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
             </Link>
             <div className={styles.preco}>R$ {produto.preco}</div>
-            <div className={styles.metodo_pagamento}>À vista no pix</div>
-            
-            <button className={styles.novidade_produto_botao} onClick={add}>Comprar</button>
-
+            <div className={styles.metodo_pagamento}>À vista no pix</div>  
+            <button className={styles.novidade_produto_botao} onClick={() => {
+                if(conta != null){ dispatch( adicionarProduto({produto: produto}) ) }
+                }}>Comprar</button>
         </div>
         
     )

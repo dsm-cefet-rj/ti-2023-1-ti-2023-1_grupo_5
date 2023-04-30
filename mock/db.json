@@ -4,12 +4,22 @@
       "id": "1",
       "email": "carlos",
       "senha": "123",
-      "id_carrinho": "1"
+      "carrinho": [
+        {
+          "id": "1",
+          "img": "../../public/images/produtos/produto-gabinete.webp",
+          "tipo": "Gabinete",
+          "descricao": "Gabinete Gamer Redragon Brawn",
+          "preco": 349,
+          "caracteristicas": "Marca: Rise Mode, Modelo: Gabinete Rise Mode GLASS 06X BLACK – SEM FANS Especificações:Part Number: RM-CA-06X-FB, Cor: Preto, Dimensões (L x W x H): L 365mm x W 200mm x H 455mm, Fans: Suporte para 6 fans (fans não inclusos),* Produto não acompanha fans, imagem ilustrativa ",
+          "quantidade": 1
+        }
+      ]
     },
     {
       "email": "asd",
       "senha": "132",
-      "id_carrinho": "2",
+      "carrinho": [],
       "id": "WUDSn-9"
     },
     {
@@ -33,7 +43,7 @@
       "descricao": "Gabinete Gamer Redragon Brawn",
       "preco": "200.32",
       "detalhes": "Marca: Rise Mode, Modelo: Gabinete Rise Mode GLASS 06X BLACK – SEM FANS Especificações:Part Number: RM-CA-06X-FB, Cor: Preto, Dimensões (L x W x H): L 365mm x W 200mm x H 455mm, Fans: Suporte para 6 fans (fans não inclusos),* Produto não acompanha fans, imagem ilustrativa ",
-      "id_lojista": ""
+      "id_lojista": "1"
     },
     {
       "id": "2",
@@ -42,7 +52,7 @@
       "descricao": "Placa Mãe Biostar B560MX-E PRO",
       "preco": "559",
       "detalhes": "Características:- Marca: MSI- Modelo: B560M PRO-E CPU:- Suporta Processadores Intel Core de 10ª Geração, Processadores Intel Core de 11ª Geração, Processadores Pentium Gold e Celeron",
-      "id_lojista": ""
+      "id_lojista": "1"
     },
     {
       "id": "3",
@@ -51,7 +61,7 @@
       "descricao": "Processador AMD Ryzen 5 4600G 3.7GHz",
       "preco": "489",
       "detalhes": "Plataforma: Computador de mesa | Família de produto: AMD Ryzen Processors | Linha de produto: D Ryzen 5 4000 G-Series Desktop Processors with Radeon™ Graphics | Nº de núcleos de CPU: 6 | Nº de threads: 12 | Clock de Max Boost: Até 4.2GHz | Clock básico: 3.7GHz",
-      "id_lojista": ""
+      "id_lojista": "1"
     },
     {
       "id": "4",
@@ -60,79 +70,34 @@
       "descricao": "Monitor Gamer Samsung T350",
       "preco": "899",
       "detalhes": "Monitor Samsung Gamer 22 Fhd 75hz Hdmi Vga Freesync Preto Série T350 - Lf22t350fhlmzd",
-      "id_lojista": ""
+      "id_lojista": "1"
     },
     {
       "img": "../../public/images/placeholder_img.jpg",
       "categoria": "",
-      "descricao": "asd",
+      "descricao": "sadsa",
+      "preco": "sadas",
+      "detalhes": "asdas",
+      "id_lojista": "nHj0NJ0",
+      "id": "7gZZq7J"
+    },
+    {
+      "img": "../../public/images/placeholder_img.jpg",
+      "categoria": "",
+      "descricao": "ssssssssssssssssss",
       "preco": "",
       "detalhes": "",
-      "id_lojista": "",
-      "id": "ONpRE0c"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "placas graficas",
-      "descricao": "placa gtx",
-      "preco": "1500",
-      "detalhes": "Placa grafica nvidia gtx 1080ti 8gb vram",
-      "id_lojista": "",
-      "id": "sySSgYd"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "placas graficas",
-      "descricao": "placa gtx",
-      "preco": "1500",
-      "detalhes": "Placa grafica nvidia gtx 1080ti 8gb vram",
-      "id_lojista": "",
-      "id": "v1rHn_n"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "placas graficas",
-      "descricao": "dsad",
-      "preco": "1000",
-      "detalhes": "",
-      "id_lojista": "",
-      "id": "me63MYQ"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "placas graficas",
-      "descricao": "dsad",
-      "preco": "1000",
-      "detalhes": "",
-      "id_lojista": "",
-      "id": "avf9ri6"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "periferico",
-      "descricao": "02222222",
-      "preco": "666",
-      "detalhes": "",
-      "id_lojista": "",
-      "id": "9-Nsur7"
-    },
-    {
-      "img": "../../public/images/placeholder_img.jpg",
-      "categoria": "armazenamento",
-      "descricao": "HD",
-      "preco": "99",
-      "detalhes": "dddfvrg",
-      "id_lojista": "",
-      "id": "UFmkIYC"
+      "id_lojista": "nHj0NJ0",
+      "id": "_leiWyn"
     },
     {
       "img": "../../public/images/placeholder_img.jpg",
       "categoria": "",
-      "descricao": "20",
-      "preco": "20",
-      "detalhes": "20ehf",
+      "descricao": "ssdddddddddddddddddddddddddd",
+      "preco": "",
+      "detalhes": "",
       "id_lojista": "nHj0NJ0",
-      "id": "WEINGTB"
+      "id": "z0ijtxy"
     }
   ],
   "carrinho": [
@@ -202,7 +167,8 @@
       "nome": "loja 1",
       "endereco": "rua canabarro",
       "email": "loja1@gmail.com",
-      "senha": "123"
+      "senha": "123",
+      "telefone": "222"
     },
     {
       "cnpj": "asd",
@@ -210,6 +176,7 @@
       "endereco": "sd",
       "email": "asd",
       "senha": "123",
+      "telefone": "333",
       "id": "nHj0NJ0"
     }
   ]

@@ -3,9 +3,6 @@ import styles from "./Produto.module.css"
 import retornaProduto from "./retornaProduto.js" 
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom";
-import { p } from "../../components/Dados"
-import {  useCarrinho } from "../../context/CarrinhoContext"
-
 
 function Produto_detalhes(){
     const {produtoId} = useParams()

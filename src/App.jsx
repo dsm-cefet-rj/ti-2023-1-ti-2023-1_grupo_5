@@ -15,15 +15,12 @@ import Produtos from "./pages/Produtos/Produtos"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import ErrorPage from "./pages/ErrorPage/ErrorPage"
 import {p as produtos, c as categorias} from "./components/Dados"
-import { useState } from "react"
-import { CarrinhoProvider } from "./context/CarrinhoContext"
 import {connect} from "react-redux"
 
 const App=()=> {
   return (
     <div className="App">
       <Router>
-      <CarrinhoProvider>
         <Header/>
         <Routes>
           <Route path="/" element={<Home produtos={produtos} categorias={categorias}/>} />
@@ -41,7 +38,6 @@ const App=()=> {
           <Route path="/error" element={<ErrorPage/>} />
         </Routes>
         <Footer />
-        </CarrinhoProvider>
       </Router>
     </div>
   )

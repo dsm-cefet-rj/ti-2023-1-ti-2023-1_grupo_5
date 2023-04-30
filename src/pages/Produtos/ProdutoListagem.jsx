@@ -1,11 +1,10 @@
 import styles from "./Produto.module.css"
 import { Link } from 'react-router-dom';
-import { useCarrinho } from "../../context/CarrinhoContext"
+import { useDispatch, useSelector } from "react-redux";
+import { adicionarProduto } from "../../reduxFeatures/conta";
 export default function ProdutoListagem( {produto} ) {
-    const carrinho = useCarrinho()
-    const add = Produto => () => {
-        carrinho.addCarrinho(Produto)
-    }
+    const conta = useSelector((state) => state.conta);
+    const dispatch = useDispatch();
     return (
         <div className={styles.parte_cima}>
         <div className={styles.novidades_produto}>
@@ -15,8 +14,9 @@ export default function ProdutoListagem( {produto} ) {
                 <div className={styles.novidade_produto_descricao}>  {produto.descricao}</div>
             </Link>
             <div className={styles.preco}>R$ {produto.preco}</div>
-            <div className={styles.novidade_produto_botao} onClick={add(produto)}>Comprar</div>
-                </div>
+            <div className={styles.novidade_produto_botao} 
+                onClick={() => {if(conta.tipo === "cliente"){ dispatch( adicionarProduto({produto: produto}) )}}}>Comprar</div>
+            </div>
         </div>
     )
 }

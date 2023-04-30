@@ -1,21 +1,38 @@
 import styles from "./CadastroProduto.module.css"
-import cadastrarProduto from "./cadastrarProduto.js"
+import { cadastrarProduto } from "../../reduxFeatures/lojista"
 import { useNavigate } from "react-router-dom"
-import { connect, useSelector } from "react-redux"
+import { connect, useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
  function CadastroProduto(){
-    const navigate = useNavigate()
-    const estado = useSelector( (state) => state )
-    const tipoLogin = estado.tipoLogin
-    function cadastrar(){
-        const id_lojista = estado.conta.id 
-        cadastrarProduto(id_lojista)
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const lojista = useSelector( state => state.lojista)
+    
+    function enviarProduto(){
+        let img = document.getElementById("img");
+        let categoria = document.getElementById("categoria");
+        let descricao = document.getElementById("descricao");
+        let preco = document.getElementById("preco");
+        let detalhes = document.getElementById("detalhes");
+
+        const produto = 
+        {
+            img : "../../public/images/placeholder_img.jpg",
+            categoria : categoria.value,
+            descricao : descricao.value,
+            preco : preco.value,
+            detalhes : detalhes.value,
+            id_lojista : lojista.id
+        }
+        dispatch(cadastrarProduto({produto}));
+        navigate("/lojista");
     }
+    
 
     return(
         <main>
-            {tipoLogin === "lojista" ?
+            {lojista != null ?
              (
                 <section className={styles.cadastro_produto}>
                     
@@ -61,8 +78,8 @@ import { useEffect } from "react"
                                         </label>
                                     </div>
                                 </div>
-                                <button onClick={cadastrar}>Cadastrar</button>
                             </form>
+                            <button onClick={enviarProduto}>Cadastrar</button>
                     </div>
                 </section>
             ):useEffect(()=>{navigate("/error")})}
