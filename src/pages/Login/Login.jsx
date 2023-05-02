@@ -23,9 +23,9 @@ const Login = () => {
   function logar() {
     let btn = document.getElementById("btnAlt");
     if (btn.value === "cliente") {
-      dispatch(logarContaCliente({ email: email, senha: senha }));
+      console.log(dispatch(logarContaCliente({ email: email, senha: senha })));
     } else {
-      dispatch(logarContaLojista({ email: email, senha: senha }));
+      dispatch(logarContaLojista({ email: email, senha: senha })).then(navigate("/"));
     }
   }
   function alternarTipo() {

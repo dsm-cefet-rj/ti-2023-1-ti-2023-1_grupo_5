@@ -23,6 +23,7 @@ export const logarContaCliente = createAsyncThunk('conta/logarContaCliente',
             }
         } catch (error) {
             console.error(error)
+            return error;
         }
 
     }
