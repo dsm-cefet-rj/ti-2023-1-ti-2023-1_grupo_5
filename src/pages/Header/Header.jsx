@@ -1,4 +1,4 @@
-import React from "react";
+
 import styles from "./Header.module.css";
 import { useState } from "react"
 import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +10,25 @@ import { Link } from "react-router-dom"
 import { connect, useDispatch, useSelector } from "react-redux";
 import { sairContaCliente } from "../../reduxFeatures/conta";
 import { sairContaLojista } from "../../reduxFeatures/lojista";
+
+
+
+
+
+import * as React from 'react';
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
 
 
 function Header() {
@@ -63,8 +82,18 @@ function Header() {
                             (
                                 <ul>
                                     <li className={styles.navigation_menu_li}>
-                                        <Link to="/carrinho" onClick={handleLinkClick}><FontAwesomeIcon  icon={faCartShopping} size="lg" style={{color: "#000000",}}/>
-                                            {' '}{itemsCount > 0 && <span>({itemsCount})</span>}
+                                        <Link to="/carrinho" onClick={handleLinkClick}>
+                                            
+
+                                     
+                                    <IconButton aria-label="cart" >
+                                    <StyledBadge badgeContent={itemsCount} color="success">
+                                    <ShoppingCartIcon/>
+                                    </StyledBadge>
+                                    </IconButton>
+                                            
+                                            
+                                        
                                         </Link>
                                     </li >
                                     <li className={styles.navigation_menu_li}><Link to="/" onClick={() => {dispatch(sairContaCliente()); navigate("/");}}><FontAwesomeIcon icon={faPersonThroughWindow} size="lg" style={{color: "#000000",}}/></Link></li>

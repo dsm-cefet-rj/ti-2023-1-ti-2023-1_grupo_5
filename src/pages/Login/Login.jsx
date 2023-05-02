@@ -23,7 +23,7 @@ const Login = () => {
   function logar() {
     let btn = document.getElementById("btnAlt");
     if (btn.value === "cliente") {
-      console.log(dispatch(logarContaCliente({ email: email, senha: senha })));
+      dispatch(logarContaCliente({ email: email, senha: senha })).then(navigate("/"));
     } else {
       dispatch(logarContaLojista({ email: email, senha: senha })).then(navigate("/"));
     }

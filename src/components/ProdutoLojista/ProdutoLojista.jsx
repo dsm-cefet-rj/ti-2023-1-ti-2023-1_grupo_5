@@ -16,7 +16,10 @@ const ProdutoLojista = ({produto}) => {
             <div className={styles.produtoLojista_campo_info}>
                 <Link to={`/produtos/${produto.id}`}>
                     <div className={styles.produto_lojista_descricao}>{produto.descricao}</div>
+                    <div></div>
                 </Link>
+                <div>{produto.detalhes}</div>
+                <div>{produto.preco}</div>
                 <Link to={`/editarProduto/${produto.id}`} className={styles.produto_lojista_botao_editar}>Editar</Link>
             </div>
 

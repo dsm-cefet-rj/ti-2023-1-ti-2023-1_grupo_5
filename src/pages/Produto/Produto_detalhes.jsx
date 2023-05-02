@@ -3,9 +3,12 @@ import styles from "./Produto.module.css"
 import retornaProduto from "./retornaProduto.js" 
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
+import { adicionarProduto } from "../../reduxFeatures/conta";
 
 function Produto_detalhes(){
     const {produtoId} = useParams()
+    const dispatch = useDispatch()
     
     let [prod, setProd] = useState(null);
     if(prod == null){
@@ -25,7 +28,7 @@ function Produto_detalhes(){
                              <h1 className={styles.descricao}>{prod.descricao}</h1>
                              <div className={styles.preco}>Preço: R${prod.preco}</div>
                              <div className={styles.detalhes1}><strong>Informações Técnicas:</strong>{prod.detalhes}</div>
-                             <button className={styles.botao_comprar}  >Comprar</button>
+                             <button className={styles.botao_comprar}  onClick={() => {dispatch(adicionarProduto({produto: prod}))}}>Comprar</button>
                          </div>
                 
                 
@@ -39,4 +42,4 @@ function Produto_detalhes(){
 }
 
 
-export default Produto_detalhes
+export default connect()(Produto_detalhes)
