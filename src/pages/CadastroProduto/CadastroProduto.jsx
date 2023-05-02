@@ -58,10 +58,7 @@ import { useEffect } from "react"
                                         <input id="descricao" type="text" placeholder="Descricao" className={styles.input_text} required/>
                                     </div>
                                     <div>
-                                        <input id="marca" type="text" placeholder="Marca" className={styles.input_text} required/>
-                                    </div>
-                                    <div>
-                                        <input id="preco" type="text" placeholder="Preço" className={styles.input_text} />
+                                        <input id="preco" type="number" placeholder="Preço" className={styles.input_text} />
                                     </div>
                                 </div>
                                 <div className={styles.flexivel}>
