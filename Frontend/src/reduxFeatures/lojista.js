@@ -3,32 +3,18 @@ const url = 'http://localhost:3000';
 const initialLojista = null;
 export const logarContaLojista = createAsyncThunk('lojista/logarContaLojista',
     async ({ email, senha }) => {
-        let conta;
         try {
-            conta = await fetch(url + '/lojas?email=' + email);
-            conta = await conta.json();
-            conta = conta[0];
-            if (conta) {
-                if (senha === conta.senha) {
-                    return {
-                        nome: conta.nome,
-                        endereco: conta.endereco,
-                        cnpj: conta.cnpj,
-                        telefone: conta.telefone,
-                        email: conta.email,
-                        id: conta.id,
-                        produtos: [],
-                        firstFetched: false,
-                    };
-                } else {
-                    console.log("senha incorreta")
-                    return null;
-                }
-            } else {
-                throw new Error("Não foi possível encontrar o email: " + email);
-            }
+            let res = await fetch(url + '/lojistas/logarLojista', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify({email: email, senha: senha})
+            });
+            res = await res.json();
+            return res;        
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
 
     }
@@ -37,7 +23,13 @@ export const logarContaLojista = createAsyncThunk('lojista/logarContaLojista',
 export const fetchProdutos = createAsyncThunk('lojista/fetchProdutos',
     async ({ id }) => {
         try {
-            let prod = await fetch(url + '/produtos?id_lojista=' + id)
+            let prod = await fetch(url + '/lojistas/fetchProdutos', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify({id_lojista: id})
+            })
             if (prod.ok) {
                 prod = await prod.json()
                 return prod;
@@ -52,7 +44,7 @@ export const fetchProdutos = createAsyncThunk('lojista/fetchProdutos',
 
 export const cadastrarProduto = createAsyncThunk('lojista/cadastrarProduto',
     async ({produto}) => {
-        fetch('http://localhost:3000/produtos', {
+        fetch('http://localhost:3000/produtos/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
