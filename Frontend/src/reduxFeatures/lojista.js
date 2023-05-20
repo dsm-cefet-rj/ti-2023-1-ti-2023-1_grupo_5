@@ -21,14 +21,14 @@ export const logarContaLojista = createAsyncThunk('lojista/logarContaLojista',
 )
 
 export const fetchProdutos = createAsyncThunk('lojista/fetchProdutos',
-    async ({ id }) => {
+    async ({ _id }) => {
         try {
             let prod = await fetch(url + '/lojistas/fetchProdutos', {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json",
                 },
-                body: JSON.stringify({id_lojista: id})
+                body: JSON.stringify({id_lojista: _id})
             })
             if (prod.ok) {
                 prod = await prod.json()
@@ -44,7 +44,7 @@ export const fetchProdutos = createAsyncThunk('lojista/fetchProdutos',
 
 export const cadastrarProduto = createAsyncThunk('lojista/cadastrarProduto',
     async ({produto}) => {
-        fetch('http://localhost:3000/produtos/', {
+        fetch('http://localhost:3000/produtos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -62,12 +62,16 @@ export const cadastrarProduto = createAsyncThunk('lojista/cadastrarProduto',
 )
 
 export const excluirProduto = createAsyncThunk('lojista/excluirProduto', 
-async ({id}) =>{
-    fetch("http://localhost:3000/produtos/" + id, {
+async ({id_lojista, id_produto}) => {
+    fetch("http://localhost:3000/produtos", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
          },
+        body: JSON.stringify({
+            id_lojista: id_lojista,
+            id_produto:  id_produto
+        })
     })
     .then(response => {
         if (!response.ok) {
@@ -76,6 +80,7 @@ async ({id}) =>{
     }).catch(error => {
         console.error(error);
     });
+ 
 })
 
 export const editarProduto = createAsyncThunk('lojista/editarProduto',

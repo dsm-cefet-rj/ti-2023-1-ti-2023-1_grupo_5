@@ -9,8 +9,9 @@ function Lojista() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     if(lojista.firstFetched == false ){
-        dispatch(fetchProdutos({id: lojista.id}))
+        dispatch(fetchProdutos({_id: lojista._id}))
         dispatch(alteraFirstFetched());
+        
     }
     return (
         <>

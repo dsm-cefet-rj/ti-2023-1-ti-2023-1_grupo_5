@@ -10,8 +10,7 @@ const ProdutoLojista_Editar = () => {
     const dispatch = useDispatch();
     const lojista = useSelector( state => state.lojista);
     let id = useParams().produtoId;
-    let produto = lojista.produtos.filter( item => item.id === id);
-    produto = Object.assign({}, produto[0]);
+    let produto = lojista.produtos[0];
 
     function editar(){
         let categoria = document.getElementById("produto_categoria");
@@ -28,7 +27,7 @@ const ProdutoLojista_Editar = () => {
         navigate("/lojista");
     }
     function excluir(){
-        dispatch(excluirProduto({id: produto.id}));
+        dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id}));
         dispatch(alteraFirstFetched());
         navigate("/lojista");
     }

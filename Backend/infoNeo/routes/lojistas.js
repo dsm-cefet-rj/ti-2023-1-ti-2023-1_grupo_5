@@ -19,7 +19,7 @@ router.post('/logarLojista', (req, res, next) => {
           cnpj: loja.cnpj,
           telefone: loja.telefone,
           email: loja.email,
-          id: loja.id,
+          _id: loja._id,
           produtos: [],
           firstFetched: false,
         });
@@ -31,7 +31,6 @@ router.post('/logarLojista', (req, res, next) => {
 });
 router.post('/fetchProdutos', (req, res, next) => {
   let id = req.body.id_lojista;
-  console.log(id);
   produtos.find({id_lojista: id}).then( (produtos) => {
     res.statusCode = 200;
     res.setHeader('Contfent-Type', 'application/json');
