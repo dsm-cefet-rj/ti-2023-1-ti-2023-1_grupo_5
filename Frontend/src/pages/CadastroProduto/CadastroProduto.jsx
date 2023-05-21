@@ -23,7 +23,7 @@ import { useEffect } from "react"
             descricao : descricao.value,
             preco : preco.value,
             detalhes : detalhes.value,
-            id_lojista : lojista.id
+            id_lojista : lojista._id
         }
         dispatch(cadastrarProduto({produto}));
         navigate("/lojista");

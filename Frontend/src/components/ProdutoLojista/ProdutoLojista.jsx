@@ -20,7 +20,7 @@ const ProdutoLojista = ({produto}) => {
                 </Link>
                 <div>{produto.detalhes}</div>
                 <div>{produto.preco}</div>
-                <Link to={`/editarProduto/${produto.id}`} className={styles.produto_lojista_botao_editar}>Editar</Link>
+                <Link to={`/editarProduto/${produto._id}`} className={styles.produto_lojista_botao_editar}>Editar</Link>
             </div>
 
         </div>

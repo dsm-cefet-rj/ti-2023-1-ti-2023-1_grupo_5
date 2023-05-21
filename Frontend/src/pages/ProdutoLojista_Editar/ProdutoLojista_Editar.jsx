@@ -9,8 +9,9 @@ const ProdutoLojista_Editar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const lojista = useSelector( state => state.lojista);
-    let id = useParams().produtoId;
-    let produto = lojista.produtos[0];
+    let {produtoId} = useParams();
+    let produto = lojista.produtos.filter( item => item._id === produtoId );
+    produto = produto[0];
 
     function editar(){
         let categoria = document.getElementById("produto_categoria");
@@ -28,10 +29,10 @@ const ProdutoLojista_Editar = () => {
     }
     function excluir(){
         dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id}));
-        dispatch(alteraFirstFetched());
+        //dispatch(alteraFirstFetched()); //provavelmente nao é necessario
         navigate("/lojista");
     }
-    
+
     return(
     <div className={styles.produtoLojista_Editar_body}>
             <form className={styles.formulario}>

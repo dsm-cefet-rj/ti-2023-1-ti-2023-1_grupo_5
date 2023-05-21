@@ -23,13 +23,18 @@ router.delete('/', (req, res, next) => {
   let id_lojista = req.body.id_lojista;
   let id_produto = req.body.id_produto;
   //retira o produto do banco e verifica se o id_lojista é igual ao passado no body
-  produtos.findOne({_id: id_produto}).then( prod => {
-    if(prod.id_lojista === id_lojista){
-      produtos.deleteOne({ _id: id_produto }).then( (resposta) => {
-        res.statusCode = 200;
-        res.setHeader('Contfent-Type', 'application/json');
-        res.json(resposta);
-      })
+  produtos.findById(id_produto).then( prod => {
+    if(prod != null){
+      if(prod.id_lojista === id_lojista){
+        produtos.deleteOne({ _id: id_produto }).then( (resposta) => {
+          res.statusCode = 200;
+          res.setHeader('Contfent-Type', 'application/json');
+          res.json(resposta);
+        })
+      }
+    }else{
+      res.statusCode = 204;
+      res.json([]);
     }
   })
 

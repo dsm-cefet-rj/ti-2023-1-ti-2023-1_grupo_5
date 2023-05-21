@@ -63,24 +63,16 @@ export const cadastrarProduto = createAsyncThunk('lojista/cadastrarProduto',
 
 export const excluirProduto = createAsyncThunk('lojista/excluirProduto', 
 async ({id_lojista, id_produto}) => {
-    fetch("http://localhost:3000/produtos", {
+    await fetch("http://localhost:3000/produtos", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
-         },
+            },
         body: JSON.stringify({
             id_lojista: id_lojista,
             id_produto:  id_produto
         })
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Não foi possível deletar o produto');
-        }
-    }).catch(error => {
-        console.error(error);
-    });
- 
 })
 
 export const editarProduto = createAsyncThunk('lojista/editarProduto',

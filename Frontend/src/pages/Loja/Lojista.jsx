@@ -11,12 +11,11 @@ function Lojista() {
     if(lojista.firstFetched == false ){
         dispatch(fetchProdutos({_id: lojista._id}))
         dispatch(alteraFirstFetched());
-        
     }
     return (
         <>
         {
-            lojista != null ? (
+            lojista != null  ? (
                 <div className={styles.loja}>
                 <div className={styles.campo_info}>
                     <h1>Loja - {lojista.nome}</h1>
@@ -29,11 +28,11 @@ function Lojista() {
                 <Link to="/cadastroProduto"><h2 className={styles.botaoCadastro}>Cadastrar Produto</h2></Link>
                 {lojista.produtos.length != 0 ? (
                     <div className={styles.campo_produtos}>
-                        {lojista.produtos.map((prod) => <ProdutoLojista produto={prod} key={prod.id}/>)}
+                        {lojista.produtos.map((prod) => <ProdutoLojista produto={prod} key={prod._id}/>)}
                     </div>
                 ) : (<div>Não há produtos registrados</div>)}
                 </div>
-            ) : <>{useEffect(() => {navigate("/error")}, lojista)}</>
+            ) : <>{() => {navigate("/error")}}</>
         }
         </>
         

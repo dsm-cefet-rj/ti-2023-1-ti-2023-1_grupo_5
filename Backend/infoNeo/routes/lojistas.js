@@ -32,10 +32,16 @@ router.post('/logarLojista', (req, res, next) => {
 router.post('/fetchProdutos', (req, res, next) => {
   let id = req.body.id_lojista;
   produtos.find({id_lojista: id}).then( (produtos) => {
-    res.statusCode = 200;
-    res.setHeader('Contfent-Type', 'application/json');
-    res.json(produtos);
+    if(produtos.length < 1){
+      res.statusCode = 200;
+      res.setHeader('Contfent-Type', 'application/json');
+      res.json([]);
+    }else{
+      res.statusCode = 200;
+      res.setHeader('Contfent-Type', 'application/json');
+      res.json(produtos);
     }
+  }
   )
 });
 
