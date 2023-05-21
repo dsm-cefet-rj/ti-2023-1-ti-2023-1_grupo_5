@@ -1,15 +1,18 @@
-//mongodb
+//mongodb atlas user: infoneo   senha: infoneo123
 const mongoose = require("mongoose");
+/*
 const url = "mongodb://localhost:27017/infoneo";
 const connect = mongoose.connect(url);
-const cors = require('cors');
-
-
 connect.then((db) => {
     console.log("conectado")
 }, (err) => {
     console.log(err)
 });
+*/
+const connectDatabase = require("./database/db");
+connectDatabase();
+const cors = require('cors');
+
 var express = require('express');
 var app = express();
 var path = require('path');
