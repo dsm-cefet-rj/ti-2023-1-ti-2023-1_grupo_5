@@ -9,10 +9,10 @@ Plataforma de venda de hardwares e periféricos para computadores.
 
 ## Executando o projeto:
 1 - Abra dois terminais, um para o backend, outro para o frontend.
-2 - No frontend execute: 
+2 - No frontend execute: <br>
 ``` npm install ```<br>
 ``` npm run dev ```<br>
-3 - No backend execute:
+3 - No backend execute: <br>
 ``` npm install ``` <br>
 ``` npm start ``` <br>
 
