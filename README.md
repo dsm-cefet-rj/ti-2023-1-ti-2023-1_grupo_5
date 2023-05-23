@@ -9,6 +9,7 @@ Plataforma de venda de hardwares e periféricos para computadores.
 
 ## Executando o projeto:
 1 - Abra dois terminais, um para o backend, outro para o frontend.
+<br>
 2 - No frontend execute: 
 <br>
 ``` npm install ```
