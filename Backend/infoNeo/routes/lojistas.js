@@ -45,4 +45,29 @@ router.post('/fetchProdutos', (req, res, next) => {
   )
 });
 
+router.post('/verificaEmail', (req, res, next) => {
+  lojistas.findOne({email: req.body.email}).then((lojista) => {
+    if(lojista != null){
+      res.statusCode = 200;
+      res.json({stts: true});
+      //return;
+    }else{
+      res.statusCode = 200;
+      res.json({stts: false});
+      return;
+    }
+  }).catch((error) => {
+    res.statusCode = 502; 
+    console.log(error);
+    return;
+  })
+  res.statusCode = 500;
+});
+
+router.post('/cadastrarLojista', (req, res, next) => {
+  lojistas.create(req.body);
+  res.statusCode = 200;
+  res.json();
+})
+
 module.exports = router;

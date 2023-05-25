@@ -1,0 +1,12 @@
+#registro_lojista_body{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    color: black;
+}
+button{
+    background-color: blueviolet;
+    border-radius: 5px;
+    border: solid rgb(90, 90, 90) 2px; 
+}

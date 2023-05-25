@@ -14,6 +14,7 @@ import Usuario from "./pages/Usuario/Usuario"
 import Produtos from "./pages/Produtos/Produtos"
 import Pesquisa from "./pages/Pesquisa/Pesquisa"
 import ErrorPage from "./pages/ErrorPage/ErrorPage"
+import RegistroLojista from "./pages/RegistroLojista/RegistroLojista"
 import {p as produtos, c as categorias} from "./components/Dados"
 import {connect} from "react-redux"
 
@@ -36,6 +37,7 @@ const App=()=> {
           <Route path="/usuario" element={<Usuario/>} />
           <Route path="/produtos" element={<Produtos/>} />
           <Route path="/error" element={<ErrorPage/>} />
+          <Route path="/registroLojista" element={<RegistroLojista/>}/>
         </Routes>
         <Footer />
       </Router>

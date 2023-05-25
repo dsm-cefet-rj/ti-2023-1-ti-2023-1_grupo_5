@@ -10,8 +10,12 @@ const clientesSchema = new Schema({
   senha: {
     type: String,
     required: true,
+  },
+  carrinho: {
+    type: Array,
+    required: true,
   }
 });
 var clientes = mongoose.model('clientes', clientesSchema);
-//clientesSchema.plugin(normalize);
 module.exports = clientes;
+

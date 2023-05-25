@@ -41,15 +41,15 @@ const Carrinho = ({ produto }) => {
                       total += produto.preco * produto.quantidade;
                       quantidadeTotal += produto.quantidade;
                       return (
-                        <tr key={produto.id} className={styles.carrinho_tbody_tr}>
-                          <td className={styles.carrinho_tbody_td}><button type='submit' onClick={ () => {dispatch(excluirProduto({id: produto.id}))} }><FontAwesomeIcon icon={faXmark} size="2xl" style={{ color: "#ff1414", }} /></button></td>
+                        <tr key={produto._id} className={styles.carrinho_tbody_tr}>
+                          <td className={styles.carrinho_tbody_td}><button type='submit' onClick={ () => {dispatch(excluirProduto({_id: produto._id}))} }><FontAwesomeIcon icon={faXmark} size="2xl" style={{ color: "#ff1414", }} /></button></td>
                           <td className={styles.carrinho_tbody_td}><img src={produto.img} className={styles.carrinho_table_img} alt={produto.descricao} /></td>
                           <td className={styles.carrinho_tbody_td}>{produto.descricao}</td>
                           <td className={styles.carrinho_tbody_td}>R$ {produto.preco}</td>
                           <td className={styles.carrinho_tbody_td}>
-                            <button onClick={ () => {dispatch(retirarQuantidade({id: produto.id}))} }>-</button>
+                            <button onClick={ () => {dispatch(retirarQuantidade({_id: produto._id}))} }>-</button>
                             {produto.quantidade}
-                            <button onClick={ () => {dispatch(adicionarQuantidade({id: produto.id}))} }>+</button>
+                            <button onClick={ () => {dispatch(adicionarQuantidade({_id: produto._id}))} }>+</button>
                           </td>
                           <td className={styles.carrinho_tbody_td}>R$ {produto.preco * produto.quantidade}</td>
                         </tr>

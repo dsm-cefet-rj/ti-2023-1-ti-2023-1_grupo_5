@@ -5,7 +5,24 @@ const initialConta = null;
 const url = 'http://localhost:3000';
 
 export const logarContaCliente = createAsyncThunk('conta/logarContaCliente', 
-    async ({email, senha}) => {
+    async ({ email, senha }) => {
+        try {
+            let res = await fetch(url + '/clientes/logarCliente', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify({email: email, senha: senha})
+            });
+            res = await res.json();
+            return res;        
+        } catch (error) {
+            console.error(error);
+        }
+
+    }    
+
+/*async ({email, senha}) => {
         let conta;
         try {
             conta = await fetch(url + '/contas?email=' + email);
@@ -26,7 +43,7 @@ export const logarContaCliente = createAsyncThunk('conta/logarContaCliente',
             return error;
         }
 
-    }
+    }*/
 )
 
 export const contaSlice = createSlice({
@@ -44,42 +61,42 @@ export const contaSlice = createSlice({
     }
 })
 
-function adicionarQuantidadeReducer(state, {id}){
+function adicionarQuantidadeReducer(state, {_id}){
     state.carrinho.map( prod => {
-        if(prod.id === id){
+        if(prod._id === _id){
             prod.quantidade ++;
         }
     })
-    alterarCarrinho(state.id, state.carrinho);
+    alterarCarrinho(state._id, state.carrinho);
     return state;
 }
 
-function retirarQuantidadeReducer(state, {id}){
+function retirarQuantidadeReducer(state, {_id}){
     state.carrinho.map( prod => {
-        if(prod.id === id){
+        if(prod._id === _id){
             if(prod.quantidade > 1){
                 prod.quantidade --;
             }
         }
     })
-    alterarCarrinho(state.id, state.carrinho);
+    alterarCarrinho(state._id, state.carrinho);
     return state;
 }
 
-function excluirProdutoReducer(state, {id}){
+function excluirProdutoReducer(state, {_id}){
     state.carrinho = state.carrinho.filter( prod => {
-        return (prod.id != id);   
+        return (prod._id != _id);   
     })
-    alterarCarrinho(state.id, state.carrinho);
+    alterarCarrinho(state._id, state.carrinho);
     return state;
 }
 
 function adicionarProdutoReducer(state, {produto}){
     let existe = false;
     state.carrinho.map( prod => {
-        if(prod.id === produto.id){
+        if(prod._id === produto._id){
             prod.quantidade ++;
-            alterarCarrinho(state.id, state.carrinho);
+            alterarCarrinho(state._id, state.carrinho);
             existe = true;
         }
     })
@@ -88,14 +105,14 @@ function adicionarProdutoReducer(state, {produto}){
     }
     produto.quantidade = 1;
     state.carrinho.push(produto);
-    alterarCarrinho(state.id, state.carrinho);
+    alterarCarrinho(state._id, state.carrinho);
     return state;
 }
 
 //utilizada por retiraQuantidade, adicionaQuantidade, excluiProduto e adicionaProduto
 function alterarCarrinho(idConta, carrinhoConta){
     const carr = {carrinho: carrinhoConta};
-    fetch(url + "/contas/" + idConta, {
+    fetch(url + `/clientes/patchCarrinho/${idConta}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',
