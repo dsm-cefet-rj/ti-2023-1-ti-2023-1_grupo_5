@@ -37,8 +37,6 @@ router.delete('/', (req, res, next) => {
       res.json([]);
     }
   })
-
-  
 });
 
 module.exports = router;

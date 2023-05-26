@@ -4,16 +4,20 @@ const lojistas = require('../models/lojistas');
 const produtos = require("../models/produtos");
 
 router.post('/logarLojista', (req, res, next) => {
+  console.log(req.body)
   lojistas.find({email: req.body.email}).then( (loja) => {
     if(loja.length != 1){
-      res.statusCode = 404;
+      res.statusCode = 200;
       res.json(null);
+      console.log("Não existe o ljista no banco de dados.");
     }else{
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
       loja = loja[0];
+      console.log(req.body.senha)
       if(loja.senha === req.body.senha){
-        res.json({
+
+        let lojista = {
           nome: loja.nome,
           endereco: loja.endereco,
           cnpj: loja.cnpj,
@@ -22,7 +26,11 @@ router.post('/logarLojista', (req, res, next) => {
           _id: loja._id,
           produtos: [],
           firstFetched: false,
-        });
+        };
+        
+        res.json(lojista);
+        console.log("Lojista logado: ");
+        console.log(lojista);
       }else{
         res.json(null);
       }
@@ -60,14 +68,26 @@ router.post('/verificaEmail', (req, res, next) => {
     res.statusCode = 502; 
     console.log(error);
     return;
-  })
-  res.statusCode = 500;
+  });
 });
 
 router.post('/cadastrarLojista', (req, res, next) => {
-  lojistas.create(req.body);
-  res.statusCode = 200;
-  res.json();
+  lojistas.findOne({email: req.body.email}).then((lojista) => {
+    if(lojista != null){
+      res.statusCode = 200;
+      return;
+    }else{
+      lojistas.create(req.body);
+      res.statusCode = 200;
+      res.json();
+    }
+  }).catch((error) => {
+    res.statusCode = 502; 
+    console.log(error);
+    return;
+  });
+  
+  
 })
 
 module.exports = router;

@@ -4,11 +4,12 @@ import Button from "../../components/Button/Button";
 import * as C from "./Registro.module";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
+import verificaEmail from "./verificaEmail";
 
 
 
 const Registro = () => {
-  
+  const [emailOk, setEmailOk] = useState(false);
   const [email, setEmail] = useState("");
   const [emailConf, setEmailConf] = useState("");
   const [senha, setSenha] = useState("");
@@ -28,30 +29,18 @@ const Registro = () => {
     const novoUsuario = {
       email: email,
       senha: senha,
-      id_carrinho: "3"
+      produtos: []
     };
-    alert("Usuário cadatrado com sucesso!");
-    navigate("/login");
-    fetch('http://localhost:3000/contas', {
+    //navigate("/login");
+    let res = fetch('http://localhost:3000/clientes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(novoUsuario)
-    })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error('Erro ao adicionar usuário');
-      }
-    })
-    .then(data => {
-      console.log('Usuário adicionado com sucesso:', data);
-    })
-    .catch(error => {
-      console.error('Erro ao adicionar usuário:', error);
     });
+    console.log(res);
+    //console.log("Usuário cadatrado com sucesso!");
     
   }
 
@@ -73,7 +62,7 @@ const Registro = () => {
     }
 
     alert("Usuário cadatrado com sucesso!");
-    navigate("/login");
+    //navigate("/login");
   };
 
   return (
@@ -84,13 +73,13 @@ const Registro = () => {
           type="email"
           placeholder="Digite seu E-mail"
           value={email}
-          onChange={(e) => [setEmail(e.target.value), setError("")]}
+          onChange={(e) => {setEmail(e.target.value); setError("");  verificaEmail(e.target.value, setEmailOk); console.log(emailOk)}}
         />
         <Imput
           type="email"
           placeholder="Confirme seu E-mail"
           value={emailConf}
-          onChange={(e) => [setEmailConf(e.target.value), setError("")]}
+          onChange={(e) => {setEmailConf(e.target.value); setError("")}}
         />
         <Imput
           type="password"
@@ -99,7 +88,7 @@ const Registro = () => {
           onChange={(e) => [setSenha(e.target.value), setError("")]}
         />
         <C.labelError>{error}</C.labelError>
-        <Button Text="Criar Conta" onClick={registrar} />
+        <Button Text="Criar Conta" onClick={() => {console.log("registrar.")/*registrar*/}} />
         <C.LabelLogin>
           Já tem uma conta?
           <C.Strong>

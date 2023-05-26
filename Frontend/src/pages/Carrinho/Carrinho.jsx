@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux"
 import { retirarQuantidade, adicionarQuantidade, excluirProduto } from "../../reduxFeatures/conta";
 
-const Carrinho = ({ produto }) => {
+const Carrinho = () => {
   const conta = useSelector((state) => state.conta);
   const tipo = conta.tipo;
   const carrinho = conta.carrinho;

@@ -1,4 +1,4 @@
-export default function registrarLojista(emailOk){
+export default function registrarLojista(emailOk, set){
     let cnpj = document.getElementById("cnpj");
     let nome = document.getElementById("nome");
     let endereco = document.getElementById("endereco");
@@ -20,7 +20,7 @@ export default function registrarLojista(emailOk){
         console.log(tel.value.length)
         return console.log("telefone invalido");
     }
-    if(senha1.value.length < 4){
+    if(senha1.value.length < 3){
         return console.log("senha invalida");
     }
     
