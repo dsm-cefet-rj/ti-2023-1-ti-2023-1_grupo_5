@@ -21,29 +21,6 @@ export const logarContaCliente = createAsyncThunk('conta/logarContaCliente',
         }
 
     }    
-
-/*async ({email, senha}) => {
-        let conta;
-        try {
-            conta = await fetch(url + '/contas?email=' + email);
-            conta = await conta.json();
-            conta = conta[0];
-            if(conta){
-                if(senha === conta.senha){
-                    return {email: conta.email, carrinho: conta.carrinho, tipo: "cliente", id: conta.id};
-                }else{
-                    console.log("senha incorreta");
-                    return null;
-                }
-            }else{
-                throw new Error("Não foi possível encontrar o email: " + email);
-            }
-        } catch (error) {
-            console.error(error)
-            return error;
-        }
-
-    }*/
 )
 
 export const contaSlice = createSlice({

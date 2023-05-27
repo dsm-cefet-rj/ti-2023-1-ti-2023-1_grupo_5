@@ -42,19 +42,19 @@ router.post('/logarCliente', (req, res, next) => {
           tipo: "cliente",
           carrinho: cliente.carrinho
         }
-        res.statusCode = 200;
+        res.statusCode = 200;//mudar
         res.setHeader('Content-Type', 'application/json');
         res.json(c);
         console.log("\nCliente " + cliente.email + " logado no site.");
         return;
       }else{
-        res.statusCode = 200;
+        res.statusCode = 200;//mudar 
         res.json(null);
         console.log("\nCliente " + req.body.email + " tentou logar-se com uma senha incorreta.");
         return;
       }
     }else{
-      res.statusCode = 200;
+      res.statusCode = 200;//mudar
       res.json(null);
       console.log("\nCliente " + req.body.email + " não encontrado no banco de dados.");
       return;
@@ -66,9 +66,15 @@ router.post('/logarCliente', (req, res, next) => {
 
 //atualiza carrinho
 router.patch('/patchCarrinho/:id', (req, res, next) => {
-  clientes.findOneAndUpdate({_id: req.params.id}, req.body);
-  res.sendStatus = 200;
-  return;
+  clientes.findOneAndUpdate({_id: req.params.id}, req.body)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.error(err);
+      res.sendStatus(500);
+    });
 });
+
 
 module.exports = router;
