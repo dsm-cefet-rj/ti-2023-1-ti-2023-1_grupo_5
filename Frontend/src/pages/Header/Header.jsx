@@ -48,7 +48,6 @@ function Header() {
 
     let itemsCount;
     if(conta != null){
-        console.log(conta)
         if(conta.tipo === "cliente"){
             itemsCount = conta.carrinho.reduce((prev,curr) =>{
                 console.log("aa")

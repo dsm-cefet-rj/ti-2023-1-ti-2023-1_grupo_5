@@ -4,12 +4,11 @@ const lojistas = require('../models/lojistas');
 const produtos = require("../models/produtos");
 
 router.post('/logarLojista', (req, res, next) => {
-  console.log(req.body)
   lojistas.find({email: req.body.email}).then( (loja) => {
     if(loja.length != 1){
       res.statusCode = 200;
       res.json(null);
-      console.log("Não existe o ljista no banco de dados.");
+      console.log("Lojista inexistente no banco de dados.");
     }else{
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
@@ -54,20 +53,18 @@ router.post('/fetchProdutos', (req, res, next) => {
 });
 
 router.post('/verificaEmail', (req, res, next) => {
+  console.log("a")
   lojistas.findOne({email: req.body.email}).then((lojista) => {
     if(lojista != null){
       res.statusCode = 200;
       res.json({stts: true});
-      //return;
     }else{
       res.statusCode = 200;
       res.json({stts: false});
-      return;
     }
   }).catch((error) => {
     res.statusCode = 502; 
     console.log(error);
-    return;
   });
 });
 

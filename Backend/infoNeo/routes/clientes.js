@@ -3,49 +3,64 @@ var router = express.Router();
 const clientes = require('../models/clientes');
 
 router.post('/verificaEmail', (req, res, next) => {
-  console.log(req.body)
-  // clientes.findOne({email: req.body.email}).then((cliente) => {
-  //   if(cliente != null){
-  //     res.statusCode = 200;
-  //     res.json({stts: true});
-  //     console.log("email ja existente");
-  //     //return;
-  //   }else{
-  //     res.statusCode = 200;
-  //     res.json({stts: false});
-  //     return;
-  //   }
-  // }).catch((error) => {
-  //   res.statusCode = 502; //?
-  //   console.log(error);
-  //   return;
-  // })
-
-  res.statusCode = 200;
+  clientes.findOne({email: req.body.email}).then((cliente) => {
+    console.log(cliente)
+    if(cliente != null){
+      //existe email
+      res.statusCode = 200;
+      return res.json({msg: "Email existente."});
+    }else{
+      //nao existe email
+      res.statusCode = 204;
+      return res.json({});
+    }
+  }).catch((error) => {
+    //??
+    console.log(error);
+  })
+  //algum tipo de erro
+  //res.statusCode = 501; 
+  //res.json({msg: "O servidor não soube responder à requisição."});
 });
 
 //cria usuario
 router.post('/', (req, res, next) => {  
-  //clientes.create(req.body);
+  clientes.create(req.body);
   res.statusCode = 200;
-  res.json();
-  console.log("Usuário cadastrado: ");
+  res.json({});
+  console.log("Cliente cadastrado: ");
   console.log(req.body);
 });
 
-/* GET users listing. */
 router.post('/logarCliente', (req, res, next) => {
   clientes.findOne({email: req.body.email}).then( (cliente) => {
-    if(cliente.senha === req.body.senha){
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application/json');
-      res.json(cliente);
-      return;
+    if(cliente != null){
+      if(cliente.senha === req.body.senha){
+        let c = {
+          _id: cliente._id,
+          email: cliente.email,
+          tipo: "cliente",
+          carrinho: cliente.carrinho
+        }
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(c);
+        console.log("\nCliente " + cliente.email + " logado no site.");
+        return;
+      }else{
+        res.statusCode = 200;
+        res.json(null);
+        console.log("\nCliente " + req.body.email + " tentou logar-se com uma senha incorreta.");
+        return;
+      }
     }else{
       res.statusCode = 200;
       res.json(null);
+      console.log("\nCliente " + req.body.email + " não encontrado no banco de dados.");
       return;
     }
+  }).catch(err => {
+    console.log(err);
   })
 });
 
