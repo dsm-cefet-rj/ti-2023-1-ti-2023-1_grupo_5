@@ -9,7 +9,7 @@ import { logarContaCliente } from "../../reduxFeatures/conta";
 import { logarContaLojista } from "../../reduxFeatures/lojista";
 
 const Login = () => {
-
+  const [tipo, setTipo] = useState("cliente");
   const conta = useSelector(state => state.conta);
   const lojista = useSelector(state => state.lojista);
 
@@ -21,21 +21,28 @@ const Login = () => {
   const [error, setError] = useState("");
 
   function logar() {
-    let btn = document.getElementById("btnAlt");
-    if (btn.value === "cliente") {
-      dispatch(logarContaCliente({ email: email, senha: senha })).then(navigate("/"));
+    if (tipo === "cliente") {
+      dispatch(logarContaCliente({ email: email, senha: senha })).then(res => {
+        if(res.payload != null){
+          navigate("/");
+        }
+      });
     } else {
-      dispatch(logarContaLojista({ email: email, senha: senha })).then(navigate("/"));
+      dispatch(logarContaLojista({ email: email, senha: senha })).then( res => {
+        if(res.payload != null){
+          navigate("/");
+        }
+      });
     }
   }
   function alternarTipo() {
     let btn = document.getElementById("btnAlt");
-    if (btn.value === "cliente") {
-      btn.value = "lojista";
+    if (tipo === "cliente") {
       btn.innerHTML = "Lojista";
+      setTipo("lojista");
     } else {
-      btn.value = "cliente";
       btn.innerHTML = "Cliente";
+      setTipo("cliente");
     }
   }
   return (
@@ -61,7 +68,15 @@ const Login = () => {
             <C.LabelLogin>
               Não tem uma conta?
               <C.Strong>
-                <Link to="/registro">&nbsp;Registre-se</Link>
+                {
+                  tipo === "cliente" ? (
+                      <Link to="/registro">&nbsp;Registre-se como cliente</Link>
+                    )
+                    :
+                    (
+                      <Link to="/registroLojista">&nbsp;Registre-se como lojista</Link>
+                    )
+                }
               </C.Strong>
             </C.LabelLogin>
           </C.Content>
