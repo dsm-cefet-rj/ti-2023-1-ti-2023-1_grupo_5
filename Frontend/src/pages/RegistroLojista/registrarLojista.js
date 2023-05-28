@@ -1,4 +1,4 @@
-export default function registrarLojista(emailOk, set){
+export default function registrarLojista(emailOk, setError){
     let cnpj = document.getElementById("cnpj");
     let nome = document.getElementById("nome");
     let endereco = document.getElementById("endereco");
@@ -8,20 +8,19 @@ export default function registrarLojista(emailOk, set){
     //XX.XXX.XXX/0001-XX length == 18
     if(cnpj.value.length != 18){
         //cnpj.focus();  n funcionou :(
-        return console.log("cnpj invalido")
+        return setError("O cnpj deve ter o formato XX.XXX.XXX/0001-XX.");
     }
     if(nome.value.length < 3){
-        return console.log("nome invalido")
+        return setError("O nome deve conter ao menos 3 caracteres.");
     }
     if(endereco.value.length < 4){
-        return console.log("endereço invalido");
+        return setError("O endereço deve conter ao menos 4 caracteres.");
     }
     if(tel.value.length != 8){
-        console.log(tel.value.length)
-        return console.log("telefone invalido");
+        return setError("O telefone deve conter ao menos 8 caracteres.");
     }
     if(senha1.value.length < 3){
-        return console.log("senha invalida");
+        return setError("A senha deve conter ao menos 3 caracteres");
     }
     
     const lojista = {
@@ -32,12 +31,14 @@ export default function registrarLojista(emailOk, set){
         telefone: tel.value,
         senha: senha1.value
     }
-    console.log(emailOk);
+
     if(emailOk == true){
       cadastrarLojista(lojista);
-      console.log("cadastrado");
+      setError("");
+      alert("Usuário cadastrado.");
+      return true;
     }else{
-      console.log("email invalido");
+      alert("E-mail inválido.");
     }
 }
 

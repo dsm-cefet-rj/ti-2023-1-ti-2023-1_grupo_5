@@ -34,17 +34,7 @@ const Registro = () => {
       senha: senha,
       produtos: []
     };
-    //navigate("/login");
-    // let res = fetch('http://localhost:3000/clientes', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(novoUsuario)
-    // });
-    console.log(res);
-    //console.log("Usuário cadatrado com sucesso!");
-    
+
   }
 
 
@@ -103,7 +93,7 @@ const Registro = () => {
             setError("");   
           }}
           onBlur={() => {
-            if(email.length > 8 && emailChecado == false){
+            if(emailChecado == false){
               verificaEmail(email, setEmailOk, setMsg);
               setEmailChecado(true);
             }

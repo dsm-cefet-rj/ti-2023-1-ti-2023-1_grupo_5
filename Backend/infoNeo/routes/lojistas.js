@@ -53,19 +53,24 @@ router.post('/fetchProdutos', (req, res, next) => {
 });
 
 router.post('/verificaEmail', (req, res, next) => {
-  console.log("a")
   lojistas.findOne({email: req.body.email}).then((lojista) => {
+    console.log(lojista)
     if(lojista != null){
+      //existe email
       res.statusCode = 200;
-      res.json({stts: true});
+      return res.json({msg: "Email existente."});
     }else{
-      res.statusCode = 200;
-      res.json({stts: false});
+      //nao existe email
+      res.statusCode = 204;
+      return res.json({});
     }
   }).catch((error) => {
-    res.statusCode = 502; 
+    //??
     console.log(error);
-  });
+  })
+  //algum tipo de erro
+  //res.statusCode = 501; 
+  //res.json({msg: "O servidor não soube responder à requisição."});
 });
 
 router.post('/cadastrarLojista', (req, res, next) => {

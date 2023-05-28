@@ -21,7 +21,6 @@ function  verificaEmailBanco(emailVerif, setEmailOk, setMsg){
 
 // !!nota!! -> trocar por alguma api que faça verificaçao de email
 export default async function verificaEmail(emailVerif, setEmailOk, setMsg){
-    let e;
     if(emailVerif.includes("@") && !emailVerif.includes(" ")){
         let arb = emailVerif.split("@");
         if(arb.length == 2 && arb[0].length > 2){
@@ -35,19 +34,4 @@ export default async function verificaEmail(emailVerif, setEmailOk, setMsg){
     }
     setMsg(["Formato de E-mail inválido.", "#f30"]);
     setEmailOk(false);
-
-    /*try {
-      e = await fetch("http://localhost:3000/lojistas/verificaEmail", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email: emailVerif})
-      });
-      e = await e.json();
-    } catch (error) { console.error(error) }
-    //e.stts == true -> já existe email cadastrado    e.stts == false -> email disponivel
-    if(e.stts == false){
-      console.log("email disponivel");
-    }else{
-      console.log("email ja cadastrado");
-    }*/
   }
