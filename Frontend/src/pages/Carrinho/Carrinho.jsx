@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux"
-import { retirarQuantidade, adicionarQuantidade, excluirProduto } from "../../reduxFeatures/conta";
+import { retirarQuantidade, adicionarQuantidade, excluirProduto, processarCompra } from "../../reduxFeatures/conta";
 
 const Carrinho = () => {
   const conta = useSelector((state) => state.conta);
@@ -78,7 +78,10 @@ const Carrinho = () => {
                     </tr>
                   </tbody>
                 </table>
-                <button className={styles.subtotal_botao_compra}>Comprar</button>
+                <button className={styles.subtotal_botao_compra} onClick={() => {
+                  let e;
+                  e = dispatch(processarCompra())
+                }}>Comprar</button>
               </div>
             </section>
           </div>

@@ -1,7 +1,6 @@
 import {createStore, createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import { useNavigate } from "react-router-dom";
 const initialConta = null;
-
 const url = 'http://localhost:3000';
 
 export const logarContaCliente = createAsyncThunk('conta/logarContaCliente', 
@@ -32,11 +31,21 @@ export const contaSlice = createSlice({
         retirarQuantidade : (state, action) => retirarQuantidadeReducer(state, action.payload),
         adicionarProduto : (state, action) => adicionarProdutoReducer(state, action.payload),
         excluirProduto : (state, action) => excluirProdutoReducer(state, action.payload),
+        processarCompra : (state, action) => processarCompraReducer(state, action.payload),
     },
     extraReducers: {
         [logarContaCliente.fulfilled]: (state, action) => fulfillContaReducer(state, action.payload),
     }
 })
+
+function processarCompraReducer(state, payload){
+    if(state.carrinho.length != 0){
+        state.carrinho = [];
+        alterarCarrinho(state._id, state.carrinho);
+        alert("Compra realizada!");
+    }
+    return state;
+}
 
 function adicionarQuantidadeReducer(state, {_id}){
     state.carrinho.map( prod => {
@@ -109,4 +118,14 @@ function sairContaReducer(state, action){
 
 
 export default contaSlice.reducer;
-export const { sairContaCliente, sairConta, adicionarQuantidade, retirarQuantidade, excluirProduto, adicionarProduto} = contaSlice.actions;
+export const { 
+
+    sairContaCliente, 
+    sairConta, 
+    adicionarQuantidade,
+    retirarQuantidade, 
+    excluirProduto, 
+    adicionarProduto,
+    processarCompra
+
+} = contaSlice.actions;
