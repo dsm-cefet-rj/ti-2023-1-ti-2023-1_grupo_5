@@ -4,8 +4,17 @@ const produtos = require("../models/produtos");
 const bodyParser = require("body-parser");
 
 /* GET produtos listing. */
-router.get('/', (req, res, next) => {
+router.get('/listarProdutos', (req, res, next) => {
   produtos.find().then((prod) => {
+    res.statusCode = 200;
+    res.json(prod)
+  });
+})
+
+router.get('/:id', (req, res, next) => {
+  produtos.findOne({_id: req.params.id}).then((prod) => {
+    res.statusCode = 200;
+    console.log(prod)
     res.json(prod)
   });
 })
@@ -37,6 +46,16 @@ router.delete('/', (req, res, next) => {
       res.json([]);
     }
   })
+});
+
+router.patch('/:id', (req,res,next) => {
+  produtos.findByIdAndUpdate({_id: req.params.id}, req.body)
+  .then( response => {
+    console.log("produto " + req.body._id + " editado.");
+    res.statusCode = 200;
+    res.json(response);
+  });
+
 });
 
 module.exports = router;

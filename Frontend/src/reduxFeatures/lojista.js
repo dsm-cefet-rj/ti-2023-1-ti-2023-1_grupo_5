@@ -77,7 +77,7 @@ async ({id_lojista, id_produto}) => {
 
 export const editarProduto = createAsyncThunk('lojista/editarProduto',
     async ({produto}) => {
-        fetch("http://localhost:3000/produtos/" + produto.id, {
+        fetch("http://localhost:3000/produtos/" + produto._id, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',

@@ -14,7 +14,6 @@ function Produto_detalhes(){
     if(prod == null){
         retornaProduto(produtoId).then(res => {setProd(res)});
     }
-    console.log(prod)
     
     return (
         

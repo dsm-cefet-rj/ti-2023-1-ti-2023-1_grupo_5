@@ -10,27 +10,44 @@ const ProdutoLojista_Editar = () => {
     const dispatch = useDispatch();
     const lojista = useSelector( state => state.lojista);
     let {produtoId} = useParams();
-    let produto = lojista.produtos.filter( item => item._id === produtoId );
-    produto = produto[0];
+
+    let produto = {};
+    lojista.produtos.map( item => {
+        if(item._id === produtoId){
+            produto = {
+                _id: item._id,
+                img: item.img,
+                categoria: item.categoria,
+                descricao: item.descricao,
+                detalhes: item.detalhes,
+                preco: item.preco,
+                id_lojista: item.id_lojista,
+                __v: item.__v
+            }
+        }
+    })
 
     function editar(){
         let categoria = document.getElementById("produto_categoria");
         let descricao = document.getElementById("produto_descricao");
         let detalhes = document.getElementById("produto_detalhes");
         let preco = document.getElementById("produto_preco");
-    
+
         if(categoria.value != ""){produto.categoria = categoria.value}
         if(descricao.value != ""){produto.descricao = descricao.value}
         if(detalhes.value != ""){produto.detalhes = detalhes.value}
         if(preco.value != ""){produto.preco = preco.value}
         dispatch(editarProduto({produto: produto}));
-        dispatch(alteraFirstFetched());
+        //dispatch(alteraFirstFetched()); // n é necessario
         navigate("/lojista");
     }
     function excluir(){
-        dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id}));
+        let opt = window.confirm("Confirmar exclusão?");
+        if(opt){
+            dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id}));
+            navigate("/lojista");
+        }
         //dispatch(alteraFirstFetched()); //provavelmente nao é necessario
-        navigate("/lojista");
     }
 
     return(
