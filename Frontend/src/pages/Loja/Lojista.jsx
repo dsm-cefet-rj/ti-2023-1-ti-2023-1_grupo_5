@@ -19,7 +19,6 @@ function Lojista() {
         dispatch(alteraFirstFetched());
     }
 
-
     return (
         <>
         {

@@ -33,8 +33,8 @@ export default function LojistaInfo_Editar({ lojista, setEditando }) {
             </div>
 
             <div className={styles.input}>
-                <input type="text"      id="cnpj"       value={lojista.cnpj}        style={{color: '#333'}}/>
-                <input type="email"     id="email"      value={lojista.email}       style={{color: '#333'}}/>
+                <input type="text"      id="cnpj"       value={lojista.cnpj}        style={{color: '#333'}}     readOnly/>
+                <input type="email"     id="email"      value={lojista.email}       style={{color: '#333'}}     readOnly/>
                 <input type="text"      id="nome"       value={nome}        onChange={(e) => {setNome(e.target.value)}}/>
                 <input type="text"      id="endereco"   value={endereco}    onChange={(e) => {setEndereco(e.target.value)}}/>
                 <input type="number"    id="telefone"   value={telefone}    onChange={(e) => {setTelefone(e.target.value)}}/>

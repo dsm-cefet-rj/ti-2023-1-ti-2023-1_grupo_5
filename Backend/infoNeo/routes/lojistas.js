@@ -98,8 +98,20 @@ router.post('/cadastrarLojista', (req, res, next) => {
     console.log(error);
     return;
   });
-  
-  
+})
+
+router.delete('/:id', (req, res, next) => {
+  let _id = req.params.id;
+  produtos.deleteMany({id_lojista: _id}).then(res => {
+    console.log("\nOs produtos foram deletados com sucesso.");
+    console.log( res)
+  });
+  lojistas.findByIdAndDelete(_id).then(res => {
+    console.log("O lojista foi deletado com sucesso.");
+    console.log(res)
+  });
+  res.statusCode = 200;
+  res.json({msg: "O lojista foi deletado com sucesso."});
 })
 
 module.exports = router;

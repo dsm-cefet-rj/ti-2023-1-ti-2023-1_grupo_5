@@ -101,6 +101,7 @@ export const lojistaSlice = createSlice({
         alteraFirstFetched: (state, action) => alteraFirstFetchedReducer(state, action.payload),
         sairContaLojista: (state, action) => sairContaReducer(state, action.payload),
         editarDadosLojista: (state, action) => editarDadosLojistaReducer(state, action.payload),
+        deletarLojista: (state, action) => deletarLojistaReducer(state, action.payload), 
     },
     extraReducers: {
         [logarContaLojista.fulfilled]: (state, action) => fulfillContaReducer(state, action.payload),
@@ -176,5 +177,10 @@ function fulfillExcluirProdutoReducer(contaState, contaFetched){
     return contaState;
 }
 
+function deletarLojistaReducer(state, payload){
+    fetch("http://localhost:3000/lojistas/" + state._id, {method: "DELETE"});
+    return null;
+}
+
 export default lojistaSlice.reducer;
-export const { sairContaLojista, alteraFirstFetched, editarDadosLojista } = lojistaSlice.actions;
+export const { sairContaLojista, alteraFirstFetched, editarDadosLojista, deletarLojista } = lojistaSlice.actions;
