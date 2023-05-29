@@ -100,6 +100,7 @@ export const lojistaSlice = createSlice({
     reducers: {
         alteraFirstFetched: (state, action) => alteraFirstFetchedReducer(state, action.payload),
         sairContaLojista: (state, action) => sairContaReducer(state, action.payload),
+        editarDadosLojista: (state, action) => editarDadosLojistaReducer(state, action.payload),
     },
     extraReducers: {
         [logarContaLojista.fulfilled]: (state, action) => fulfillContaReducer(state, action.payload),
@@ -122,6 +123,40 @@ function sairContaReducer(state, conta){
     return null;
 }
 
+function editarDadosLojistaReducer(state, payload){
+    let ok = false;
+
+    let r = fetch("http://localhost:3000/lojistas/" + state._id, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(payload)
+        }
+    ).then( (res) => {
+        return res.json();
+    });
+
+    /*
+    Não entendi por que não funcionou
+    deveria retornar state atualizado somente se desse certo.
+    */
+
+    // r.then( res => {
+    //     if(res.statusCode == 200){
+    //         state.nome = payload.nome;
+    //         state.telefone = payload.telefone;
+    //         state.endereco = payload.endereco;
+    //     }
+    // })
+
+    state.nome = payload.nome;
+    state.telefone = payload.telefone;
+    state.endereco = payload.endereco;
+
+    return state;
+}
+
 function fulfillCadastrarProdutoReducer(contaState, contaFetched){
     contaState.firstFetched = false;
     return contaState;
@@ -142,4 +177,4 @@ function fulfillExcluirProdutoReducer(contaState, contaFetched){
 }
 
 export default lojistaSlice.reducer;
-export const { sairContaLojista, alteraFirstFetched} = lojistaSlice.actions;
+export const { sairContaLojista, alteraFirstFetched, editarDadosLojista } = lojistaSlice.actions;

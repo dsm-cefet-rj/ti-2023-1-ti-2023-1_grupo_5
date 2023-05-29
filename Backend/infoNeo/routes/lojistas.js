@@ -8,7 +8,7 @@ router.post('/logarLojista', (req, res, next) => {
     if(loja.length != 1){
       res.statusCode = 200;
       res.json(null);
-      console.log("Lojista inexistente no banco de dados.");
+      console.log("\nLojista inexistente no banco de dados.");
     }else{
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
@@ -28,7 +28,7 @@ router.post('/logarLojista', (req, res, next) => {
         };
         
         res.json(lojista);
-        console.log("Lojista logado: ");
+        console.log("\nLojista logado: ");
         console.log(lojista);
       }else{
         res.json(null);
@@ -72,6 +72,16 @@ router.post('/verificaEmail', (req, res, next) => {
   //res.statusCode = 501; 
   //res.json({msg: "O servidor não soube responder à requisição."});
 });
+
+router.patch('/:id', (req, res, next) => {
+  lojistas.findOneAndUpdate({_id: req.params.id}, req.body)
+  .then(response => {
+    res.statusCode = 200;
+    res.json({msg: "Dados atualizados."});
+    console.log("Lojista atualizado com sucesso.");
+    console.log(response);
+  });
+})
 
 router.post('/cadastrarLojista', (req, res, next) => {
   lojistas.findOne({email: req.body.email}).then((lojista) => {
