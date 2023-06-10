@@ -6,10 +6,10 @@ export default function ProdutoListagem( {produto} ) {
     const conta = useSelector((state) => state.conta);
     const dispatch = useDispatch();
     return (
-        <div className={styles.parte_cima}>
+        <div className={styles.parte_cima} >
         <div className={styles.novidades_produto}>
             
-            <Link to={`/produtos/${produto.id}`}>
+            <Link to={`/produtos/${produto._id}`}>
                 <img src={produto.img} alt='' className={styles.novidade_produto_imagem} />
                 <div className={styles.novidade_produto_descricao}>  {produto.descricao}</div>
             </Link>

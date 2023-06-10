@@ -3,23 +3,29 @@ import styles from "./Produto.module.css"
 import retornaProduto from "./retornaProduto.js" 
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { adicionarProduto } from "../../reduxFeatures/conta";
+import { alteraFetched, fetchProduto } from "../../reduxFeatures/geral";
 
 function Produto_detalhes(){
-    const {produtoId} = useParams()
-    const dispatch = useDispatch()
+    const {produtoId} = useParams();
+    const dispatch = useDispatch();
+    let state = useSelector( state => state.geral);
     
-    let [prod, setProd] = useState(null);
-    if(prod == null){
-        retornaProduto(produtoId).then(res => {setProd(res)});
+    let prod = state.produto;
+    if(state.fetched == false){
+        dispatch(fetchProduto({_id: produtoId}));
+    }else{
+        if(prod._id != produtoId){
+            dispatch(fetchProduto({_id: produtoId}));
+        }
     }
     
     return (
         
           <div className={styles.produto_body}>
         {
-            prod == null ? (<></>) : 
+            prod == null || prod == undefined ? (<></>) : 
             (
                      <div className={styles.produto_container}>
                          <div className={styles.campo_img}><img src={prod.img}/></div>

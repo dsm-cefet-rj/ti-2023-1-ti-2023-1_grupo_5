@@ -9,7 +9,7 @@ export default function Produtos(){
   return (
     <div  className={styles.produto}>
       {
-        prod.map( p => (<ProdutoListagem produto={p} key={p.id}/>) )
+        prod.map( p => (<ProdutoListagem produto={p} key={p._id}/>) )
       }
     </div>
   )

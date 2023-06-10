@@ -4,19 +4,22 @@ const produtos = require("../models/produtos");
 const bodyParser = require("body-parser");
 
 /* GET produtos listing. */
-router.get('/listarProdutos', (req, res, next) => {
+router.get('/', (req, res, next) => {
   produtos.find().then((prod) => {
     res.statusCode = 200;
     res.json(prod)
   });
 })
 
+//nao consegui colocar catch pq da erro quando nao acha produto
 router.get('/:id', (req, res, next) => {
-  produtos.findOne({_id: req.params.id}).then((prod) => {
+  res.statusCode = 200;
+  produtos.findOne({_id: req.params.id})
+  .then((prod) => {
     res.statusCode = 200;
-    console.log(prod)
-    res.json(prod)
-  });
+    res.json(prod);
+  }, (err) => next(err))
+  .catch((err) => next(err));
 })
 
 router.post('/', (req, res, next) => {
