@@ -9,16 +9,16 @@ const url = 'http://localhost:3000';
 
 export const fetchProdutos = createAsyncThunk('geral/fetchProdutos', 
     async () => {
-        // try {
-        //     let res = await fetch(url + '/produtos');
-        //     res = await res.json();
-        //     return res;        
-        // } catch (error) {
-        //     console.error(error);
-        // }
+        try {
+            let res = await fetch(url + '/produtos');
+            res = await res.json();
+            return res;        
+        } catch (error) {
+            console.error(error);
+        }
         
     }    
-    )
+)
     
     export const fetchProduto = createAsyncThunk('geral/fetchProduto', 
     async ({_id}) => {
@@ -63,6 +63,8 @@ function fulfillfetchProdutoReducer(state, payload){
 }
 
 function fulfillfetchProdutosReducer(state, payload){
+    let s = {produtos: payload};
+    state = s;
     return state;
 }
 

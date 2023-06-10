@@ -79,8 +79,10 @@ function excluirProdutoReducer(state, {_id}){
 
 function adicionarProdutoReducer(state, {produto}){
     let existe = false;
+    let produtoAux = Object.assign({}, produto);
+    
     state.carrinho.map( prod => {
-        if(prod._id === produto._id){
+        if(prod._id === produtoAux._id){
             prod.quantidade ++;
             alterarCarrinho(state._id, state.carrinho);
             existe = true;
@@ -89,8 +91,8 @@ function adicionarProdutoReducer(state, {produto}){
     if(existe == true){
         return state;
     }
-    produto.quantidade = 1;
-    state.carrinho.push(produto);
+    produtoAux.quantidade = 1;
+    state.carrinho.push(produtoAux);
     alterarCarrinho(state._id, state.carrinho);
     return state;
 }

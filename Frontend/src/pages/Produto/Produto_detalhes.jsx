@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react"
 import styles from "./Produto.module.css"
-import retornaProduto from "./retornaProduto.js" 
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { adicionarProduto } from "../../reduxFeatures/conta";
-import { alteraFetched, fetchProduto } from "../../reduxFeatures/geral";
+import { fetchProduto } from "../../reduxFeatures/geral";
 
 function Produto_detalhes(){
     const {produtoId} = useParams();

@@ -29,9 +29,9 @@ const Private = ({Item}) => {
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store = {store}>
       <App/>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  {/* </React.StrictMode>, */}//faz o react renderizar componentes 2 vezes -> nao sei qual utilidade
 )

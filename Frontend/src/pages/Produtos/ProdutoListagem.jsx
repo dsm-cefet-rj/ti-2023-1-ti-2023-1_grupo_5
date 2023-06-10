@@ -15,7 +15,7 @@ export default function ProdutoListagem( {produto} ) {
             </Link>
             <div className={styles.preco}>R$ {produto.preco}</div>
             <div className={styles.novidade_produto_botao} 
-                onClick={() => {if(conta.tipo === "cliente"){ dispatch( adicionarProduto({produto: produto}) )}}}>Comprar</div>
+                onClick={() => {if(conta != null){ dispatch( adicionarProduto({produto: produto}) )}}}>Comprar</div>
             </div>
         </div>
     )
