@@ -51,19 +51,27 @@ function alteraFetchedReducer(state, conta){
     // }else{
     //     state.fetched = true;
     // }
-    state.fetched = true;
+    //state.fetched = true;
+    console.log("nao utilizada");
     return state;
 }
 
 function fulfillfetchProdutoReducer(state, payload){
-    let s = {produto: payload};
+    let s = {
+        produto: payload,
+        produtos: null,
+        fetched:true
+    };
     state = s;
-    state.fetched = true;
     return state;
 }
 
 function fulfillfetchProdutosReducer(state, payload){
-    let s = {produtos: payload};
+    let s = {
+        produto: null,
+        produtos: payload,
+        fetched:  false,
+    };
     state = s;
     return state;
 }
