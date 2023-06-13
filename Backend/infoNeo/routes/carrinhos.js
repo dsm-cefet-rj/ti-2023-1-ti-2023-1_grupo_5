@@ -30,7 +30,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.patch('/:id', (req, res, next) => {
-  carrinhos.findByIdAndUpdate(req.params.id, {produtos: filtrado})
+  carrinhos.findByIdAndUpdate(req.params.id, {produtos: req.body})
   .then(() => {
     res.statusCode = 200;
     res.json({});

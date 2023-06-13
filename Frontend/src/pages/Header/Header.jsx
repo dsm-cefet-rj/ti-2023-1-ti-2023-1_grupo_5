@@ -48,11 +48,10 @@ function Header() {
 
     let itemsCount;
     if(conta != null){
-        if(conta.tipo === "cliente"){
-            itemsCount = conta.carrinho.reduce((prev,curr) =>{
-            return prev + curr.quantidade;
-            },0)
-        }
+        itemsCount = conta.carrinho.reduce((prev,curr) =>{
+        return prev + curr.quantidade;
+        },0)
+        
     }
     return (
         

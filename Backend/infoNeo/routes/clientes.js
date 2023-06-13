@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const clientes = require('../models/clientes');
+const carrinhos = require('../models/carrinhos');
 
 router.post('/verificaEmail', (req, res, next) => {
   clientes.findOne({email: req.body.email}).then((cliente) => {
@@ -36,16 +37,19 @@ router.post('/logarCliente', (req, res, next) => {
   clientes.findOne({email: req.body.email}).then( (cliente) => {
     if(cliente != null){
       if(cliente.senha === req.body.senha){
-        let c = {
-          _id: cliente._id,
-          email: cliente.email,
-          tipo: "cliente",
-          carrinho: cliente.carrinho
-        }
-        res.statusCode = 200;//mudar
-        res.setHeader('Content-Type', 'application/json');
-        res.json(c);
-        console.log("\nCliente " + cliente.email + " logado no site.");
+        //carrinhos.findById(cliente.idCarrinho).then( carr => {
+          let c = {
+            _id: cliente._id,
+            email: cliente.email,
+            tipo: "cliente",
+            idCarrinho: cliente.idCarrinho,
+            carrinho: []
+          }
+          res.statusCode = 200;//mudar
+          res.setHeader('Content-Type', 'application/json');
+          res.json(c);
+          console.log("\nCliente " + cliente.email + " logado no site.");
+        //});
         return;
       }else{
         res.statusCode = 200;//mudar 
@@ -54,7 +58,7 @@ router.post('/logarCliente', (req, res, next) => {
         return;
       }
     }else{
-      res.statusCode = 200;//mudar
+      res.statusCode = 404;//mudar
       res.json(null);
       console.log("\nCliente " + req.body.email + " não encontrado no banco de dados.");
       return;

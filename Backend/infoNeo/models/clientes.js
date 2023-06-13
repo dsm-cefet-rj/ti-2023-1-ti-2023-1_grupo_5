@@ -11,6 +11,10 @@ const clientesSchema = new Schema({
     type: String,
     required: true,
   },
+  idCarrinho: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
   carrinho: {
     type: Array,
     required: true,
