@@ -9,7 +9,7 @@ import verificaEmail from "./verificaEmail";
 
 
 const Registro = () => {
-  const {cadastrado, setCadastrado} = useState(false); // para usar navigate
+  const [cadastrado, setCadastrado] = useState(false); // para usar navigate
   const [msg, setMsg] = useState([]);// [msg, cor]
   const [emailChecado, setEmailChecado] = useState(false); //pra verificar se o email do input ja ta atualizado
   const [emailOk, setEmailOk] = useState(false); // se o email pode ser cadsastrado
