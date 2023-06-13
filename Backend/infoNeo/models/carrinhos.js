@@ -7,10 +7,16 @@ const carrinhosSchema = new Schema({
     type: String,
     required: true,
   },
-  senha: {
-    type: String,
-    required: true,
-  }
+  produtos: [{
+    produto: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'produto'
+    },
+    quantidade: {
+      type: Number,
+      required: true
+    }
+  }]
 });
 var carrinhos = mongoose.model('carrinhos', carrinhosSchema);
 //carrinhosSchema.plugin(normalize);
