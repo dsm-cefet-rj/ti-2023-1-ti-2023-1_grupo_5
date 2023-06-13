@@ -54,7 +54,6 @@ const Registro = () => {
     let cliente = {
       email: email,
       senha: senha,
-      carrinho: []
     }
 
     setEmailOk(false);

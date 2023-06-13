@@ -14,10 +14,6 @@ const clientesSchema = new Schema({
   idCarrinho: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-  },
-  carrinho: {
-    type: Array,
-    required: true,
   }
 });
 var clientes = mongoose.model('clientes', clientesSchema);

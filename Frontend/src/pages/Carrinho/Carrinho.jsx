@@ -48,7 +48,7 @@ const Carrinho = () => {
                           <td className={styles.carrinho_tbody_td}>R$ {prod.produto.preco}</td>
                           <td className={styles.carrinho_tbody_td}>
                             <button onClick={ () => {dispatch(retirarQuantidade({_id: prod.produto._id}))} }>-</button>
-                            {prod.produtquantidade}
+                            {prod.quantidade}
                             <button onClick={ () => {dispatch(adicionarQuantidade({_id: prod.produto._id}))} }>+</button>
                           </td>
                           <td className={styles.carrinho_tbody_td}>R$ {prod.produto.preco * prod.quantidade}</td>

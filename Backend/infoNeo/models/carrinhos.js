@@ -3,18 +3,13 @@ const Schema = mongoose.Schema;
 //const normalize = require('normalize-mongoose');
 
 const carrinhosSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-  },
   produtos: [{
     produto: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'produto'
     },
     quantidade: {
-      type: Number,
-      required: true
+      type: Number
     }
   }]
 });

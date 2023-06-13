@@ -25,12 +25,17 @@ router.post('/verificaEmail', (req, res, next) => {
 });
 
 //cria usuario
-router.post('/', (req, res, next) => {  
-  clientes.create(req.body);
+router.post('/', (req, res, next) => { 
+  let conta = req.body;
+  let carrinho = {produtos: []};
+  carrinhos.create(carrinho).then( res => {
+    conta.idCarrinho = res._id;
+    clientes.create(conta);
+  });
   res.statusCode = 200;
   res.json({});
   console.log("Cliente cadastrado: ");
-  console.log(req.body);
+  console.log({conta});
 });
 
 router.post('/logarCliente', (req, res, next) => {
