@@ -14,4 +14,4 @@ const carrinhosSchema = new Schema({
 });
 var carrinhos = mongoose.model('carrinhos', carrinhosSchema);
 //carrinhosSchema.plugin(normalize);
-module.exports = carrinhos;
+module.exports = carrinhos
