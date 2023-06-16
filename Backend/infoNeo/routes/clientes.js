@@ -3,6 +3,15 @@ var router = express.Router();
 const clientes = require('../models/clientes');
 const carrinhos = require('../models/carrinhos');
 
+
+
+const bodyParser = require('body-parser');
+var passport = require('passport');
+var authenticate = require('../authenticate');
+const cors = require('./cors');
+
+
+
 router.post('/verificaEmail', (req, res, next) => {
   clientes.findOne({email: req.body.email}).then((cliente) => {
     console.log(cliente)
@@ -25,7 +34,20 @@ router.post('/verificaEmail', (req, res, next) => {
 });
 
 //cria usuario
-router.post('/', (req, res, next) => { 
+router.post('/',cors.corsWithOptions, (req, res, next) => { 
+  clientes.create(new clientes({username: req.body.username}), req.body.password,
+  (err, cliente) => {
+    if(err) {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'application/json');
+        res.json({err: err});
+    } else {
+        passport.authenticate('local')(req, res, () => {
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.json({success: true, status: 'Registration Successful!'});
+    });
+  }
   let conta = req.body;
   let carrinho = {produtos: []};
   carrinhos.create(carrinho).then( res => {
@@ -36,6 +58,7 @@ router.post('/', (req, res, next) => {
   res.json({});
   console.log("Cliente cadastrado: ");
   console.log({conta});
+  });
 });
 
 router.post('/logarCliente', (req, res, next) => {
@@ -72,6 +95,17 @@ router.post('/logarCliente', (req, res, next) => {
     console.log(err);
   })
 });
+
+//router.route('/logarCliente').options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
+
+router.post('/logarCliente',cors.corsWithOptions, passport.authenticate('local'), (req, res) => {
+  var token = authenticate.getToken({_id: req.user._id});
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+    res.json({id: req.cliente._id, token: token});
+  });
+
+
 
 //atualiza carrinho
 router.patch('/patchCarrinho/:id', (req, res, next) => {
