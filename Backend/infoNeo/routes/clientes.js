@@ -8,7 +8,7 @@ const carrinhos = require('../models/carrinhos');
 const bodyParser = require('body-parser');
 var passport = require('passport');
 var authenticate = require('../authenticate');
-const cors = require('./cors');
+const cors = require('cors');
 
 
 
@@ -34,31 +34,42 @@ router.post('/verificaEmail', (req, res, next) => {
 });
 
 //cria usuario
-router.post('/',cors.corsWithOptions, (req, res, next) => { 
-  clientes.create(new clientes({username: req.body.username}), req.body.password,
+router.post('/', (req, res, next) => { 
+
+  clientes.register(new clientes({username: req.body.username}), req.body.password,
   (err, cliente) => {
     if(err) {
-        res.statusCode = 500;
+      res.statusCode = 500;
+      res.setHeader('Content-Type', 'application/json');
+      res.json({err: err});
+  } else {
+      passport.authenticate('local')(req, res, () => {
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json({err: err});
-    } else {
-        passport.authenticate('local')(req, res, () => {
-            res.statusCode = 200;
-            res.setHeader('Content-Type', 'application/json');
-            res.json({success: true, status: 'Registration Successful!'});
-    });
-  }
-  let conta = req.body;
-  let carrinho = {produtos: []};
-  carrinhos.create(carrinho).then( res => {
-    conta.idCarrinho = res._id;
-    clientes.create(conta);
-  });
+        res.json({success: true, status: 'Registration Successful!'});
+      });
+    }
+});
+  // let conta = req.body;
+  // let carrinho = {produtos: []};
+  // carrinhos.create(carrinho).then( res => {
+  //   conta.idCarrinho = res._id;
+  //   clientes.create(conta);
+  // });
+  // res.statusCode = 200;
+  // res.json({});
+  // console.log("Cliente cadastrado: ");
+  // console.log({conta});
+  // });
+});
+
+router.route('/login').options((req, res) => { res.sendStatus(200); })
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  
+  var token = authenticate.getToken({username: req.username});
   res.statusCode = 200;
-  res.json({});
-  console.log("Cliente cadastrado: ");
-  console.log({conta});
-  });
+  res.setHeader('Content-Type', 'application/json');
+  res.json({username: req.username, token: token});
 });
 
 router.post('/logarCliente', (req, res, next) => {
@@ -98,7 +109,7 @@ router.post('/logarCliente', (req, res, next) => {
 
 //router.route('/logarCliente').options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 
-router.post('/logarCliente',cors.corsWithOptions, passport.authenticate('local'), (req, res) => {
+router.post('/logarCliente', passport.authenticate('local'), (req, res) => {
   var token = authenticate.getToken({_id: req.user._id});
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
