@@ -34,6 +34,30 @@ export const logarContaCliente = createAsyncThunk('conta/logarContaCliente',
     }    
 )
 
+
+export const registrarContaCliente = createAsyncThunk('conta/registrarContaCliente', 
+    async ({ email, senha }) => {
+        let contaReq = {
+            username : email,
+            password : senha
+        };
+        try {
+            let res = await fetch(url + '/clientes', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify(contaReq)
+            });
+            res = await res.json();
+            return res;        
+        } catch (error) {
+            console.error(error);
+        }
+
+    }    
+)
+
 export const contaSlice = createSlice({
     name: "conta",
     initialState: initialConta,
@@ -47,13 +71,14 @@ export const contaSlice = createSlice({
     },
     extraReducers: {
         [logarContaCliente.fulfilled]: (state, action) => fulfillContaReducer(state, action.payload),
+        [registrarContaCliente.fulfilled]: (state, action) => fulfillRegistrarContaReducer(state, action.payload),
     }
 })
 
 function processarCompraReducer(state, payload){
     if(state.carrinho.length != 0){
         state.carrinho = [];
-        alterarCarrinho(state.carrinho, state.idCarrinho);
+        alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
         alert("Compra realizada!");
     }
     return state;
@@ -65,7 +90,7 @@ function adicionarQuantidadeReducer(state, {_id}){
             prod.quantidade ++;
         }
     })
-    alterarCarrinho(state.carrinho, state.idCarrinho);
+    alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
     return state;
 }
 
@@ -77,7 +102,7 @@ function retirarQuantidadeReducer(state, {_id}){
             }
         }
     })
-    alterarCarrinho(state.carrinho, state.idCarrinho);
+    alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
     return state;
 }
 
@@ -85,7 +110,7 @@ function excluirProdutoReducer(state, {_id}){
     state.carrinho = state.carrinho.filter( prod => {
         return (prod.produto._id != _id);   
     })
-    alterarCarrinho(state.carrinho, state.idCarrinho);
+    alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
     return state;
 }
 
@@ -117,7 +142,7 @@ function adicionarProdutoReducer(state, {produto}){
     state.carrinho.map( prod => {
         if(prod.produto._id === produtoAux.produto._id){
             prod.quantidade ++;
-            alterarCarrinho(state.carrinho, state.idCarrinho);
+            alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
             existe = true;
         }
     })
@@ -126,7 +151,7 @@ function adicionarProdutoReducer(state, {produto}){
     }
     produtoAux.quantidade = 1;
     state.carrinho.push(produtoAux);
-    alterarCarrinho(state.carrinho, state.idCarrinho);
+    alterarCarrinho(state.carrinho, state.idCarrinho, state.token);
     return state;
 }
 
@@ -141,11 +166,12 @@ function adicionarProdutoReducer(state, {produto}){
 //         body: JSON.stringify(carr)
 //     })
 // }
-function alterarCarrinho(carrinho, idCarrinho){
+function alterarCarrinho(carrinho, idCarrinho, token){
     fetch(url + `/carrinhos/${idCarrinho}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
         },
         body: JSON.stringify(carrinho)
     })
@@ -171,6 +197,10 @@ function fulfillContaReducer(contaState, contaFetched){
 
 function sairContaReducer(state, action){
     state = null;
+    return state;
+}
+
+function fulfillRegistrarContaReducer(state, action){
     return state;
 }
 
