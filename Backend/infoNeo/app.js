@@ -12,6 +12,7 @@ var logger              = require('morgan');
 var cookieParser        = require('cookie-parser');
 
 var session             = require('express-session');
+//var FileStore         = require('session-file-store')(session);
 
 var indexRouter         = require('./routes/index');
 var clientesRouter      = require('./routes/clientes');

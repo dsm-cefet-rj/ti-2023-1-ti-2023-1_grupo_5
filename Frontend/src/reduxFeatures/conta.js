@@ -3,19 +3,26 @@ import { useNavigate } from "react-router-dom";
 const initialConta = null;
 const url = 'http://localhost:3000';
 
+
 export const logarContaCliente = createAsyncThunk('conta/logarContaCliente', 
     async ({ email, senha }) => {
+        let contaReq = {
+            username : email,
+            password : senha
+        };
         try {
-            let res = await fetch(url + '/clientes/logarCliente', {
+            let res = await fetch(url + '/clientes/login', {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json",
                 },
-                body: JSON.stringify({email: email, senha: senha})
+                body: JSON.stringify(contaReq)
             });
             res = await res.json();
 
-            let c = await fetch(url + '/carrinhos/' + res.idCarrinho);
+            let c = await fetch( url + '/carrinhos/' + res.idCarrinho, 
+            { headers: { Authorization: 'Bearer ' + res.token } } );
+
             c = await c.json();
             
             res.carrinho = c;

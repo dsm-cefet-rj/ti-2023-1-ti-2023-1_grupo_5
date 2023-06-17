@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var authenticate = require('../authenticate');
 let carrinhos = require('../models/carrinhos');
 let produtos = require('../models/produtos');
 
 /* GET users listing. */
-router.get('/:id', async (req, res, next) => {
+
+router.route('/:id').options(authenticate.verifyUser, (req, res) => { res.sendStatus(200); })
+router.route('/:id')
+.get(authenticate.verifyUser, async (req, res, next) => {
   try {
     let c = await carrinhos.findById(req.params.id).populate({path: 'produtos.produto', model: produtos});
 
@@ -29,7 +33,8 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.patch('/:id', (req, res, next) => {
+router.route('/:id')
+.patch(authenticate.verifyUser , (req, res, next) => {
   carrinhos.findByIdAndUpdate(req.params.id, {produtos: req.body})
   .then(() => {
     res.statusCode = 200;

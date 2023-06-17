@@ -7,8 +7,6 @@ var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 var config = require('./config');
 
-
-
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser()); 
@@ -22,20 +20,19 @@ var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = config.secretKey;
 
-
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
     (jwt_payload, done) => {
         console.log("JWT payload: ", jwt_payload);
-        User.findOne({username: jwt_payload.username}, (err, user) => {
-            if (err) {
-                return done(err, false);
-            }
-            else if (user) {
+        User.findOne({username: jwt_payload.username}).then((user) => {
+            if (user) {
                 return done(null, user);
             }
             else {
                 return done(null, false);
             }
+        })
+        .catch(err => {
+            return done(err, false);
         });
     }));
 

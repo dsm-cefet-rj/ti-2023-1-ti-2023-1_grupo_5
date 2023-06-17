@@ -3,14 +3,9 @@ var router = express.Router();
 const clientes = require('../models/clientes');
 const carrinhos = require('../models/carrinhos');
 
-
-
 const bodyParser = require('body-parser');
 var passport = require('passport');
 var authenticate = require('../authenticate');
-const cors = require('cors');
-
-
 
 router.post('/verificaEmail', (req, res, next) => {
   clientes.findOne({email: req.body.email}).then((cliente) => {
@@ -35,41 +30,58 @@ router.post('/verificaEmail', (req, res, next) => {
 
 //cria usuario
 router.post('/', (req, res, next) => { 
-
-  clientes.register(new clientes({username: req.body.username}), req.body.password,
-  (err, cliente) => {
-    if(err) {
-      res.statusCode = 500;
-      res.setHeader('Content-Type', 'application/json');
-      res.json({err: err});
-  } else {
-      passport.authenticate('local')(req, res, () => {
-        res.statusCode = 200;
+  let carrinho  = {
+    produtos    : []
+  };
+  let cliente   = {
+    username    : req.body.username,
+    idCarrinho  : null
+  };
+  carrinhos.create(carrinho).then( carr => {
+    cliente.idCarrinho = carr._id;
+    clientes.register(new clientes(cliente), req.body.password, (err, cliente) => {
+      if(err) {
+        res.statusCode = 500;
         res.setHeader('Content-Type', 'application/json');
-        res.json({success: true, status: 'Registration Successful!'});
-      });
-    }
-});
-  // let conta = req.body;
-  // let carrinho = {produtos: []};
-  // carrinhos.create(carrinho).then( res => {
-  //   conta.idCarrinho = res._id;
-  //   clientes.create(conta);
-  // });
-  // res.statusCode = 200;
-  // res.json({});
-  // console.log("Cliente cadastrado: ");
-  // console.log({conta});
-  // });
+        res.json({err: err});
+      } else {
+        passport.authenticate('local')(req, res, () => {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application/json');
+          res.json({success: true, status: 'Registration Successful!'});
+        });
+      }
+    }); 
+  });
 });
 
 router.route('/login').options((req, res) => { res.sendStatus(200); })
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  
-  var token = authenticate.getToken({username: req.username});
+  var token = authenticate.getToken({username: req.user.username});
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.json({username: req.username, token: token});
+  //res.setHeader('Authorization', 'json');
+
+  let c = {
+    _id   : req.user._id,
+    email : req.user.username,
+    idCarrinho  : req.user.idCarrinho,
+    token : token
+  };
+
+  res.json(c);
+});
+
+router.get('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy();
+    res.clearCookie('session-id');
+    res.redirect('/');
+  } else {
+    var err = new Error('You are not logged in!');
+    err.status = 403;
+    next(err);
+  }
 });
 
 router.post('/logarCliente', (req, res, next) => {
