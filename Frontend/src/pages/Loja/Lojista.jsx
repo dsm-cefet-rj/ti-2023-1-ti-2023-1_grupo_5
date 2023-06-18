@@ -15,8 +15,7 @@ function Lojista() {
     const dispatch = useDispatch();
 
     if(lojista.firstFetched == false ){
-        dispatch(fetchProdutos({_id: lojista._id}))
-        dispatch(alteraFirstFetched());
+        dispatch(fetchProdutos({_id: lojista._id, token: lojista.token}))
     }
 
     return (

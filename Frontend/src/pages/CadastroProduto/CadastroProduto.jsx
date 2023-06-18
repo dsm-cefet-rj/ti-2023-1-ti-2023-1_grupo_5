@@ -25,7 +25,7 @@ import { useEffect } from "react"
             detalhes : detalhes.value,
             id_lojista : lojista._id
         }
-        dispatch(cadastrarProduto({produto}));
+        dispatch(cadastrarProduto({produto: produto, token: lojista.token}));
         navigate("/lojista");
     }
     

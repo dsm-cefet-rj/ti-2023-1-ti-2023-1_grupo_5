@@ -30,7 +30,6 @@ router.post('/', (req, res, next) => {
         });
       }
     }); 
-
 });
 
 router.route('/login').options((req, res) => { res.sendStatus(200); })
@@ -124,7 +123,8 @@ router.post('/logarLojista', (req, res, next) => {
   })
 });
 
-router.post('/fetchProdutos', (req, res, next) => {
+router.route('/fetchProdutos')
+.post(authenticate.verifyUser, (req, res, next) => {
   let id = req.body.id_lojista;
   produtos.find({id_lojista: id}).then( (produtos) => {
     if(produtos.length < 1){
@@ -140,7 +140,8 @@ router.post('/fetchProdutos', (req, res, next) => {
   )
 });
 
-router.patch('/:id', (req, res, next) => {
+router.route('/:id')
+.patch(authenticate.verifyUser, (req, res, next) => {
   lojistas.findOneAndUpdate({_id: req.params.id}, req.body)
   .then(response => {
     res.statusCode = 200;
@@ -148,6 +149,22 @@ router.patch('/:id', (req, res, next) => {
     console.log("Lojista atualizado com sucesso.");
     console.log(response);
   });
+})
+
+
+router.route('/:id')
+.delete(authenticate.verifyUser, (req, res, next) => {
+  let _id = req.params.id;
+  produtos.deleteMany({id_lojista: _id}).then(res => {
+    console.log("\nOs produtos foram deletados com sucesso.");
+    console.log( res)
+  });
+  lojistas.findByIdAndDelete(_id).then(res => {
+    console.log("O lojista foi deletado com sucesso.");
+    console.log(res)
+  });
+  res.statusCode = 200;
+  res.json({msg: "O lojista foi deletado com sucesso."});
 })
 
 router.post('/cadastrarLojista', (req, res, next) => {
@@ -165,20 +182,6 @@ router.post('/cadastrarLojista', (req, res, next) => {
     console.log(error);
     return;
   });
-})
-
-router.delete('/:id', (req, res, next) => {
-  let _id = req.params.id;
-  produtos.deleteMany({id_lojista: _id}).then(res => {
-    console.log("\nOs produtos foram deletados com sucesso.");
-    console.log( res)
-  });
-  lojistas.findByIdAndDelete(_id).then(res => {
-    console.log("O lojista foi deletado com sucesso.");
-    console.log(res)
-  });
-  res.statusCode = 200;
-  res.json({msg: "O lojista foi deletado com sucesso."});
 })
 
 module.exports = router;

@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var authenticate = require('../authenticate');
 const produtos = require("../models/produtos");
 const bodyParser = require("body-parser");
 
@@ -51,7 +52,9 @@ router.delete('/', (req, res, next) => {
   })
 });
 
-router.patch('/:id', (req,res,next) => {
+router.route('/:id')
+.patch(authenticate.verifyUser, (req,res,next) => {
+  console.log(req.body)
   produtos.findByIdAndUpdate({_id: req.params.id}, req.body)
   .then( response => {
     console.log("produto " + req.body._id + " editado.");
