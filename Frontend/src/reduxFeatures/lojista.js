@@ -4,12 +4,12 @@ const initialLojista = null;
 export const logarContaLojista = createAsyncThunk('lojista/logarContaLojista',
     async ({ email, senha }) => {
         try {
-            let res = await fetch(url + '/lojistas/logarLojista', {
+            let res = await fetch(url + '/lojistas/login', {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json",
                 },
-                body: JSON.stringify({email: email, senha: senha})
+                body: JSON.stringify({username: email, password: senha})
             });
             res = await res.json();
             return res;        
@@ -94,6 +94,34 @@ export const editarProduto = createAsyncThunk('lojista/editarProduto',
     }
 )
 
+export const registrarLojista = createAsyncThunk('conta/registrarLojista', 
+    async (lojaReq) => {
+        let lojista   = {
+            username    : lojaReq.email,
+            cnpj        : lojaReq.cnpj,
+            nome        : lojaReq.nome,
+            endereco    : lojaReq.endereco,
+            telefone    : lojaReq.telefone,
+            password    : lojaReq.senha
+          };
+          console.log(lojista)
+        try {
+            let res = await fetch(url + '/lojistas', {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify(lojista)
+            });
+            res = await res.json();
+            return res;        
+        } catch (error) {
+            console.error(error);
+        }
+
+    }    
+)
+
 export const lojistaSlice = createSlice({
     name: "conta",
     initialState: initialLojista,
@@ -108,6 +136,7 @@ export const lojistaSlice = createSlice({
         [fetchProdutos.fulfilled]: (state, action) => fulfillFetchProdutosReducer(state, action.payload),
         [cadastrarProduto.fulfilled]: (state, action) => fulfillCadastrarProdutoReducer(state, action.payload),
         [excluirProduto.fulfilled]: (state, action) => fulfillExcluirProdutoReducer(state, action.payload),
+        [registrarLojista.fulfilled]: (state, action) => fulfillRegistrarLojistaReducer(state, action.payload),
     }
 })
 
@@ -181,6 +210,11 @@ function deletarLojistaReducer(state, payload){
     fetch("http://localhost:3000/lojistas/" + state._id, {method: "DELETE"});
     return null;
 }
+
+function fulfillRegistrarLojistaReducer(state, action){
+    return state;
+}
+
 
 export default lojistaSlice.reducer;
 export const { sairContaLojista, alteraFirstFetched, editarDadosLojista, deletarLojista } = lojistaSlice.actions;

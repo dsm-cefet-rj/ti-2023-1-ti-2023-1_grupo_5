@@ -10,7 +10,7 @@ const clientesSchema = new Schema({
   idCarrinho: {
     type: mongoose.Schema.Types.ObjectId,
   },
-
+  
   /*admin:{
     type: Boolean,
     default: false

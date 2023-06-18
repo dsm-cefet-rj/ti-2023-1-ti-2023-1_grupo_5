@@ -1,7 +1,13 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+var passportLocalMongoose = require('passport-local-mongoose');
+
 const lojistasSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+  },
   cnpj: {
     type: String,
     required: true,
@@ -14,18 +20,13 @@ const lojistasSchema = new Schema({
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
-  senha: {
-    type: String,
-    required: true,
-  },
   telefone: {
     type: String,
     required: true,
   }
 }, {collection: "lojistas"});
+
+lojistasSchema.plugin(passportLocalMongoose);
+
 var lojistas = mongoose.model('lojistas', lojistasSchema);
 module.exports = lojistas;

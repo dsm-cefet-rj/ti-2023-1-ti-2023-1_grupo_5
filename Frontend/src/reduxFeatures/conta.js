@@ -114,26 +114,6 @@ function excluirProdutoReducer(state, {_id}){
     return state;
 }
 
-// function adicionarProdutoReducer(state, {produto}){
-//     let existe = false;
-//     let produtoAux = Object.assign({}, produto);
-    
-//     state.carrinho.map( prod => {
-//         if(prod._id === produtoAux._id){
-//             prod.quantidade ++;
-//             alterarCarrinho(state._id, state.carrinho);
-//             existe = true;
-//         }
-//     })
-//     if(existe == true){
-//         return state;
-//     }
-//     produtoAux.quantidade = 1;
-//     state.carrinho.push(produtoAux);
-//     alterarCarrinho(state._id, state.carrinho);
-//     return state;
-// }
-
 function adicionarProdutoReducer(state, {produto}){
     let existe = false;
     let produtoAux = Object.assign({}, produto);
@@ -156,16 +136,6 @@ function adicionarProdutoReducer(state, {produto}){
 }
 
 //utilizada por retiraQuantidade, adicionaQuantidade, excluiProduto e adicionaProduto
-// function alterarCarrinho(idConta, carrinhoConta){
-//     const carr = {carrinho: carrinhoConta};
-//     fetch(url + `/clientes/patchCarrinho/${idConta}`, {
-//         method: "PATCH",
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(carr)
-//     })
-// }
 function alterarCarrinho(carrinho, idCarrinho, token){
     fetch(url + `/carrinhos/${idCarrinho}`, {
         method: "PATCH",
@@ -178,20 +148,6 @@ function alterarCarrinho(carrinho, idCarrinho, token){
 }
 
 function fulfillContaReducer(contaState, contaFetched){
-    // b = async () => {
-    //     let c;
-    //     try {
-    //         c = await fetch(url + '/carrinhos/' + contaFetched.idCarrinho);
-    //         c = await c.json();
-    //         contaFetched.carrinho = c;
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    //     console.log(c)
-    //     //contaFetched.carrinho = c;
-    //     //return contaFetched;
-    // }
-    // contaFetched.carrinho = c;
     return contaFetched;
 }
 
