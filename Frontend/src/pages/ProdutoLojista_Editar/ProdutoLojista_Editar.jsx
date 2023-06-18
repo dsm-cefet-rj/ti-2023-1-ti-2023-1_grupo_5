@@ -37,14 +37,14 @@ const ProdutoLojista_Editar = () => {
         if(descricao.value != ""){produto.descricao = descricao.value}
         if(detalhes.value != ""){produto.detalhes = detalhes.value}
         if(preco.value != ""){produto.preco = preco.value}
-        dispatch(editarProduto({produto: produto}));
+        dispatch(editarProduto({produto: produto, token: lojista.token}));
         //dispatch(alteraFirstFetched()); // n é necessario
         navigate("/lojista");
     }
     function excluir(){
         let opt = window.confirm("Confirmar exclusão?");
         if(opt){
-            dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id}));
+            dispatch(excluirProduto({id_produto: produto._id, id_lojista: lojista._id, token: lojista.token}));
             navigate("/lojista");
         }
         //dispatch(alteraFirstFetched()); //provavelmente nao é necessario

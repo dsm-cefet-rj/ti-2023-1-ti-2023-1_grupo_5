@@ -43,7 +43,7 @@ export default function registrarLojista(emailOk, setError){
 }
 
 function cadastrarLojista(lojista){
-    fetch("http://localhost:3000/lojistas/cadastrarLojista", {
+    fetch("http://localhost:3000/lojistas", {
     method: 'POST',    
     headers: {
             'Content-Type': 'application/json'

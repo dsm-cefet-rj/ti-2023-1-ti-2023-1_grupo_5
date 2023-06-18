@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Imput from "../../components/Imput/Imput";
 import Button from "../../components/Button/Button";
 import * as C from "./Registro.module";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Usuario/useAuth";
 import verificaEmail from "./verificaEmail";
+import { registrarContaCliente } from "../../reduxFeatures/conta";
 
 
 
@@ -19,23 +21,24 @@ const Registro = () => {
   const [error, setError] = useState("");
   const { registro } = useAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  function registrar(){
+  // function registrar(){
 
-    if (!email | !emailConf | !senha) {
-      setError("Preencha todos os campos");
-      return;
-    } else if (email !== emailConf) {
-      setError("Os e-mails não são iguais");
-      return;
-    }
-    const novoUsuario = {
-      email: email,
-      senha: senha,
-      produtos: []
-    };
+  //   if (!email | !emailConf | !senha) {
+  //     setError("Preencha todos os campos");
+  //     return;
+  //   } else if (email !== emailConf) {
+  //     setError("Os e-mails não são iguais");
+  //     return;
+  //   }
+  //   const novoUsuario = {
+  //     email: email,
+  //     senha: senha,
+  //     produtos: []
+  //   };
 
-  }
+  // }
 
 
   const handleRegistro = () => {
@@ -54,17 +57,11 @@ const Registro = () => {
     let cliente = {
       email: email,
       senha: senha,
-    }
+    };
 
     setEmailOk(false);
     //200 - ok
-    const res = fetch("http://localhost:3000/clientes", {
-    method: 'POST',    
-    headers: {
-            'Content-Type': 'application/json'
-        },
-    body: JSON.stringify(cliente)
-    })
+    const res = dispatch(registrarContaCliente(cliente));
 
     if (!res) {
       setError(res);
