@@ -6,13 +6,17 @@ const bodyParser = require("body-parser");
 
 /* GET produtos listing. */
 router.get('/', (req, res, next) => {
-  produtos.find().then((prod) => {
+  let request = {};
+  if(req.query.q != undefined){
+    request = {descricao: { "$regex": req.query.q, "$options": "i" }}
+  }
+  produtos.find(request).then((prod) => {
     res.statusCode = 200;
     res.json(prod)
   });
 })
 
-router.post( '/novidades',(req,res,next) => {
+router.get( '/novidades',(req,res,next) => {
   produtos.find({}).limit(4).then((arr) => {
     if (arr) {
       if(arr.length > 0){
@@ -35,13 +39,23 @@ router.post( '/novidades',(req,res,next) => {
 
 //nao consegui colocar catch pq da erro quando nao acha produto
 router.get('/:id', (req, res, next) => {
-  res.statusCode = 200;
-  produtos.findOne({_id: req.params.id})
-  .then((prod) => {
-    res.statusCode = 200;
-    res.json(prod);
-  }, (err) => next(err))
-  .catch((err) => next(err));
+  // res.statusCode = 200;
+  // produtos.findOne({_id: req.params.id})
+  // .then((prod) => {
+  //   res.statusCode = 200;
+  //   res.json(prod);
+  // }, (err) => next(err))
+  // .catch((err) => next(err));
+
+
+  console.log(req.query.q)
+  produtos.find({descricao: req.query.q}).then( response => {
+    res.sendStatus(200);
+    console.log(response);
+  }).catch( err => {
+    res.sendStatus(500);
+    console.log(err);
+  })
 })
 
 router.post('/', (req, res, next) => {

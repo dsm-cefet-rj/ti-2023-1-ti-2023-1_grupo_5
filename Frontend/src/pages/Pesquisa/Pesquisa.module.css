@@ -1,0 +1,16 @@
+.encontrados{
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: left;
+    font-size: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:rgb(25, 25, 25)
+}
+
+.div_prod{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}

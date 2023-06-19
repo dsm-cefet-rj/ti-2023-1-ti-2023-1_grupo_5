@@ -35,7 +35,7 @@ export default function Home() {
                     }
                             
 
-                </div>
+                    </div>
             </section>
             {/* <section>
                 <h2 className={styles.titulos}>Categorias</h2>

@@ -5,16 +5,10 @@ import { faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import { faPersonThroughWindow} from "@fortawesome/free-solid-svg-icons";
 import { faOutdent} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom"
+import { /*useHistory,*/ Link, useNavigate } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { sairContaCliente } from "../../reduxFeatures/conta";
 import { sairContaLojista } from "../../reduxFeatures/lojista";
-
-
-
-
-
 import * as React from 'react';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -35,6 +29,7 @@ function Header() {
     const conta = useSelector( state => state.conta );
     const lojista = useSelector( state => state.lojista );
     const dispatch = useDispatch();
+    //const history = useHistory();
     const navigate = useNavigate();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,6 +48,17 @@ function Header() {
         },0)
         
     }
+
+    let [query, setQuery] = useState("");
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const q = encodeURIComponent(query);
+        //history.push(`/produtos?q=${encodedSearchTerm}`);
+        navigate(`/pesquisa?q=${q}`)
+    };
+
+
+
     return (
         
         <section className={styles.cabecalho}>
@@ -64,8 +70,13 @@ function Header() {
                     <nav className={styles.header_li}>
                     <div  className={styles.navigation_menu}>
                         <ul className={`${styles.navigation_menu_ul} ${isMenuOpen ? styles.open : ""}`}>
-                        <form action="">
-                        <input type="search" placeholder="Digite sua pesquisa aqui" className={styles.pesquisar}/>
+                        <form onSubmit={handleSubmit}>
+                            <input 
+                            type="search" 
+                            placeholder="Digite sua pesquisa aqui" 
+                            value={query}
+                            onChange={(e) => {setQuery(e.target.value)}}
+                            className={styles.pesquisar}/>
                         </form>
                         {
                             lojista != null ?

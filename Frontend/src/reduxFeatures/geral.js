@@ -8,9 +8,14 @@ const initialGeral = {
 const url = 'http://localhost:3000';
 
 export const fetchProdutos = createAsyncThunk('geral/fetchProdutos', 
-    async () => {
+    async (query) => {
+        let q = "";
+        if(query){
+            q = query;
+        }
+
         try {
-            let res = await fetch(url + '/produtos');
+            let res = await fetch(url + '/produtos' + q );
             res = await res.json();
             return res;        
         } catch (error) {
@@ -19,8 +24,8 @@ export const fetchProdutos = createAsyncThunk('geral/fetchProdutos',
         
     }    
 )
-    
-    export const fetchProduto = createAsyncThunk('geral/fetchProduto', 
+
+export const fetchProduto = createAsyncThunk('geral/fetchProduto', 
     async ({_id}) => {
         try {
             let res = await fetch(url + '/produtos/' + _id);
@@ -37,7 +42,7 @@ export const fetchProdutos = createAsyncThunk('geral/fetchProdutos',
 export const getProdutosNovidades = createAsyncThunk('geral/getProdutosNovidades', 
     async () => {
         try {
-            let res = await fetch(url + '/produtos/novidades', { method:'POST' });
+            let res = await fetch(url + '/produtos/novidades', { method:'GET' });
             res = await res.json();
             return res;
         } catch (error) {
