@@ -33,6 +33,19 @@ export const fetchProdutos = createAsyncThunk('geral/fetchProdutos',
     }    
 )
 
+
+export const getProdutosNovidades = createAsyncThunk('geral/getProdutosNovidades', 
+    async () => {
+        try {
+            let res = await fetch(url + '/produtos/novidades', { method:'POST' });
+            res = await res.json();
+            return res;
+        } catch (error) {
+            console.error(error);
+        }        
+    }    
+)
+
 export const geralSlice = createSlice({
     name: "geral",
     initialState: initialGeral,
@@ -42,6 +55,7 @@ export const geralSlice = createSlice({
     extraReducers: {
         [fetchProdutos.fulfilled]: (state, action) => fulfillfetchProdutosReducer(state, action.payload),
         [fetchProduto.fulfilled]: (state, action) => fulfillfetchProdutoReducer(state, action.payload),
+        [getProdutosNovidades.fulfilled]: (state, action) => fulfillfetchGetProdutosNovidadesReducer(state, action.payload),
     }
 })
 
@@ -73,6 +87,11 @@ function fulfillfetchProdutosReducer(state, payload){
         fetched:  false,
     };
     state = s;
+    return state;
+}
+
+function fulfillfetchGetProdutosNovidadesReducer(state, payload){
+    state = {produtosNovidades: payload};
     return state;
 }
 

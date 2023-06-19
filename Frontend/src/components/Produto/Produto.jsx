@@ -8,10 +8,10 @@ const Produto = ({produto}) => {
     const dispatch = useDispatch();
     return(
         <div className={styles.novidades_produto}>
-            <Link to={`/produtos/${produto.id}`}>
+            <Link to={`/produtos/${produto._id}`}>
                 <img src={produto.img} alt='' className={styles.novidade_produto_imagem} />
             </Link>
-            <Link to={`/produtos/${produto.id}`}>
+            <Link to={`/produtos/${produto._id}`}>
                 <div className={styles.novidade_produto_descricao}>{produto.descricao}</div>
             </Link>
             <div className={styles.preco}>R$ {produto.preco}</div>

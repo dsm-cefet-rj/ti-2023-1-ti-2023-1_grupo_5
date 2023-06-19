@@ -12,6 +12,27 @@ router.get('/', (req, res, next) => {
   });
 })
 
+router.post( '/novidades',(req,res,next) => {
+  produtos.find({}).limit(4).then((arr) => {
+    if (arr) {
+      if(arr.length > 0){
+        res.statusCode = 200;
+        res.json(arr);
+      }else{
+        res.statusCode = 404;
+        res.json([]);
+      }
+    }else{
+      res.statusCode = 404;
+      res.json([]);
+    }
+  }).catch( (err) => {
+    res.statusCode = 500;
+    res.json([]);
+    console.log(err);
+  });
+});
+
 //nao consegui colocar catch pq da erro quando nao acha produto
 router.get('/:id', (req, res, next) => {
   res.statusCode = 200;
@@ -63,5 +84,9 @@ router.route('/:id')
   });
 
 });
+
+
+
+
 
 module.exports = router;

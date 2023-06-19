@@ -10,16 +10,10 @@ function Produto_detalhes(){
     const {produtoId} = useParams();
     const dispatch = useDispatch();
     let state = useSelector( state => state.geral);
-    
     let prod = state.produto;
-    if(state.fetched == false){
+    useEffect(() => {
         dispatch(fetchProduto({_id: produtoId}));
-    }else{
-        if(prod._id != produtoId){
-            dispatch(fetchProduto({_id: produtoId}));
-        }
-    }
-    
+    }, []);
     return (
         
           <div className={styles.produto_body}>

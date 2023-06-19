@@ -2,8 +2,19 @@ import styles from "./Home.module.css"
 import Categoria from "../../components/Categoria/Categoria"
 import Produto from "../../components/Produto/Produto"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { getProdutosNovidades } from "../../reduxFeatures/geral"
+import { useEffect } from "react"
 
-export default function Home({produtos, categorias}) {
+export default function Home() {
+    const dispatch = useDispatch();
+    const state = useSelector(state => state.geral);
+    const produtos2 = state.produtosNovidades;
+    useEffect(() => {
+        dispatch(getProdutosNovidades());
+    }, []);
+
+    let teste = () => {return (produtos2 == undefined || produtos2.length == 0)};
     return (
        
             <main>
@@ -16,13 +27,17 @@ export default function Home({produtos, categorias}) {
                     
                     <div className={styles.produto}>
                     
-
-                    {produtos.map((prod)=><Produto produto={prod} key={prod.id}/>)}
+                    {
+                    teste() ? (
+                        <div>Não há produtos cadastrados.</div>
+                    ) : 
+                    (<>{produtos2.map((prod)=><Produto produto={prod} key={prod._id}/>)}</>)
+                    }
                             
 
                 </div>
             </section>
-            <section>
+            {/* <section>
                 <h2 className={styles.titulos}>Categorias</h2>
                 <div className={styles.categorias}>
                     <Categoria categoria={categorias[0]}/>
@@ -30,7 +45,7 @@ export default function Home({produtos, categorias}) {
                     <Categoria categoria={categorias[2]}/>
                     <Categoria categoria={categorias[3]}/>
                 </div>
-            </section>
+            </section> */}
         </main>
         
     )
