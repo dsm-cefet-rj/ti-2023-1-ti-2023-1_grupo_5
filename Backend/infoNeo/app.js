@@ -19,6 +19,7 @@ var clientesRouter      = require('./routes/clientes');
 var carrinhosRouter     = require('./routes/carrinhos');
 var lojistasRouter      = require('./routes/lojistas');
 var produtosRouter      = require('./routes/produtos');
+var uploadRouter        = require('./routes/upload');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -40,6 +41,7 @@ app.use('/clientes', clientesRouter);
 app.use('/carrinhos', carrinhosRouter);
 app.use('/lojistas', lojistasRouter);
 app.use('/produtos', produtosRouter);
+app.use('/upload', uploadRouter);
 
 module.exports = app;
 
