@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchProdutos } from "../../reduxFeatures/geral";
-import Produto from "../../components/Produto/Produto";
+import Produto from "../../components/Produto/Produto"
 import styles from "./Pesquisa.module.css"
 
 export default function Pesquisa() {

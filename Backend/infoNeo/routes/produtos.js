@@ -16,6 +16,7 @@ router.get('/', (req, res, next) => {
   });
 })
 
+//deve ser separado por data ou ordem de criaçao
 router.get( '/novidades',(req,res,next) => {
   produtos.find({}).limit(4).then((arr) => {
     if (arr) {
@@ -39,23 +40,13 @@ router.get( '/novidades',(req,res,next) => {
 
 //nao consegui colocar catch pq da erro quando nao acha produto
 router.get('/:id', (req, res, next) => {
-  // res.statusCode = 200;
-  // produtos.findOne({_id: req.params.id})
-  // .then((prod) => {
-  //   res.statusCode = 200;
-  //   res.json(prod);
-  // }, (err) => next(err))
-  // .catch((err) => next(err));
-
-
-  console.log(req.query.q)
-  produtos.find({descricao: req.query.q}).then( response => {
-    res.sendStatus(200);
-    console.log(response);
-  }).catch( err => {
-    res.sendStatus(500);
-    console.log(err);
-  })
+  res.statusCode = 200;
+  produtos.findOne({_id: req.params.id})
+  .then((prod) => {
+    res.statusCode = 200;
+    res.json(prod);
+  }, (err) => next(err))
+  .catch((err) => next(err));
 })
 
 router.post('/', (req, res, next) => {

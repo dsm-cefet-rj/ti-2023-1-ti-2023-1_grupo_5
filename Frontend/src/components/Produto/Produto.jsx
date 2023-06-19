@@ -6,6 +6,7 @@ import { adicionarProduto } from "../../reduxFeatures/conta"
 const Produto = ({produto}) => {
     const conta = useSelector((state) => state.conta);
     const dispatch = useDispatch();
+
     return(
         <div className={styles.novidades_produto}>
             <Link to={`/produtos/${produto._id}`}>
@@ -17,8 +18,13 @@ const Produto = ({produto}) => {
             <div className={styles.preco}>R$ {produto.preco}</div>
             <div className={styles.metodo_pagamento}>À vista no pix</div>  
             <button className={styles.novidade_produto_botao} onClick={() => {
-                if(conta != null){ dispatch( adicionarProduto({produto: produto}) ) }
-                }}>Comprar</button>
+                if(conta != null){ 
+                    dispatch( adicionarProduto({produto: produto}) ) 
+                }
+                else{ 
+                    alert("Você precisa estar logado para adicionar o produto ao carrinho.")
+                }
+            }}>Adicionar ao carrinho</button>
         </div>
         
     )
