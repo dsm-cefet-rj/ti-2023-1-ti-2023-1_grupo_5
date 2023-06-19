@@ -44,7 +44,7 @@ router.post('/', (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
         res.json({err: err});
       } else {
-        passport.authenticate('local')(req, res, () => {
+        passport.authenticate('cliente-local')(req, res, () => {
           res.statusCode = 200;
           res.setHeader('Content-Type', 'application/json');
           res.json({success: true, status: 'Registration Successful!'});
@@ -55,7 +55,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.route('/login').options((req, res) => { res.sendStatus(200); })
-router.post('/login', passport.authenticate('local'), (req, res) => {
+router.post('/login', passport.authenticate('cliente-local'), (req, res) => {
   var token = authenticate.getToken({username: req.user.username});
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
@@ -83,64 +83,13 @@ router.get('/logout', (req, res) => {
   }
 });
 
-// router.post('/logarCliente', (req, res, next) => {
-//   clientes.findOne({email: req.body.email}).then( (cliente) => {
-//     if(cliente != null){
-//       if(cliente.senha === req.body.senha){
-//         //carrinhos.findById(cliente.idCarrinho).then( carr => {
-//           let c = {
-//             _id: cliente._id,
-//             email: cliente.email,
-//             tipo: "cliente",
-//             idCarrinho: cliente.idCarrinho,
-//             carrinho: []
-//           }
-//           res.statusCode = 200;//mudar
-//           res.setHeader('Content-Type', 'application/json');
-//           res.json(c);
-//           console.log("\nCliente " + cliente.email + " logado no site.");
-//         //});
-//         return;
-//       }else{
-//         res.statusCode = 200;//mudar 
-//         res.json(null);
-//         console.log("\nCliente " + req.body.email + " tentou logar-se com uma senha incorreta.");
-//         return;
-//       }
-//     }else{
-//       res.statusCode = 404;//mudar
-//       res.json(null);
-//       console.log("\nCliente " + req.body.email + " não encontrado no banco de dados.");
-//       return;
-//     }
-//   }).catch(err => {
-//     console.log(err);
-//   })
-// });
 
-//router.route('/logarCliente').options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-
-router.post('/logarCliente', passport.authenticate('local'), (req, res) => {
+router.post('/logarCliente', passport.authenticate('cliente-local'), (req, res) => {
   var token = authenticate.getToken({_id: req.user._id});
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
     res.json({id: req.cliente._id, token: token});
   });
-
-
-
-// //atualiza carrinho
-// router.route('/patchCarrinho/:id')
-// router.patch(authenticate.verifyUser, (req, res, next) => {
-//   clientes.findOneAndUpdate({_id: req.params.id}, req.body)
-//     .then(() => {
-//       res.sendStatus(200);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.sendStatus(500);
-//     });
-// });
 
 
 module.exports = router;
