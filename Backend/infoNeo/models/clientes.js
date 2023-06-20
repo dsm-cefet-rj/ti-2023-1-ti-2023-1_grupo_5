@@ -20,4 +20,3 @@ const clientesSchema = new Schema({
 clientesSchema.plugin(passportLocalMongoose);
 var clientes = mongoose.model('clientes', clientesSchema);
 module.exports = clientes;
-
